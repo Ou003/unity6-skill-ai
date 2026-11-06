@@ -1,0 +1,20 @@
+{
+  "id": "u6-editor-tooling",
+  "title": "Unity 6 编辑器扩展（EditorWindow / MenuItem）",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["编辑器扩展", "菜单", "工具窗口", "Inspector"],
+  "keywords": ["编辑器窗口", "editorwindow", "menuitem", "编辑器扩展", "自定义工具", "菜单项", "guilayout", "uitoolkit 编辑器", "customeditor", "inspector 扩展", "批处理", "assetpostprocessor"],
+  "tools": ["get_project_info", "list_scripts", "read_script", "create_script", "get_compile_errors", "get_console_logs"],
+  "summary": "编辑器代码必须放在 Editor/ 目录或 includePlatforms=Editor 的 asmdef 中；Unity 6 的编辑器窗口可用 IMGUI(OnGUI) 或 UI Toolkit(CreateGUI)。",
+  "preferred": ["EditorWindow.GetWindow / CreateWindow", "[MenuItem]", "CreateGUI + VisualElement（UI Toolkit）", "EditorPrefs / SessionState", "Undo.RecordObject"],
+  "deprecated": ["把 UnityEditor 命名空间写进运行时程序集", "依赖 OnGUI 做复杂长期维护的新界面（可用 UI Toolkit）"],
+  "constraints": ["所有编辑器脚本路径必须在 Editor/ 下，否则打包失败", "不要在运行时脚本里 using UnityEditor", "窗口状态可用 SessionState 跨域重载保留"],
+  "pitfalls": ["缺少 asmdef 时编辑器脚本会被编译进 Assembly-CSharp-Editor，需注意引用范围", "域重载会清空静态字段，需要持久化时改用 SessionState 或 ScriptableSingleton", "UI Toolkit 的 CreateGUI 与 IMGUI 的 OnGUI 不要混用"],
+  "parameterTemplate": "create_script { path: Assets/Editor/MyToolWindow.cs, content: 继承 EditorWindow 的编辑器窗口 }",
+  "snippet": "using UnityEditor;\nusing UnityEngine;\n\npublic class MyToolWindow : EditorWindow\n{\n    [MenuItem(\"Tools/My Tool\")]\n    private static void Open() => GetWindow<MyToolWindow>(\"My Tool\");\n\n    private void OnGUI()\n    {\n        if (GUILayout.Button(\"Run\")) Debug.Log(Application.unityVersion);\n    }\n}",
+  "examplePrompts": ["做一个批量重命名资源的编辑器菜单", "写一个可浮动的自定义工具窗口"],
+  "source": "本项目自撰；Unity 6 EditorWindow / MenuItem 文档概念引用",
+  "alwaysInclude": false,
+  "priority": 18
+}

@@ -1,0 +1,20 @@
+{
+  "id": "u6-input-system",
+  "title": "Unity 6 新输入系统（Input System 包）角色控制",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.inputsystem"],
+  "topics": ["输入", "角色移动", "按键", "手柄", "WASD"],
+  "keywords": ["输入系统", "input system", "inputaction", "playerinput", "wasd", "按键", "键盘", "手柄", "gamepad", "移动", "跳跃", "触摸", "点击", "鼠标"],
+  "tools": ["get_project_info", "get_packages", "read_script", "list_scripts", "create_script", "create_gameobject", "add_component", "get_compile_errors", "get_console_logs"],
+  "summary": "Unity 6 默认推荐 com.unity.inputsystem；基于 InputAction / PlayerInput 的事件回调实现移动，禁止回退到旧 Input Manager 的轮询 API。",
+  "preferred": ["UnityEngine.InputSystem.InputAction", "InputActionAsset", "PlayerInput", "InputValue", "InputSystem.actions"],
+  "deprecated": ["Input.GetAxis", "Input.GetKey", "Input.GetMouseButton", "旧 Input Manager"],
+  "constraints": ["先 get_project_info 看输入处理模式：0=旧、1=新、2=Both；若为 0 需提示用户在 Project Settings > Player > Active Input Handling 切换", "脚本必须 using UnityEngine.InputSystem", "确认 com.unity.inputsystem 已安装（get_packages）"],
+  "pitfalls": ["把 InputSystem 与旧 Input 混用会抛 InvalidOperationException", "InputAction 需要 Enable()/OnEnable 中启用、OnDisable 中禁用", "InputValue.ReadValue<Vector2>() 返回的是 Vector2，别当 Vector3 用"],
+  "parameterTemplate": "create_script { path: Assets/Scripts/PlayerMove.cs, content: 使用 InputAction 的完整 MonoBehaviour }，随后 get_compile_errors",
+  "snippet": "using UnityEngine;\nusing UnityEngine.InputSystem;\n\npublic class PlayerMove : MonoBehaviour\n{\n    [SerializeField] private InputActionReference move;\n    [SerializeField] private float speed = 4f;\n\n    private void Update()\n    {\n        Vector2 value = move.action.ReadValue<Vector2>();\n        transform.Translate(new Vector3(value.x, 0f, value.y) * speed * Time.deltaTime);\n    }\n}",
+  "examplePrompts": ["用新输入系统做 WASD 移动并挂到 Player 上", "做一个手柄摇杆控制移动的脚本"],
+  "source": "本项目自撰；Unity 6 Input System 包文档概念引用，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 30
+}

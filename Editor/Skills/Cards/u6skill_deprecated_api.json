@@ -1,0 +1,20 @@
+{
+  "id": "u6-deprecated-api",
+  "title": "Unity 6 常见废弃 API 与迁移",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["迁移", "弃用", "报错", "版本差异"],
+  "keywords": ["弃用", "过时", "deprecated", "obsolete", "迁移", "升级", "findobjectoftype", "findfirstobjectbytype", "velocity", "loadlevel", "报错", "编译不过", "版本差异"],
+  "tools": ["get_project_info", "get_packages", "get_compile_errors", "get_console_logs", "read_script", "list_scripts", "create_script"],
+  "summary": "从 Unity 2021/2022 迁到 Unity 6 时最常见的替换：FindObjectOfType -> FindFirstObjectByType，Rigidbody.velocity -> linearVelocity，Application.LoadLevel -> SceneManager.LoadSceneAsync。",
+  "preferred": ["Object.FindFirstObjectByType<T>()", "Object.FindAnyObjectByType<T>()", "Rigidbody.linearVelocity", "SceneManager.LoadSceneAsync", "CinemachineCamera（CM3）"],
+  "deprecated": ["Object.FindObjectOfType<T>()", "Object.FindObjectsOfType<T>()", "Rigidbody.velocity", "Application.LoadLevel", "new WWW", "CinemachineVirtualCamera（CM3 下）"],
+  "constraints": ["先用 get_compile_errors 拿到真实报错，不要凭猜测改代码", "先 get_project_info / get_packages 确认版本与包主版本，再决定替换哪个 API"],
+  "pitfalls": ["FindFirstObjectByType 只返回第一个，语义与旧 API 不完全一致", "把旧教程代码直接粘进 Unity 6 常因命名空间变化报错", "部分警告只是过时提示，不影响编译，需区分"],
+  "parameterTemplate": "get_compile_errors { count: 40 } -> read_script 定位 -> create_script 修正",
+  "snippet": "using UnityEngine;\n\npublic class FindPlayer : MonoBehaviour\n{\n    private void Start()\n    {\n        var player = Object.FindFirstObjectByType<PlayerMove>();\n        Debug.Log(player != null);\n    }\n}",
+  "examplePrompts": ["FindObjectOfType 在 Unity 6 报错怎么办", "把旧项目的 API 迁移到 Unity 6"],
+  "source": "本项目自撰；Unity 6 Scripting API 弃用说明概念引用",
+  "alwaysInclude": false,
+  "priority": 26
+}

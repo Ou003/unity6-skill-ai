@@ -1,0 +1,20 @@
+{
+  "id": "u6-urp-material",
+  "title": "URP 材质、Shader 与颜色属性",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.render-pipelines.universal"],
+  "topics": ["材质", "渲染", "URP", "Shader", "颜色"],
+  "keywords": ["材质", "material", "shader", "urp", "渲染管线", "颜色", "color", "base color", "lit", "shader graph", "贴图", "texture"],
+  "tools": ["get_project_info", "get_packages", "find_assets", "create_material", "create_gameobject", "add_component", "set_transform", "get_compile_errors"],
+  "summary": "Unity 6 的 URP 模板使用 Universal Render Pipeline/Lit，主色属性是 _BaseColor；Built-in 的 Standard 在该管线呈洋红，勿混用。",
+  "preferred": ["Universal Render Pipeline/Lit", "Material.SetColor(_BaseColor)", "Shader Graph（URP Target）", "UniversalAdditionalCameraData"],
+  "deprecated": ["Standard Shader 用于 URP", "Material.color 单独设置后期望影响 URP 主色"],
+  "constraints": ["先 get_project_info 判断渲染管线，Built-in 与 URP 的 Shader 名不同", "create_material 的 shader 参数留空时工具自动优先 URP/Lit 再回退 Standard"],
+  "pitfalls": ["材质显示洋红色通常是 Shader 与管线不匹配", "URP 里 _BaseColor / _BaseMap 替代 _Color / _MainTex", "运行时改材质要用 material 实例，避免修改共享资源"],
+  "parameterTemplate": "create_material { path: Assets/Materials/Red.mat, shader: Universal Render Pipeline/Lit, color: [1,0,0,1] }",
+  "snippet": "var shader = Shader.Find(\"Universal Render Pipeline/Lit\");\nvar mat = new Material(shader);\nmat.SetColor(\"_BaseColor\", Color.red);",
+  "examplePrompts": ["创建一个红色的 URP 材质并赋给立方体", "为什么我的材质变成洋红色"],
+  "source": "本项目自撰；Unity 6 URP 文档概念引用",
+  "alwaysInclude": false,
+  "priority": 25
+}

@@ -1,0 +1,20 @@
+{
+  "id": "u6-audio",
+  "title": "音频播放与 AudioMixer",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.modules.audio"],
+  "topics": ["音频", "声音", "音效", "BGM"],
+  "keywords": ["audio", "音频", "声音", "音效", "bgm", "音乐", "audiosource", "audioclip", "audiomixer", "播放", "音量", "静音", "3d音效", "空间音效"],
+  "tools": ["get_scene_hierarchy", "find_assets", "create_gameobject", "add_component", "create_script", "get_compile_errors", "get_console_logs"],
+  "summary": "用 AudioSource 播放 AudioClip，BGM 与 SFX 分组走 AudioMixer；一次性音效用 PlayOneShot，循环音乐用 loop + Play。",
+  "preferred": ["AudioSource.PlayOneShot", "AudioMixerGroup", "AudioSource.spatialBlend", "AudioClip.LoadAudioData"],
+  "deprecated": ["每帧 new AudioSource", "用 AudioSource.PlayClipAtPoint 高频创建临时对象"],
+  "constraints": ["场景中应有 AudioListener（通常在主相机上）", "AudioClip 资源路径需在 Assets/ 下"],
+  "pitfalls": ["PlayOneShot 在对象被禁用时不会播放", "3D 音效需要 spatialBlend 接近 1 并配置 rolloff", "AudioMixer 音量建议用 dB 换算而非线性 0~1"],
+  "parameterTemplate": "create_gameobject { name: AudioPlayer, components: [AudioSource] }；create_script 写播放逻辑",
+  "snippet": "using UnityEngine;\n\n[RequireComponent(typeof(AudioSource))]\npublic class SfxPlayer : MonoBehaviour\n{\n    [SerializeField] private AudioClip clip;\n    private AudioSource source;\n\n    private void Awake() => source = GetComponent<AudioSource>();\n\n    public void Play()\n    {\n        if (clip != null) source.PlayOneShot(clip);\n    }\n}",
+  "examplePrompts": ["写一个点击按钮播放音效的脚本", "给场景加循环背景音乐"],
+  "source": "本项目自撰；Unity 6 Scripting API AudioSource 概念引用",
+  "alwaysInclude": false,
+  "priority": 14
+}

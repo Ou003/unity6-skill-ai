@@ -1,0 +1,33 @@
+# Unity / UPM generated content
+Library/
+Temp/
+Logs/
+obj/
+UserSettings/
+MemoryCaptures/
+Build/
+Builds/
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Local verification project used by maintainers
+.verify/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vs/
+.idea/
+.vscode/
+
+# Local secrets (the app also stores keys under Library/, which is ignored above)
+secrets.json

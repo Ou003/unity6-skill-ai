@@ -1,0 +1,20 @@
+{
+  "id": "u6-ui-toolkit",
+  "title": "UI Toolkit 运行时界面（UIDocument / UXML / USS）",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.modules.ui", "com.unity.ugui"],
+  "topics": ["UI", "界面", "UI Toolkit", "菜单"],
+  "keywords": ["ui toolkit", "uibuilder", "ui builder", "uxml", "uss", "uidocument", "visualelement", "界面", "菜单", "按钮", "hud", "面板", "列表"],
+  "tools": ["get_project_info", "get_packages", "find_assets", "list_scripts", "read_script", "create_script", "create_gameobject", "add_component", "get_compile_errors"],
+  "summary": "Unity 6 的 UI Toolkit 可用于运行时界面：UIDocument 挂载 UXML，VisualElement 查询用 Q<T>，事件用 RegisterCallback，样式走 USS。",
+  "preferred": ["UIDocument", "VisualElement.Q<T>(name)", "RegisterCallback<ClickEvent>", "USS 样式表", "PanelSettings"],
+  "deprecated": ["用 OnGUI 做正式运行时 UI", "把 UI Toolkit 与 UGUI Canvas 混在同一层级"],
+  "constraints": ["运行时 UI Toolkit 需要 PanelSettings 资源；纯代码创建 VisualElement 也要挂到 UIDocument.rootVisualElement", "UI Builder 编辑的 UXML 应放在 Assets/ 下并用 AssetDatabase 路径加载"],
+  "pitfalls": ["Q<T> 的名字要与 UXML 里 name 属性一致", "ClickEvent 的回调注册要在 OnEnable，注销在 OnDisable", "UI Toolkit 与 UGUI 的输入事件系统不同"],
+  "parameterTemplate": "create_script { path: Assets/Scripts/GameHud.cs, content: 通过 UIDocument.rootVisualElement 绑定按钮的 MonoBehaviour }",
+  "snippet": "using UnityEngine;\nusing UnityEngine.UIElements;\n\n[RequireComponent(typeof(UIDocument))]\npublic class GameHud : MonoBehaviour\n{\n    private void OnEnable()\n    {\n        var root = GetComponent<UIDocument>().rootVisualElement;\n        var button = root.Q<Button>(\"StartButton\");\n        if (button != null) button.RegisterCallback<ClickEvent>(_ => Debug.Log(1));\n    }\n}",
+  "examplePrompts": ["用 UI Toolkit 做一个开始菜单", "给 HUD 的按钮绑定点击事件"],
+  "source": "本项目自撰；Unity 6 UI Toolkit 文档概念引用",
+  "alwaysInclude": false,
+  "priority": 22
+}

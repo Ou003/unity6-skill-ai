@@ -1,0 +1,20 @@
+{
+  "id": "u6-core",
+  "title": "Unity 6 通用工作约定（常驻）",
+  "unity": ["any"],
+  "packages": [],
+  "topics": ["通用", "规范", "版本"],
+  "keywords": [],
+  "tools": ["get_project_info", "get_scene_hierarchy", "get_selection", "get_console_logs", "get_compile_errors", "list_scripts", "read_script", "find_assets", "get_packages"],
+  "summary": "所有任务都先以工程实测信息为准，再依据命中的知识卡选 API 与工具；不得凭预训练记忆臆断 Unity 6 的包版本与 API。",
+  "preferred": ["先 get_project_info 再写代码", "先 get_scene_hierarchy 再改场景", "写完脚本必查 get_compile_errors"],
+  "deprecated": ["Object.FindObjectOfType", "Object.FindObjectsOfType", "Rigidbody.velocity", "new WWW", "Application.LoadLevel"],
+  "constraints": ["只能调用本次白名单内的工具", "所有路径必须在 Assets/ 下", "回答使用简体中文", "不要顺手重构用户未要求的无关代码"],
+  "pitfalls": ["Unity 6 各小版本(6000.0~6000.3)包版本差异较大，写 API 前先用 get_packages 确认", "生成脚本会触发编译与域重载，之后必须复查 Console"],
+  "parameterTemplate": "只读工具无需特殊参数；不确定时用 get_project_info / get_packages",
+  "snippet": "using UnityEngine;\n\npublic class Example : MonoBehaviour\n{\n    private void Start()\n    {\n        Debug.Log(Application.unityVersion);\n    }\n}",
+  "examplePrompts": ["先看看这个工程用的是什么版本和渲染管线"],
+  "source": "本项目自撰规则；Unity 6 Manual 与 Scripting API 仅作概念引用，未复制文档全文",
+  "alwaysInclude": true,
+  "priority": 100
+}

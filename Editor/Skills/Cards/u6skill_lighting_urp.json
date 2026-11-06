@@ -1,0 +1,20 @@
+{
+  "id": "u6-lighting-urp",
+  "title": "URP 光照、探针与烘焙",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.render-pipelines.universal"],
+  "topics": ["光照", "灯光", "烘焙", "阴影", "URP"],
+  "keywords": ["光照", "light", "灯光", "阴影", "shadow", "烘焙", "bake", "lightmap", "光照探针", "probe", "反射探针", "环境光", "天空盒", "skybox", "后处理", "post processing", "volume"],
+  "tools": ["get_project_info", "get_packages", "get_scene_hierarchy", "create_gameobject", "add_component", "create_material", "create_script", "get_compile_errors"],
+  "summary": "URP 下用 UniversalAdditionalLightData、Volume 后处理与 Adaptive Probe Volumes；光照设置与 Built-in 管线的菜单和 API 不同。",
+  "preferred": ["Light + UniversalAdditionalLightData", "Volume / VolumeProfile", "Adaptive Probe Volumes", "Lightmapping.BakeAsync（编辑器）"],
+  "deprecated": ["Built-in 管线的 LightmapEditorSettings 假设", "旧 Enlighten 工作流"],
+  "constraints": ["先 get_project_info 判断渲染管线", "实时阴影数量与 URP Asset 的 Additional Lights 限制有关"],
+  "pitfalls": ["改光照后不重新烘焙看不到静态 GI 变化", "Volume 需要 Layer 与 Camera 的 Volume Mask 匹配", "移动平台慎用实时软阴影"],
+  "parameterTemplate": "create_gameobject { name: KeyLight, components: [Light] }；随后按 URP 资产限制设置阴影",
+  "snippet": "using UnityEngine;\nusing UnityEngine.Rendering;\n\npublic class LightTuner : MonoBehaviour\n{\n    [SerializeField] private Light keyLight;\n\n    private void Start()\n    {\n        keyLight.type = LightType.Directional;\n        keyLight.shadows = LightShadows.Soft;\n    }\n}",
+  "examplePrompts": ["给场景加一盏带软阴影的主光", "URP 里怎么调后处理辉光"],
+  "source": "本项目自撰；Unity 6 URP 光照文档概念引用",
+  "alwaysInclude": false,
+  "priority": 14
+}

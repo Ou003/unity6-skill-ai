@@ -1,0 +1,20 @@
+{
+  "id": "u6-ai-navigation",
+  "title": "AI Navigation / NavMesh 寻路",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.ai.navigation"],
+  "topics": ["寻路", "NavMesh", "AI", "导航"],
+  "keywords": ["navmesh", "寻路", "导航", "navigation", "navmeshagent", "ai", "自动走路", "巡逻", "bake", "烘焙", "navmeshsurface", "障碍物"],
+  "tools": ["get_project_info", "get_packages", "get_scene_hierarchy", "create_gameobject", "add_component", "create_script", "get_compile_errors"],
+  "summary": "Unity 6 的寻路组件由 com.unity.ai.navigation 提供，动态烘焙用 NavMeshSurface，移动体挂 NavMeshAgent 并调用 SetDestination。",
+  "preferred": ["NavMeshAgent", "NavMeshSurface", "NavMeshAgent.SetDestination", "NavMeshObstacle", "NavMeshLink"],
+  "deprecated": ["旧 Navigation 窗口静态烘焙（部分工作流）", "NavMeshAgent 直接改 transform.position"],
+  "constraints": ["先 get_packages 确认 com.unity.ai.navigation 已安装", "场景中需要有 NavMeshSurface 并烘焙，否则 SetDestination 失效"],
+  "pitfalls": ["Agent 与目标点不在 NavMesh 上会返回 false", "障碍物需要 NavMeshObstacle 或重新烘焙", "用 Warp 传送而不是直接改 position"],
+  "parameterTemplate": "create_gameobject { name: Enemy, components: [NavMeshAgent] }；create_script 写 SetDestination 逻辑",
+  "snippet": "using UnityEngine;\nusing UnityEngine.AI;\n\n[RequireComponent(typeof(NavMeshAgent))]\npublic class MoveToTarget : MonoBehaviour\n{\n    [SerializeField] private Transform target;\n    private NavMeshAgent agent;\n\n    private void Awake() => agent = GetComponent<NavMeshAgent>();\n\n    private void Update()\n    {\n        if (target != null) agent.SetDestination(target.position);\n    }\n}",
+  "examplePrompts": ["给敌人加 NavMeshAgent 让它追玩家", "怎么在运行时烘焙导航网格"],
+  "source": "本项目自撰；Unity 6 AI Navigation 包文档概念引用",
+  "alwaysInclude": false,
+  "priority": 20
+}

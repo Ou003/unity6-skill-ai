@@ -1,0 +1,20 @@
+{
+  "id": "u6-prefab",
+  "title": "Prefab、嵌套 Prefab 与 Variant",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["Prefab", "预制体", "实例化", "变体"],
+  "keywords": ["prefab", "预制体", "预制件", "实例化", "instantiate", "variant", "变体", "嵌套", "prefabutility", "批量生成"],
+  "tools": ["find_assets", "get_scene_hierarchy", "read_script", "list_scripts", "create_script", "create_gameobject", "get_compile_errors"],
+  "summary": "重复生成的对象用 Prefab + Instantiate；Unity 6 支持嵌套 Prefab 与 Prefab Variant，编辑器批量改动走 PrefabUtility。",
+  "preferred": ["GameObject.Instantiate(prefab, position, rotation)", "PrefabUtility.LoadPrefabContents / SaveAsPrefabAsset（编辑器脚本）", "Prefab Variant"],
+  "deprecated": ["运行时用 Resources.Load 硬编码路径批量实例化", "直接改场景里已断开的 Prefab 实例"],
+  "constraints": ["Prefab 资源路径必须在 Assets/ 下", "编辑器脚本使用 UnityEditor 命名空间时必须放在 Editor/ 文件夹或带 Editor 的 asmdef"],
+  "pitfalls": ["Instantiate 返回的是 GameObject，需要 GetComponent 取组件", "Prefab 覆写(Override)未 Apply 时修改不会回到资源", "运行时改 Prefab 实例不会影响源资源"],
+  "parameterTemplate": "find_assets { filter: t:Prefab } 找到资源后，create_script 写 Instantiate 逻辑",
+  "snippet": "using UnityEngine;\n\npublic class Spawner : MonoBehaviour\n{\n    [SerializeField] private GameObject prefab;\n\n    public void Spawn(Vector3 at) => Instantiate(prefab, at, Quaternion.identity);\n}",
+  "examplePrompts": ["写一个按间隔生成敌人 Prefab 的脚本", "怎么用 Prefab Variant 做敌人变体"],
+  "source": "本项目自撰；Unity 6 Manual Prefab 章节概念引用",
+  "alwaysInclude": false,
+  "priority": 16
+}

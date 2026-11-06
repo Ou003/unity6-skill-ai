@@ -1,0 +1,20 @@
+{
+  "id": "u6-vfx",
+  "title": "粒子系统与 VFX Graph 选择",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.visualeffectgraph", "com.unity.modules.particlesystem"],
+  "topics": ["特效", "粒子", "VFX", "视觉"],
+  "keywords": ["粒子", "particle", "particlesystem", "特效", "vfx", "vfx graph", "visual effect", "爆炸", "烟雾", "拖尾", "trail", "火花"],
+  "tools": ["get_project_info", "get_packages", "get_scene_hierarchy", "create_gameobject", "add_component", "create_material", "create_script", "get_compile_errors"],
+  "summary": "少量 CPU 粒子用 ParticleSystem；大规模 GPU 粒子用 VFX Graph（需 URP/HDRP 支持且要求 GPU Compute），普通项目不要盲目引入。",
+  "preferred": ["ParticleSystem / ParticleSystem.Emit", "VisualEffect（VFX Graph）", "TrailRenderer", "ParticleSystemRenderer"],
+  "deprecated": ["旧 EllipsoidParticleEmitter / Legacy Particles"],
+  "constraints": ["先 get_packages 确认 com.unity.visualeffectgraph 是否安装", "VFX Graph 不支持部分移动 GPU，需评估目标平台"],
+  "pitfalls": ["ParticleSystem 的 Play On Awake / Looping 决定是否自动播放", "运行时改 main.startColor 等结构体属性需要取局部变量再赋回", "VFX Graph 与 Built-in 管线不兼容"],
+  "parameterTemplate": "create_gameobject { name: Explosion, components: [ParticleSystem] }；create_script 写 Play/Stop 逻辑",
+  "snippet": "using UnityEngine;\n\n[RequireComponent(typeof(ParticleSystem))]\npublic class BurstEffect : MonoBehaviour\n{\n    private ParticleSystem particles;\n\n    private void Awake() => particles = GetComponent<ParticleSystem>();\n\n    public void Burst() => particles.Emit(30);\n}",
+  "examplePrompts": ["做一个爆炸粒子效果", "VFX Graph 和 ParticleSystem 选哪个"],
+  "source": "本项目自撰；Unity 6 VFX Graph / Particle System 文档概念引用",
+  "alwaysInclude": false,
+  "priority": 14
+}

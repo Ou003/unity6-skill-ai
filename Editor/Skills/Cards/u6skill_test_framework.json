@@ -1,0 +1,20 @@
+{
+  "id": "u6-test-framework",
+  "title": "Unity Test Framework（EditMode / PlayMode）",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.test-framework"],
+  "topics": ["测试", "单元测试", "Test Runner"],
+  "keywords": ["测试", "test", "单元测试", "test runner", "nunit", "editmode", "playmode", "assert", "[test]", "自动化"],
+  "tools": ["get_packages", "list_scripts", "read_script", "create_script", "get_compile_errors", "get_console_logs"],
+  "summary": "Unity 6 用 com.unity.test-framework + NUnit；测试脚本必须放在带 Test Assemblies 引用（optionalUnityReferences: TestAssemblies）的 asmdef 下。",
+  "preferred": ["[Test] / [UnityTest]", "Assert.AreEqual", "UnityEngine.TestTools", "EditMode / PlayMode 分类"],
+  "deprecated": ["把测试脚本混进运行时程序集"],
+  "constraints": ["先 get_packages 确认 com.unity.test-framework", "测试文件放在 Tests/Editor 或 Tests/Runtime，并配置 asmdef", "PlayMode 测试用 yield return null 等待帧"],
+  "pitfalls": ["[Test] 里不能用 yield return；需要协程用 [UnityTest]", "缺少 test-framework 引用会报找不到 NUnit.Framework", "编辑器脚本测试不能引用运行时 asmdef 的 internal 成员"],
+  "parameterTemplate": "create_script { path: Assets/Tests/Editor/SampleTest.cs, content: NUnit 测试类 }；测试程序集需单独 asmdef",
+  "snippet": "using NUnit.Framework;\n\npublic class SampleTest\n{\n    [Test]\n    public void AddsNumbers()\n    {\n        Assert.AreEqual(3, 1 + 2);\n    }\n}",
+  "examplePrompts": ["给这个工具类写几个 EditMode 单元测试", "怎么在 Unity 6 跑自动化测试"],
+  "source": "本项目自撰；Unity 6 Test Framework 包文档概念引用",
+  "alwaysInclude": false,
+  "priority": 12
+}

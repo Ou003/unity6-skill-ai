@@ -1,0 +1,20 @@
+{
+  "id": "u6-performance",
+  "title": "性能、对象池与 Profiler",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["性能", "优化", "卡顿", "GC"],
+  "keywords": ["性能", "优化", "卡顿", "fps", "profiler", "gc", "垃圾回收", "对象池", "pool", "内存", "drawcall", "批处理", "gpu instancing", "帧率"],
+  "tools": ["get_project_info", "get_scene_hierarchy", "read_script", "list_scripts", "create_script", "get_compile_errors", "get_console_logs"],
+  "summary": "先用 Profiler 定位再优化：避免 Update 里分配与查找，高频生成用对象池，静态批处理与 GPU Instancing 降低 Draw Call。",
+  "preferred": ["缓存组件引用", "ObjectPool<T>（UnityEngine.Pool）", "Profiler / ProfilerMarker", "GPU Instancing / SRP Batcher", "TryGetComponent"],
+  "deprecated": ["每帧 GetComponent / FindObjectOfType", "Update 里 new List 或字符串拼接", "用 Resources.FindObjectsOfTypeAll 做运行时查找"],
+  "constraints": ["优化前先读现有脚本，不要一次性重构", "改动后要用 get_compile_errors 确认可编译"],
+  "pitfalls": ["Camera.main 每次调用有查找开销，应缓存", "对象池回收时必须重置状态（速度、生命周期、事件订阅）", "闭包与 LINQ 会产生 GC 分配"],
+  "parameterTemplate": "read_script 定位热点 -> create_script 写入缓存/对象池版本",
+  "snippet": "using UnityEngine;\nusing UnityEngine.Pool;\n\npublic class BulletPool : MonoBehaviour\n{\n    [SerializeField] private GameObject prefab;\n    private ObjectPool<GameObject> pool;\n\n    private void Awake()\n    {\n        pool = new ObjectPool<GameObject>(\n            () => Instantiate(prefab),\n            go => go.SetActive(true),\n            go => go.SetActive(false));\n    }\n}",
+  "examplePrompts": ["把子弹生成改成对象池", "为什么这个脚本每帧都在分配内存"],
+  "source": "本项目自撰；Unity 6 性能优化文档概念引用",
+  "alwaysInclude": false,
+  "priority": 16
+}

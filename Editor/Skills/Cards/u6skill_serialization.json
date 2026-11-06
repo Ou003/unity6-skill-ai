@@ -1,0 +1,20 @@
+{
+  "id": "u6-serialization",
+  "title": "序列化、Inspector 与属性绘制",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["序列化", "Inspector", "字段", "属性"],
+  "keywords": ["serializefield", "序列化", "inspector", "检视面板", "字段", "[header]", "[range]", "property", "propertydrawer", "json", "保存数据", "自定义面板"],
+  "tools": ["read_script", "list_scripts", "create_script", "get_compile_errors", "get_selection"],
+  "summary": "运行时配置用 [SerializeField] private 暴露给 Inspector；Unity 序列化不支持字典与多态（除非 [SerializeReference]），复杂数据需自行建模。",
+  "preferred": ["[SerializeField]", "[SerializeReference]", "[Header] / [Range] / [Tooltip]", "SerializedObject / SerializedProperty（编辑器脚本）", "JsonUtility"],
+  "deprecated": ["用 public 字段暴露所有配置", "依赖 BinaryFormatter 存档"],
+  "constraints": ["编辑器扩展代码必须放在 Editor/ 目录或 Editor-only asmdef", "JsonUtility 不支持 Dictionary 与属性序列化"],
+  "pitfalls": ["Dictionary 不会显示在 Inspector 也不会被 JsonUtility 序列化", "[SerializeReference] 需要类型带 [Serializable] 且不能是 UnityEngine.Object", "改字段名会丢失已序列化的引用，用 [FormerlySerializedAs]"],
+  "parameterTemplate": "create_script { path: Assets/Scripts/PlayerSettingsData.cs, content: 使用 SerializeField 的 MonoBehaviour }",
+  "snippet": "using UnityEngine;\n\npublic class PlayerTuning : MonoBehaviour\n{\n    [Header(\"Movement\")]\n    [SerializeField, Range(1f, 20f)] private float speed = 5f;\n\n    public float Speed => speed;\n}",
+  "examplePrompts": ["给这个组件加可在 Inspector 调的参数", "为什么我的字典不显示"],
+  "source": "本项目自撰；Unity 6 Manual 序列化章节概念引用",
+  "alwaysInclude": false,
+  "priority": 16
+}

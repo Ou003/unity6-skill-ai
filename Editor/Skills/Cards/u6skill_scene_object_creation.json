@@ -1,0 +1,20 @@
+{
+  "id": "u6-scene-object-creation",
+  "title": "场景物体创建与层级组织",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["场景", "创建物体", "层级", "立方体", "空物体"],
+  "keywords": ["创建", "新建", "加一个", "放一个", "立方体", "cube", "球体", "sphere", "空物体", "gameobject", "层级", "父物体", "坐标", "原点", "缩放"],
+  "tools": ["get_scene_hierarchy", "create_gameobject", "add_component", "set_transform", "create_material", "save_scene", "get_selection"],
+  "summary": "先在场景里建对象再挂脚本；用 create_gameobject 一次指定名称、父级、几何体类型、坐标、缩放和组件，避免多次往返。",
+  "preferred": ["GameObject.CreatePrimitive 等价的 primitive 参数", "Undo 分组（工具已内置）"],
+  "deprecated": ["直接改场景文件 YAML"],
+  "constraints": ["创建前先 get_scene_hierarchy，避免同名与误挂父级", "parent 用层级路径如 Parent/Child", "改完提醒用户保存场景"],
+  "pitfalls": ["给未激活对象用 GameObject.Find 找不到（工具内部已做宽松查找）", "创建 Primitive 会自带 Collider 和 MeshRenderer，别重复添加"],
+  "parameterTemplate": "create_gameobject { name: Player, primitive: Cube, parent: '', position: [0,1,0], scale: [1,1,1], components: [Rigidbody] }",
+  "snippet": "var go = new GameObject(\"Player\");\ngo.transform.position = new Vector3(0f, 1f, 0f);",
+  "examplePrompts": ["在原点放一个立方体并加上 Rigidbody", "建一个叫 Manager 的空物体"],
+  "source": "本项目自撰；Unity 6 Manual 场景章节概念引用",
+  "alwaysInclude": false,
+  "priority": 20
+}

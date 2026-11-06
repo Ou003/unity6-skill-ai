@@ -1,0 +1,20 @@
+{
+  "id": "u6-scriptable-object",
+  "title": "ScriptableObject 数据配置",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["数据", "配置", "ScriptableObject", "资源"],
+  "keywords": ["scriptableobject", "数据配置", "配置表", "数据表", "asset", "createassetmenu", "物品数据", "技能配置", "参数配置", "so"],
+  "tools": ["list_scripts", "read_script", "find_assets", "create_script", "get_compile_errors", "get_project_info"],
+  "summary": "把可调参数与静态数据抽成 ScriptableObject 资源，用 [CreateAssetMenu] 在编辑器里创建实例，运行时通过序列化引用读取。",
+  "preferred": ["ScriptableObject", "[CreateAssetMenu]", "[SerializeField]", "AssetDatabase.CreateAsset（编辑器脚本）"],
+  "deprecated": ["把配置硬编码为 const 字段", "运行时用 Resources.Load 逐个读文本表"],
+  "constraints": ["ScriptableObject 类名与文件名一致", "运行时脚本不要引用 UnityEditor 命名空间", "[CreateAssetMenu] 的 menuName 需符合项目约定"],
+  "pitfalls": ["ScriptableObject 资源是共享引用，运行时修改会写回磁盘/影响所有引用者；需要副本时用 Instantiate", "缺 .meta 会导致引用丢失"],
+  "parameterTemplate": "create_script { path: Assets/Scripts/ItemConfig.cs, content: 继承 ScriptableObject 并带 CreateAssetMenu 的类 }",
+  "snippet": "using UnityEngine;\n\n[CreateAssetMenu(fileName = \"ItemConfig\", menuName = \"Game/Item Config\")]\npublic class ItemConfig : ScriptableObject\n{\n    [SerializeField] private string itemName;\n    [SerializeField] private int price;\n\n    public string ItemName => itemName;\n    public int Price => price;\n}",
+  "examplePrompts": ["做一个物品配置的 ScriptableObject", "把角色属性做成可配置资源"],
+  "source": "本项目自撰；Unity 6 Scripting API ScriptableObject 概念引用",
+  "alwaysInclude": false,
+  "priority": 18
+}

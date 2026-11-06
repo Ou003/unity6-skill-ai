@@ -1,0 +1,20 @@
+{
+  "id": "u6-scene-management",
+  "title": "场景管理与异步加载",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.modules.scenemanagement"],
+  "topics": ["场景", "切换", "加载", "关卡"],
+  "keywords": ["场景", "scene", "切换场景", "loadscene", "loadsceneasync", "关卡", "加载进度", "异步加载", "build settings", "重新加载", "restart"],
+  "tools": ["get_scene_hierarchy", "read_script", "list_scripts", "create_script", "save_scene", "get_compile_errors", "find_assets"],
+  "summary": "场景切换用 SceneManager.LoadSceneAsync 并配合 AsyncOperation.progress 做进度；场景必须先加入 Build Settings。",
+  "preferred": ["SceneManager.LoadSceneAsync", "AsyncOperation.allowSceneActivation", "SceneManager.LoadScene(scene, LoadSceneMode.Additive)", "EditorBuildSettingsScene（编辑器脚本）"],
+  "deprecated": ["Application.LoadLevel", "Application.LoadLevelAsync", "同步 LoadScene 造成卡顿"],
+  "constraints": ["先用 find_assets t:Scene 确认场景路径", "提示用户把场景加入 File > Build Settings > Scenes In Build"],
+  "pitfalls": ["progress 到 0.9 即表示加载完成，等待 allowSceneActivation 才继续", "异步加载后当前场景对象会被销毁，跨场景数据要 DontDestroyOnLoad 或 ScriptableObject"],
+  "parameterTemplate": "create_script { path: Assets/Scripts/SceneLoader.cs, content: 协程或 async 加载场景的 MonoBehaviour }",
+  "snippet": "using System.Collections;\nusing UnityEngine;\nusing UnityEngine.SceneManagement;\n\npublic class SceneLoader : MonoBehaviour\n{\n    public void Load(string sceneName) => StartCoroutine(LoadRoutine(sceneName));\n\n    private IEnumerator LoadRoutine(string sceneName)\n    {\n        var op = SceneManager.LoadSceneAsync(sceneName);\n        while (!op.isDone) yield return null;\n    }\n}",
+  "examplePrompts": ["写一个带进度条的异步切场景脚本", "重新开始当前关卡"],
+  "source": "本项目自撰；Unity 6 Scripting API SceneManager 概念引用",
+  "alwaysInclude": false,
+  "priority": 16
+}

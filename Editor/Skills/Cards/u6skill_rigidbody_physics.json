@@ -1,0 +1,20 @@
+{
+  "id": "u6-rigidbody-physics",
+  "title": "Unity 6 刚体物理与 linearVelocity 迁移",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.modules.physics"],
+  "topics": ["物理", "刚体", "碰撞", "速度", "重力"],
+  "keywords": ["rigidbody", "刚体", "物理", "重力", "碰撞", "collider", "velocity", "速度", "addforce", "跳跃", "trigger", "碰撞检测", "fixedupdate"],
+  "tools": ["get_project_info", "get_scene_hierarchy", "create_script", "create_gameobject", "add_component", "get_compile_errors", "read_script"],
+  "summary": "Unity 6 中 Rigidbody 的线性速度属性为 linearVelocity（velocity 已标记过时）；物理力与速度改动应放在 FixedUpdate。",
+  "preferred": ["Rigidbody.linearVelocity", "Rigidbody.angularVelocity", "Rigidbody.AddForce(ForceMode)", "FixedUpdate", "OnCollisionEnter / OnTriggerEnter"],
+  "deprecated": ["Rigidbody.velocity", "Rigidbody.angularVelocity 旧写法混用", "在 Update 中直接改物理速度"],
+  "constraints": ["先 get_project_info / get_packages 确认物理模块存在", "移动刚体时不要同时每帧写 Transform", "碰撞回调至少一方带 Rigidbody"],
+  "pitfalls": ["Unity 6 之前的项目脚本里的 velocity 会产生过时警告，迁移时全局替换", "ForceMode.VelocityChange 与 Acceleration 语义不同", "isKinematic 物体不参与物理模拟"],
+  "parameterTemplate": "create_gameobject { name: Ball, primitive: Sphere, components: [Rigidbody] }；create_script 写 FixedUpdate 逻辑",
+  "snippet": "using UnityEngine;\n\n[RequireComponent(typeof(Rigidbody))]\npublic class Jump : MonoBehaviour\n{\n    private Rigidbody body;\n\n    private void Awake() => body = GetComponent<Rigidbody>();\n\n    private void FixedUpdate()\n    {\n        body.AddForce(Vector3.up * 5f, ForceMode.VelocityChange);\n    }\n}",
+  "examplePrompts": ["给小球加刚体并写一个跳跃脚本", "用 AddForce 实现加速移动"],
+  "source": "本项目自撰；Unity 6 Scripting API Rigidbody 概念引用",
+  "alwaysInclude": false,
+  "priority": 25
+}

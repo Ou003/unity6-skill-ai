@@ -1,0 +1,20 @@
+{
+  "id": "u6-addressables",
+  "title": "Addressables 与资源加载策略",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.addressables"],
+  "topics": ["资源加载", "Addressables", "Resources", "AssetBundle"],
+  "keywords": ["addressables", "资源加载", "assetbundle", "resources.load", "异步加载", "热更新", "assetreference", "内存", "卸载"],
+  "tools": ["get_project_info", "get_packages", "find_assets", "read_script", "list_scripts", "create_script", "get_compile_errors"],
+  "summary": "大中型项目用 Addressables 的 AssetReference 与异步句柄；小型原型才用 Resources.Load，并用 get_packages 先确认包已安装。",
+  "preferred": ["AssetReference", "Addressables.LoadAssetAsync<T>", "Addressables.Release", "AsyncOperationHandle"],
+  "deprecated": ["Resources.Load 大批量资源", "同步 AssetBundle.LoadFromFile 阻塞主线程", "WWW / UnityWebRequest 同步等待"],
+  "constraints": ["先 get_packages 确认 com.unity.addressables 存在，不要凭空生成 Addressables 代码", "加载与释放要成对，否则内存泄漏"],
+  "pitfalls": ["Addressables 需要初始化并构建内容，编辑器里可用 AssetDatabase 路径快速验证", "AsyncOperationHandle 未 Release 会常驻内存", "Resources 目录里的资源会全部打进包体"],
+  "parameterTemplate": "create_script { path: Assets/Scripts/AssetLoader.cs, content: 使用 Addressables 异步加载的 MonoBehaviour }",
+  "snippet": "using UnityEngine;\nusing UnityEngine.AddressableAssets;\nusing UnityEngine.ResourceManagement.AsyncOperations;\n\npublic class AssetLoader : MonoBehaviour\n{\n    [SerializeField] private AssetReferenceGameObject reference;\n    private AsyncOperationHandle<GameObject> handle;\n\n    private async void Start()\n    {\n        handle = reference.LoadAssetAsync<GameObject>();\n        await handle.Task;\n        if (handle.Status == AsyncOperationStatus.Succeeded) Instantiate(handle.Result);\n    }\n\n    private void OnDestroy()\n    {\n        if (handle.IsValid()) Addressables.Release(handle);\n    }\n}",
+  "examplePrompts": ["用 Addressables 异步加载一个预制体", "Resources.Load 和 Addressables 怎么选"],
+  "source": "本项目自撰；Unity 6 Addressables 包文档概念引用",
+  "alwaysInclude": false,
+  "priority": 14
+}

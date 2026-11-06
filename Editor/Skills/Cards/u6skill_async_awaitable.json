@@ -1,0 +1,20 @@
+{
+  "id": "u6-async-awaitable",
+  "title": "协程、async/await 与 Unity 6 Awaitable",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["异步", "协程", "生命周期", "Awaitable"],
+  "keywords": ["协程", "coroutine", "ienumerator", "yield", "async", "await", "awaitable", "task", "延时", "定时器", "waitforseconds", "生命周期", "onenable", "awake", "start"],
+  "tools": ["list_scripts", "read_script", "create_script", "get_compile_errors", "get_project_info"],
+  "summary": "Unity 6 引入 UnityEngine.Awaitable，可用 await Awaitable.WaitForSecondsAsync 替代部分协程；传统 IEnumerator 协程仍然完全可用。",
+  "preferred": ["UnityEngine.Awaitable", "Awaitable.WaitForSecondsAsync", "StartCoroutine / IEnumerator", "CancellationToken 配合 destroyCancellationToken"],
+  "deprecated": ["在 async void 里不处理取消导致对象销毁后继续写组件", "用 Thread.Sleep 做延时"],
+  "constraints": ["Unity API 只能在主线程调用，不要用 Task.Run 里访问 Transform", "异步方法要处理对象被销毁的情况", "确认 Unity 版本为 6000.x 再使用 Awaitable"],
+  "pitfalls": ["async void 的异常不会冒泡到调用方", "Task.Delay 不随 Time.timeScale 暂停", "域重载会中断未完成的异步操作"],
+  "parameterTemplate": "create_script { path: Assets/Scripts/DelayedAction.cs, content: 使用 Awaitable 或协程的 MonoBehaviour }",
+  "snippet": "using UnityEngine;\n\npublic class DelayedAction : MonoBehaviour\n{\n    private async void Start()\n    {\n        await Awaitable.WaitForSecondsAsync(2f, destroyCancellationToken);\n        Debug.Log(transform.position);\n    }\n}",
+  "examplePrompts": ["写一个 2 秒后执行动作的脚本", "Unity 6 里还需要用协程吗"],
+  "source": "本项目自撰；Unity 6 Scripting API Awaitable 概念引用",
+  "alwaysInclude": false,
+  "priority": 18
+}

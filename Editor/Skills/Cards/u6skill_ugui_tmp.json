@@ -1,0 +1,20 @@
+{
+  "id": "u6-ugui-tmp",
+  "title": "UGUI 与 TextMeshPro 文本",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.ugui"],
+  "topics": ["UI", "UGUI", "Canvas", "文本", "TextMeshPro"],
+  "keywords": ["ugui", "canvas", "textmeshpro", "tmp", "text", "文本", "文字", "按钮", "button", "image", "scrollrect", "布局", "锚点", "血量条"],
+  "tools": ["get_project_info", "get_packages", "get_scene_hierarchy", "create_gameobject", "add_component", "create_script", "get_compile_errors"],
+  "summary": "传统运行时 UI 用 UGUI Canvas + TextMeshProUGUI；Unity 6 中 TMP 能力已随 UGUI 包提供，文本组件优先用 TMP 而非旧 UnityEngine.UI.Text。",
+  "preferred": ["Canvas / CanvasScaler / GraphicRaycaster", "TextMeshProUGUI", "Button.onClick.AddListener", "EventSystem + InputSystemUIInputModule"],
+  "deprecated": ["UnityEngine.UI.Text", "旧 StandaloneInputModule 搭配新 Input System"],
+  "constraints": ["场景中必须存在 EventSystem，否则按钮无响应", "使用新 Input System 时 EventSystem 上要挂 InputSystemUIInputModule", "确认包版本（get_packages）后再决定类型全名"],
+  "pitfalls": ["TMP 字体资源缺失会显示方块", "CanvasScaler 的缩放模式决定不同分辨率表现", "onClick.AddListener 重复注册会导致多次触发"],
+  "parameterTemplate": "create_gameobject { name: HUD, components: [Canvas, CanvasScaler, GraphicRaycaster] }；脚本里用 TextMeshProUGUI",
+  "snippet": "using TMPro;\nusing UnityEngine;\n\npublic class ScoreLabel : MonoBehaviour\n{\n    [SerializeField] private TextMeshProUGUI label;\n\n    public void SetScore(int value) => label.text = value.ToString();\n}",
+  "examplePrompts": ["做一个 UGUI 计分板", "给按钮绑定点击事件并显示 TMP 文本"],
+  "source": "本项目自撰；Unity 6 UGUI / TextMeshPro 概念引用",
+  "alwaysInclude": false,
+  "priority": 20
+}

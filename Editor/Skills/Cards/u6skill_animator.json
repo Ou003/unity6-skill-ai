@@ -1,0 +1,20 @@
+{
+  "id": "u6-animator",
+  "title": "Animator 状态机与动画参数",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.modules.animation"],
+  "topics": ["动画", "Animator", "状态机", "骨骼"],
+  "keywords": ["animator", "动画", "状态机", "animator controller", "transition", "参数", "setbool", "setfloat", "settrigger", "idle", "walk", "run", "播放动画"],
+  "tools": ["get_scene_hierarchy", "get_selection", "find_assets", "list_scripts", "read_script", "create_script", "add_component", "get_compile_errors"],
+  "summary": "Unity 6 使用 Mecanim Animator Controller；脚本通过 SetBool/SetFloat/SetTrigger 驱动参数，避免在代码里直接播放 legacy Animation 片段。",
+  "preferred": ["Animator.SetBool / SetFloat / SetTrigger", "Animator.StringToHash 缓存参数 ID", "AnimatorStateMachine", "Avatar Mask"],
+  "deprecated": ["Animation.Play", "AnimationClip 直接播放（legacy）", "字符串参数名硬编码在 Update 里反复查找"],
+  "constraints": ["确认对象上有 Animator 组件与有效的 RuntimeAnimatorController", "参数名必须与 Controller 中定义的一致（大小写敏感）"],
+  "pitfalls": ["Has Exit Time 与 Transition Duration 会让切换看起来延迟", "Trigger 参数需要 ResetTrigger 或状态机消费", "Root Motion 开启后脚本再改 Transform 会冲突"],
+  "parameterTemplate": "create_script { path: Assets/Scripts/CharacterAnimator.cs, content: 缓存参数哈希并在 Update 中驱动 Animator }",
+  "snippet": "using UnityEngine;\n\n[RequireComponent(typeof(Animator))]\npublic class CharacterAnimator : MonoBehaviour\n{\n    private static readonly int Speed = Animator.StringToHash(\"Speed\");\n    private Animator animator;\n\n    private void Awake() => animator = GetComponent<Animator>();\n\n    private void Update() => animator.SetFloat(Speed, 1f);\n}",
+  "examplePrompts": ["写一个根据移动速度切换待机与跑步动画的脚本", "给角色加 Animator 参数驱动"],
+  "source": "本项目自撰；Unity 6 Manual 动画章节概念引用",
+  "alwaysInclude": false,
+  "priority": 18
+}

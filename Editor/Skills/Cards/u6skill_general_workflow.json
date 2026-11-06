@@ -1,0 +1,20 @@
+{
+  "id": "u6-general-workflow",
+  "title": "通用创作工作流（无明确主题时的兜底）",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["通用", "脚本", "创建", "实现功能"],
+  "keywords": ["写个脚本", "实现一个", "帮我做", "添加功能", "生成代码", "做一个功能", "新建脚本", "component", "monobehaviour"],
+  "tools": ["get_project_info", "list_scripts", "read_script", "create_script", "create_gameobject", "add_component", "set_transform", "get_compile_errors", "get_console_logs", "save_scene"],
+  "summary": "把自然语言需求转成：确认版本与包 -> 读已有代码 -> 写单一职责的 MonoBehaviour -> 挂到目标对象 -> 编译自查。",
+  "preferred": ["MonoBehaviour", "[SerializeField]", "TryGetComponent", "AssetDatabase 路径写相对 Assets/"],
+  "deprecated": ["public 字段暴露配置（优先 [SerializeField] private）", "在 Update 里反复 GetComponent"],
+  "constraints": ["类名与文件名必须一致", "一个 .cs 文件只放一个对外 public MonoBehaviour", "写完必须调用 get_compile_errors"],
+  "pitfalls": ["忘记 using UnityEngine", "把编辑器 API(UnityEditor) 写进运行时脚本导致打包失败", "类名含空格或与已有脚本重名"],
+  "parameterTemplate": "create_script { path: Assets/Scripts/MyFeature.cs, content: 完整 C# 源码 }，随后 get_compile_errors",
+  "snippet": "using UnityEngine;\n\npublic class MyFeature : MonoBehaviour\n{\n    [SerializeField] private float speed = 3f;\n\n    private void Update()\n    {\n        transform.Translate(Vector3.forward * speed * Time.deltaTime);\n    }\n}",
+  "examplePrompts": ["帮我写一个让物体匀速旋转的脚本", "实现一个计时器组件"],
+  "source": "本项目自撰；Unity 6 Scripting API 概念引用",
+  "alwaysInclude": false,
+  "priority": 1
+}

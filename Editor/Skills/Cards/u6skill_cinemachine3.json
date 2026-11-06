@@ -1,0 +1,20 @@
+{
+  "id": "u6-cinemachine3",
+  "title": "Cinemachine 3 摄像机（Unity 6 默认）",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.cinemachine"],
+  "topics": ["摄像机", "Cinemachine", "跟随", "镜头"],
+  "keywords": ["cinemachine", "摄像机", "相机", "camera", "跟随", "follow", "look at", "虚拟相机", "镜头", "震屏", "noise", "brain", "第三人称视角"],
+  "tools": ["get_project_info", "get_packages", "get_scene_hierarchy", "create_gameobject", "add_component", "create_script", "get_compile_errors"],
+  "summary": "Unity 6 默认使用 Cinemachine 3.x：主相机挂 CinemachineBrain，跟随相机类名为 CinemachineCamera（不再是 CinemachineVirtualCamera）。",
+  "preferred": ["CinemachineCamera", "CinemachineBrain", "CinemachineCamera.Follow / LookAt", "CinemachinePositionComposer", "CinemachineRotationComposer"],
+  "deprecated": ["CinemachineVirtualCamera（Cinemachine 2.x 类名）", "旧 CinemachineComposer / CinemachineTransposer 组件写法"],
+  "constraints": ["必须先用 get_packages 确认 com.unity.cinemachine 的主版本，2.x 与 3.x 类名完全不同", "场景中只需要一个 CinemachineBrain"],
+  "pitfalls": ["从旧教程复制的 CinemachineVirtualCamera 在 Unity 6 + CM3 下编不过", "Follow 目标为空时相机不动", "多相机切换靠 Priority 而非启用禁用"],
+  "parameterTemplate": "get_packages 确认版本后，create_gameobject { name: FollowCamera, components: [CinemachineCamera] }",
+  "snippet": "using Unity.Cinemachine;\nusing UnityEngine;\n\npublic class CameraSetup : MonoBehaviour\n{\n    [SerializeField] private CinemachineCamera followCamera;\n    [SerializeField] private Transform target;\n\n    private void Start()\n    {\n        followCamera.Follow = target;\n        followCamera.LookAt = target;\n    }\n}",
+  "examplePrompts": ["做一个第三人称跟随摄像机", "CinemachineVirtualCamera 报错怎么办"],
+  "source": "本项目自撰；Unity 6 Cinemachine 3 包文档概念引用",
+  "alwaysInclude": false,
+  "priority": 24
+}
