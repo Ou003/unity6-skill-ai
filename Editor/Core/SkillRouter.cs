@@ -12,6 +12,9 @@ namespace Unity6SkillAI.Editor
         public readonly List<string> ScoreDetails = new List<string>();
         public string SystemPrompt = "";
         public string ProjectContext = "";
+        public string OfficialPrompt = "";
+        public string OfficialSkillIds = "";
+        public int OfficialSkillCount;
         public int EstimatedChars;
 
         public string CardIds
@@ -119,9 +122,23 @@ namespace Unity6SkillAI.Editor
                 result.AllowedTools.Add(tool);
             result.AllowedTools.Sort(StringComparer.Ordinal);
 
-            result.ProjectContext = AgentSettings.Current.autoInjectProjectContext
+            var settings = AgentSettings.Current;
+            result.ProjectContext = settings.autoInjectProjectContext
                 ? ProjectInspector.BuildContextText()
                 : "(已关闭自动注入工程上下文，可调用 get_project_info 获取)";
+
+            // Official Unity skills are a read-only reference layer. They never
+            // add tools to the whitelist; only the cards above do that.
+            var officialHits = OfficialSkillLibrary.Pick(userText,
+                settings.enableOfficialSkills, settings.officialSkillsIncludeAllTiers,
+                settings.officialSkillsMaxCount, settings.officialSkillsMaxChars);
+            var officialNames = new List<string>();
+            foreach (var hit in officialHits)
+                officialNames.Add(hit.Skill.Name);
+            result.OfficialSkillIds = string.Join(", ", officialNames.ToArray());
+            result.OfficialSkillCount = officialHits.Count;
+            result.OfficialPrompt = OfficialSkillLibrary.RenderForPrompt(officialHits);
+
             result.SystemPrompt = BuildSystemPrompt(result);
             result.EstimatedChars = result.SystemPrompt.Length;
             return result;
@@ -192,6 +209,8 @@ namespace Unity6SkillAI.Editor
             sb.AppendLine("=== 本次可用工具 ===");
             sb.AppendLine(string.Join(", ", route.AllowedTools.ToArray()));
             sb.AppendLine();
+            if (!string.IsNullOrEmpty(route.OfficialPrompt))
+                sb.AppendLine(route.OfficialPrompt);
             string extra = AgentSettings.Current.extraSystemPrompt;
             if (!string.IsNullOrEmpty(extra))
             {

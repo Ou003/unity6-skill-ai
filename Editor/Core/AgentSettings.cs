@@ -58,6 +58,10 @@ namespace Unity6SkillAI.Editor
         public bool showRawToolResults = false;
         public string extraSystemPrompt = "";
         public int presetIndex = 0;
+        public bool enableOfficialSkills = true;
+        public bool officialSkillsIncludeAllTiers = false;
+        public int officialSkillsMaxCount = 1;
+        public int officialSkillsMaxChars = 3000;
     }
 
     [Serializable]

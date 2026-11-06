@@ -93,6 +93,7 @@ namespace Unity6SkillAI.Editor
             TrimMessages();
             LastRoute = SkillRouter.Route(userText);
             Add(EntryKind.Info, "路由", "命中知识卡: " + LastRoute.CardIds +
+                "\n命中官方技能: " + (LastRoute.OfficialSkillCount > 0 ? LastRoute.OfficialSkillIds : "(无)") +
                 "\n开放工具 " + LastRoute.AllowedTools.Count + " 个: " + string.Join(", ", LastRoute.AllowedTools.ToArray()) +
                 "\nSystem Prompt 约 " + LastRoute.EstimatedChars + " 字符");
             WaitingForCompileCheck = false;

@@ -1,5 +1,32 @@
 # 更新日志
 
+## 0.2.0 (2026-11-06)
+
+新增「Unity 官方 Skills 参考层」，把官方权威知识接进窗口，同时不破坏原有工具授权逻辑。
+
+新增：
+
+- `Official/` 随包附带 Unity-Technologies/skills 固定提交 `ba28c24` 的 35 个 `SKILL.md` 原文（54 万字符），逐字节复制、未改写；只复制主文件，不打包 `references/` `resources/` `scripts/` 下的示例代码 `.cs`，避免被 Unity 当脚本编译。
+- 附 UCL v1.4 全文、`UPSTREAM-LICENSE.md`、`NOTICE.md`、`SOURCE.md`，来源与许可边界可追溯。
+- `official_index.json`：为 35 个技能自撰中文 + 英文关键词、主题、能力分级（core 26 / cli 4 / service 5）、真实上游 URL、字符数与 SHA-256。官方 `description` 全为英文，不补中文关键词中文提问几乎无法命中。
+- `OfficialSkillLibrary.cs`：独立参考层，按关键词评分选 top N、按需读正文、按字符预算截断；注入前置 5 条适配声明，明确忽略 Unity CLI / script eval / 外部工具与官方原文的强制流程指令。
+- `tools/build_official_skills.py` + `tools/UCL-v1.4.txt`：可从上游仓库重建快照并重算校验和。
+- `tools/verify_official_router.py`：离线复刻 C# 评分，10 条中英文用例。
+- 设置页新增 4 个开关（启用 / 包含 CLI 与服务类 / 最多注入数 / 单技能字符上限），状态栏、路由日志、注入预览均显示命中的官方技能。
+- `BatchSelfTest` 增加 8 条中文官方技能用例、许可证文件存在性、适配声明与「开启官方层不改变工具白名单」检查。
+- 新增 `docs/OFFICIAL-SKILLS.md`；修正 README 与知识卡规范里关于 `source` 字段的错误口径（此前写「只引用官方文档链接」，实际 24 张卡均为自撰声明、无真实 URL）。
+
+设计约束：官方层是只读知识，**不参与工具白名单**。工具授权仍完全由 24 张自研知识卡决定，原有 30/30 评测不退化。
+
+合规：官方原文按 Unity Companion License v1.4 在 Unity-dependent project 范围内使用与分发；该许可禁止用于竞争分析或开发竞争性产品/服务。自用与内部使用按此方式，商业化分发前需做法务复核。MIT 不覆盖 `Official/`。
+
+验证：
+
+- 离线：`python tools/verify_official_router.py` 10/10；35 个原文 SHA-256 全部与索引一致，与上游逐字节一致。
+- Unity 6000.3.26f1 批处理：编译零错误、零 `.meta` 警告；无头自测 PASS（24 张卡、35 个官方技能、17 个工具、原评测 30/30、官方技能 8/8、许可证与适配声明齐全、开启官方层后工具白名单保持 12 -> 12 不变）。
+- 实机已确认 Assets 拖入方式可用（用户 Unity 6 工程截图：窗口浮动、知识卡 24 张、工具 17 个）。
+- 仓库仍为纯本地 Git，无 remote、无 push。
+
 ## 0.1.1 (2026-11-06)
 
 本轮只做仓库收敛与安装体验，不改功能代码。

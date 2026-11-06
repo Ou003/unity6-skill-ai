@@ -126,6 +126,7 @@ namespace Unity6SkillAI.Editor
             if (GUILayout.Button("重载知识卡", EditorStyles.toolbarButton, GUILayout.Width(90)))
             {
                 SkillLibrary.Reload();
+                OfficialSkillLibrary.Reload();
                 _showPreview = false;
                 _previewRoute = null;
                 Repaint();
@@ -190,6 +191,13 @@ namespace Unity6SkillAI.Editor
             settings.requireApprovalForWrite = EditorGUILayout.Toggle("写操作需人工审批", settings.requireApprovalForWrite);
             settings.autoInjectProjectContext = EditorGUILayout.Toggle("自动注入工程实测信息", settings.autoInjectProjectContext);
             settings.showRawToolResults = EditorGUILayout.Toggle("工具结果默认展开", settings.showRawToolResults);
+            EditorGUILayout.Space(4);
+            EditorGUILayout.LabelField("Unity 官方 Skills 参考层（Unity-Technologies/skills）", EditorStyles.boldLabel);
+            settings.enableOfficialSkills = EditorGUILayout.Toggle("注入官方技能知识", settings.enableOfficialSkills);
+            settings.officialSkillsIncludeAllTiers = EditorGUILayout.Toggle("包含 CLI / 服务类技能", settings.officialSkillsIncludeAllTiers);
+            settings.officialSkillsMaxCount = EditorGUILayout.IntSlider("最多注入技能数", settings.officialSkillsMaxCount, 1, 3);
+            settings.officialSkillsMaxChars = EditorGUILayout.IntSlider("单技能最大字符", settings.officialSkillsMaxChars, 1000, 8000);
+            EditorGUILayout.LabelField("官方技能按 Unity Companion License v1.4 随包附带，仅作知识参考，不改变工具白名单。", EditorStyles.miniLabel);
             EditorGUILayout.LabelField("补充 System Prompt（可选）");
             settings.extraSystemPrompt = EditorGUILayout.TextArea(settings.extraSystemPrompt, GUILayout.Height(48));
             if (EditorGUI.EndChangeCheck())
@@ -212,6 +220,8 @@ namespace Unity6SkillAI.Editor
             if (_previewRoute == null)
                 _previewRoute = _agent.Preview(_input);
             EditorGUILayout.LabelField("命中知识卡: " + _previewRoute.CardIds, EditorStyles.miniLabel);
+            EditorGUILayout.LabelField("命中官方技能: " +
+                (_previewRoute.OfficialSkillCount > 0 ? _previewRoute.OfficialSkillIds : "(无)"), EditorStyles.miniLabel);
             EditorGUILayout.LabelField("开放工具 (" + _previewRoute.AllowedTools.Count + "): " +
                 string.Join(", ", _previewRoute.AllowedTools.ToArray()), EditorStyles.miniLabel);
             EditorGUILayout.LabelField("评分明细: " + string.Join(" | ", _previewRoute.ScoreDetails.ToArray()), EditorStyles.miniLabel);
@@ -242,7 +252,8 @@ namespace Unity6SkillAI.Editor
                     "1. 点顶部「设置」填入自备的大模型 API Key；\n" +
                     "2. 点「注入预览」可离线查看本次会加载哪些 Unity 6 知识卡与工具；\n" +
                     "3. 输入自然语言，例如「用新输入系统做一个 WASD 移动并挂到 Player 上」。\n" +
-                    "知识卡位于 Editor/Skills/Cards/，可直接增删；菜单 Tools > Unity6 Skill AI > Run Routing Eval 可离线评测命中率。",
+                    "知识卡位于 Editor/Skills/Cards/，可直接增删；Official/ 附带 Unity 官方 Skills 原文作参考层。\n" +
+                    "菜单 Tools > Unity6 Skill AI > Run Routing Eval 可离线评测命中率。",
                     MessageType.Info);
             }
             for (int i = 0; i < _agent.Entries.Count; i++)
@@ -356,12 +367,15 @@ namespace Unity6SkillAI.Editor
             EditorGUILayout.LabelField(
                 "Unity " + UnityVersionInfo.Raw +
                 " | 知识卡 " + SkillLibrary.All.Count + " 张" +
+                " | 官方技能 " + OfficialSkillLibrary.All.Count + " 个" +
                 " | 工具 " + ToolRegistry.All.Count + " 个" +
                 " | Key: " + keyState +
                 " | " + (_agent.Busy ? "请求中" : _agent.Pending != null ? "等待审批" : "空闲"),
                 EditorStyles.miniLabel);
             if (!string.IsNullOrEmpty(SkillLibrary.Diagnostics))
                 EditorGUILayout.HelpBox(SkillLibrary.Diagnostics.Trim(), MessageType.Warning);
+            if (!string.IsNullOrEmpty(OfficialSkillLibrary.Diagnostics))
+                EditorGUILayout.HelpBox(OfficialSkillLibrary.Diagnostics.Trim(), MessageType.Warning);
         }
 
         private void Send()

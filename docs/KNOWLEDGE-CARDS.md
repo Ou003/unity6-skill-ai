@@ -31,7 +31,7 @@ Editor/Skills/Cards/u6skill_<主题>.json
 | `parameterTemplate` | string | 否 | 工具参数示例，让检索结果能直接转成 tool call |
 | `snippet` | string | 否 | 可编译的 C# 参考写法，会被截断到约 1200 字符 |
 | `examplePrompts` | string[] | 否 | 示例指令，供贡献者理解用途 |
-| `source` | string | 否 | 参考来源链接或书名，不写文档全文 |
+| `source` | string | 否 | 来源声明；当前 24 张卡均为自撰说明、尚未补真实 URL，不写文档全文 |
 | `alwaysInclude` | bool | 否 | 常驻卡（全库只应有 1 张：`u6-core`） |
 | `priority` | int | 否 | 同分排序权重，越大越靠前 |
 
@@ -67,7 +67,7 @@ Editor/Skills/Cards/u6skill_<主题>.json
 1. `snippet` 必须是能编译的 C#，字符串字面量要写引号。错误的示例片段会直接把错误写法教给模型。
 2. `deprecated` 与 `preferred` 要成对出现，明确「用 X 不用 Y」，不要只讲理论。
 3. 涉及包才有能力的 API（Addressables、Cinemachine、AI Navigation、VFX Graph、Input System），`constraints` 里必须写「先 get_packages 确认包已安装」，避免模型在没装包时生成编译不过的代码。
-4. `source` 只放链接或书名，**不要复制官方文档段落**。Unity 文档主体是 CC BY-NC-ND 4.0（署名、非商业、禁止演绎），代码片段适用 Unity Companion License；Unity 允许 AI 检索公开文档用于帮助用户学习使用 Unity 产品，但禁止用于开发与 Unity 竞争或复制的产品，且服务条款禁止爬虫批量抓取。
+4. `source` 写清来源；当前 24 张卡的 `source` 是自撰声明文字，**尚无任何真实链接**，这是已知欠账，补卡时应同时补上官方页面 URL。不要复制官方文档段落：Unity 文档主体是 CC BY-NC-ND 4.0（署名、非商业、禁止演绎），代码片段适用 Unity Companion License；Unity 允许 AI 检索公开文档用于帮助用户学习使用 Unity 产品，但禁止用于开发与 Unity 竞争或复制的产品，且服务条款禁止爬虫批量抓取。官方原文另有一套独立来源，见下节。
 5. 事实不确定时写「以 get_packages / get_project_info 实测为准」，不要编造 API。
 6. 卡里的工具名必须真实存在于 `ToolRegistry`，写错等于白名单里混入不存在的工具。
 
@@ -101,5 +101,22 @@ Unity.exe -batchmode -nographics -quit -projectPath <工程> \
 评测用例 30 条
 知识卡命中率 30/30
 工具白名单命中率 30/30
+官方 Skills 35 个（core 26 / cli 4 / service 5）
+官方技能离线用例 10/10
 验证环境 Unity 6000.3.26f1
 ```
+
+## 八、与官方 Skills 参考层的关系
+
+`Official/` 是另一套知识库，和本目录的知识卡**不是同一层**，不要把官方 SKILL.md 改写成 `u6skill_*.json` 塞进 `Cards/`：
+
+| | 自研知识卡 | 官方 Skills 参考层 |
+|---|---|---|
+| 位置 | `Editor/Skills/Cards/` | `Official/` |
+| 数量 | 24 | 35 |
+| 来源 | 本项目逐张自撰 | Unity-Technologies/skills 原文快照 |
+| 注入方式 | 1 张常驻 + 最多 3 张主题卡，结构化字段 | 默认 1 篇，正文按字符预算截断 |
+| 决定工具白名单 | 是，唯一来源 | 否，只读参考 |
+| 版本过滤 | 按 `unity` 表达式 | 不做版本过滤，官方仓库未声明最低版本 |
+
+官方技能面向能跑 Unity CLI 的编码代理，正文含命令行指令，因此注入时前置 5 条适配声明；详见 `docs/OFFICIAL-SKILLS.md`。

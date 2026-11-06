@@ -1,0 +1,958 @@
+{
+  "schemaVersion": 1,
+  "upstream": {
+    "repository": "Unity-Technologies/skills",
+    "url": "https://github.com/Unity-Technologies/skills",
+    "commit": "ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594",
+    "commitDate": "2026-11-04T14:38:05Z",
+    "license": "Unity Companion License v1.4 (Unity-dependent projects)",
+    "licenseUrl": "https://unity.com/legal/licenses/unity-companion-license",
+    "upstreamLicenseFile": "UPSTREAM-LICENSE.md",
+    "licenseFile": "LICENSE-UCL-v1.4.md",
+    "noticeFile": "NOTICE.md",
+    "fetchedAt": "2026-11-06"
+  },
+  "defaults": {
+    "enabledTiers": [
+      "core"
+    ],
+    "maxSkills": 1,
+    "maxCharsPerSkill": 3000,
+    "minScore": 3
+  },
+  "skills": [
+    {
+      "id": "official-2d-pixel-perfect",
+      "name": "2d-pixel-perfect",
+      "description": "Sets up, diagnoses, and fixes pixel perfect 2D rendering with PixelPerfectCamera in URP or Built-in. Use when a retro-style or pixel art 2D game looks blurry, jittery, or misaligned. Not for HD 2D or high-resolution art.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "2D",
+        "渲染"
+      ],
+      "keywords": [
+        "像素完美",
+        "像素风",
+        "像素画",
+        "pixel perfect",
+        "pixelperfectcamera",
+        "模糊",
+        "抖动",
+        "锯齿",
+        "2d 相机",
+        "2d相机",
+        "retro",
+        "精灵模糊"
+      ],
+      "allowedTools": [],
+      "file": "skills/2d-pixel-perfect/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/2d-pixel-perfect/SKILL.md",
+      "chars": 9874,
+      "sha256": "7bfae98a2cfa3081c91be42c69fd163f5b43bccea352fb96fb7a1eef53e11946"
+    },
+    {
+      "id": "official-asset-transformer-toolkit",
+      "name": "asset-transformer-toolkit",
+      "description": ">-",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "资源管线"
+      ],
+      "keywords": [
+        "资源转换",
+        "asset transformer",
+        "导入器",
+        "importer",
+        "lod",
+        "规则集",
+        "ruleset",
+        "模型优化",
+        "资产处理"
+      ],
+      "allowedTools": [],
+      "file": "skills/asset-transformer-toolkit/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/asset-transformer-toolkit/SKILL.md",
+      "chars": 2951,
+      "sha256": "fc6221603b705067ada593aa85f42dde37088d5a0bc89d6627c8cf3c62fa1c5b"
+    },
+    {
+      "id": "official-audio-setup-mixers",
+      "name": "audio-setup-mixers",
+      "description": "Routes Audio Sources into existing Audio Mixer Groups, classifying each source by what it plays. Use when the user asks about cleaning up mixer assignments, routing audio through a mixer, or which group a sound belongs in.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "音频"
+      ],
+      "keywords": [
+        "混音器",
+        "audiomixer",
+        "音频分组",
+        "音量控制",
+        "snapshot",
+        "母线",
+        "音效管理",
+        "音频设置",
+        "audio mixer"
+      ],
+      "allowedTools": [],
+      "file": "skills/audio-setup-mixers/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/audio-setup-mixers/SKILL.md",
+      "chars": 7478,
+      "sha256": "87c4679e9f779ab9e78dc3c6c0a57c8b698026a80a9cffe438e4055f7e24c61f"
+    },
+    {
+      "id": "official-build-gtk",
+      "name": "build-gtk",
+      "description": ">-",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "编辑器扩展"
+      ],
+      "keywords": [
+        "graph toolkit",
+        "gtk",
+        "状态机",
+        "节点图",
+        "状态图",
+        "graph api",
+        "可视化脚本",
+        "编辑器图表"
+      ],
+      "allowedTools": [],
+      "file": "skills/build-gtk/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/build-gtk/SKILL.md",
+      "chars": 18083,
+      "sha256": "264e6a3ea3c330c7398ce6b31296eb9d5eca54310a2126238378f111e0c983b7"
+    },
+    {
+      "id": "official-build-live-game",
+      "name": "build-live-game",
+      "description": "Builds and operates a live game's backend with Unity Gaming Services. Make sure to use this skill when the user wants trusted server-side game logic, player progress, remote configuration, sign-in, achievements, battle passes or leaderboards.",
+      "tier": "service",
+      "enabledByDefault": false,
+      "priority": 0,
+      "topics": [
+        "云服务"
+      ],
+      "keywords": [
+        "ugs",
+        "live game",
+        "云服务",
+        "战令",
+        "battlepass",
+        "成就",
+        "云存档",
+        "cloud save",
+        "remote config"
+      ],
+      "allowedTools": [],
+      "file": "skills/build-live-game/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/build-live-game/SKILL.md",
+      "chars": 18544,
+      "sha256": "ba20e75dd660da393719a795957c96e78f464276488c7ecf0f20cf3efee493fa"
+    },
+    {
+      "id": "official-craft-game-floors",
+      "name": "craft-game-floors",
+      "description": "\"Makes a Unity game look and feel finished: art style, lighting, juice, sound, menus, saves and look scoring. Use when building a new game's first playable version, or when a game looks like programmer art, feels flat or silent, or needs polish.\"",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "关卡",
+        "场景"
+      ],
+      "keywords": [
+        "关卡",
+        "场景搭建",
+        "地板",
+        "游戏感",
+        "game feel",
+        "美术方向",
+        "占位资源",
+        "卡通渲染",
+        "镜头",
+        "场景灯光",
+        "vfx"
+      ],
+      "allowedTools": [
+        "Bash",
+        "Read",
+        "Write",
+        "Edit"
+      ],
+      "file": "skills/craft-game-floors/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/craft-game-floors/SKILL.md",
+      "chars": 8437,
+      "sha256": "1f96f552e99e8a6e1e9b6e4139105368272fe4d3a755684974e280e3f95c34ac"
+    },
+    {
+      "id": "official-create-2d-physics",
+      "name": "create-2d-physics",
+      "description": "\"Creates and fixes Unity 2D physics in both systems, 2D Physics Core and the legacy Rigidbody 2D system. Use when the user asks about any 2D physics task, even if neither system is named. Not for 3D physics.\"",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "2D",
+        "物理"
+      ],
+      "keywords": [
+        "2d 物理",
+        "2d物理",
+        "rigidbody2d",
+        "碰撞体2d",
+        "boxcollider2d",
+        "2d 碰撞",
+        "物理2d",
+        "2d 刚体"
+      ],
+      "allowedTools": [],
+      "file": "skills/create-2d-physics/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/create-2d-physics/SKILL.md",
+      "chars": 10553,
+      "sha256": "5e7e624181022b277df5211f0f809c3be2b05ea831d39973b42a5fe94f1bd5cf"
+    },
+    {
+      "id": "official-create-tile-palette-or-rule-tiles",
+      "name": "create-tile-palette-or-rule-tiles",
+      "description": "Create a 2D tile palette from sprites or textures, or make tiles change based on their neighbours. Use for tile palettes or self-connecting tiles, even when the user doesn't name them.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "2D",
+        "Tilemap"
+      ],
+      "keywords": [
+        "tilemap",
+        "瓦片",
+        "调色板",
+        "ruletile",
+        "规则瓦片",
+        "六边形",
+        "地图编辑",
+        "tile palette"
+      ],
+      "allowedTools": [],
+      "file": "skills/create-tile-palette-or-rule-tiles/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/create-tile-palette-or-rule-tiles/SKILL.md",
+      "chars": 1195,
+      "sha256": "b3e5f3035ceb3f4633097bbbeb351694d2b6d4241c69103b70628d99a63b9214"
+    },
+    {
+      "id": "official-generate-editor-search-query",
+      "name": "generate-editor-search-query",
+      "description": "Generates Unity Search queries and opens the Search window to find assets or scene objects. Use when the user asks to find, filter, or list assets, GameObjects, components, or references in the Editor, not on disk.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "编辑器"
+      ],
+      "keywords": [
+        "编辑器搜索",
+        "search query",
+        "层级搜索",
+        "资源搜索",
+        "find assets",
+        "查询语法",
+        "搜索窗口"
+      ],
+      "allowedTools": [],
+      "file": "skills/generate-editor-search-query/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/generate-editor-search-query/SKILL.md",
+      "chars": 6977,
+      "sha256": "ab8476c69091e565693af9ebd2bae9e39c17a8b147b040410bdfbe92e17c6b23"
+    },
+    {
+      "id": "official-implement-in-app-purchases",
+      "name": "implement-in-app-purchases",
+      "description": "Implements, configures, and debugs Unity In-App Purchases, including subscriptions, receipt validation, and direct-to-customer payments via Stripe or Coda. Use when asked about real-money purchases or microtransactions, or migrating from native store billing, RevenueCat, Adapty, Essential Kit, or UniPay.",
+      "tier": "service",
+      "enabledByDefault": false,
+      "priority": 0,
+      "topics": [
+        "商业化"
+      ],
+      "keywords": [
+        "内购",
+        "iap",
+        "应用内购买",
+        "支付",
+        "商店",
+        "购买",
+        "receipt"
+      ],
+      "allowedTools": [],
+      "file": "skills/implement-in-app-purchases/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/implement-in-app-purchases/SKILL.md",
+      "chars": 10642,
+      "sha256": "301f91c6b9233c803aeaab0152b74fbfa7d2fb72fa5449df5a431fac01eefd02"
+    },
+    {
+      "id": "official-initialize-ai-navigation",
+      "name": "initialize-ai-navigation",
+      "description": "Sets up and configures Unity AI Navigation, including NavMesh surfaces, agents, obstacles, and links. Use when the user asks about navigation meshes, pathfinding, patrol routes, or obstacle avoidance.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 2,
+      "topics": [
+        "AI",
+        "导航"
+      ],
+      "keywords": [
+        "导航",
+        "寻路",
+        "navmesh",
+        "navmeshagent",
+        "navmeshsurface",
+        "navmeshobstacle",
+        "navmeshlink",
+        "巡逻",
+        "避障",
+        "pathfinding",
+        "导航网格"
+      ],
+      "allowedTools": [],
+      "file": "skills/initialize-ai-navigation/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/initialize-ai-navigation/SKILL.md",
+      "chars": 5285,
+      "sha256": "043cfbb69424c3450e347b5d6079e97c27fe465d64266fe445bcaa589d451d2b"
+    },
+    {
+      "id": "official-levelplay-unity-integration",
+      "name": "levelplay-unity-integration",
+      "description": "Integrates the LevelPlay ad mediation SDK via the Ads Mediation package. Use when the user asks about adding rewarded, interstitial, or banner ads, mediation or ad privacy setup, Android or iOS ad dependency build failures, or migrating from Unity Ads or IronSource APIs.",
+      "tier": "service",
+      "enabledByDefault": false,
+      "priority": 0,
+      "topics": [
+        "商业化"
+      ],
+      "keywords": [
+        "广告",
+        "levelplay",
+        "激励视频",
+        "插屏",
+        "banner",
+        "变现",
+        "ironsource"
+      ],
+      "allowedTools": [],
+      "file": "skills/levelplay-unity-integration/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/levelplay-unity-integration/SKILL.md",
+      "chars": 38043,
+      "sha256": "7f919588c31594ff2469e8cc21d3c7f0744b0d8ac6a3c82f8f6588dddd4e7032"
+    },
+    {
+      "id": "official-localization",
+      "name": "localization",
+      "description": "Sets up and configures Unity Localization, including locales, String and Asset Tables, and CJK fonts. Use when the user asks to add languages, translate UI text, or mentions i18n or multilingual support.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "本地化"
+      ],
+      "keywords": [
+        "本地化",
+        "多语言",
+        "localization",
+        "翻译",
+        "locale",
+        "string table",
+        "语言切换",
+        "l10n"
+      ],
+      "allowedTools": [],
+      "file": "skills/localization/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/localization/SKILL.md",
+      "chars": 26177,
+      "sha256": "ed9c68a34b58e9ea790e6c41502195f6aef1bc2cbc9fb047d5ec8e484f9c5986"
+    },
+    {
+      "id": "official-manage-sprite-atlas",
+      "name": "manage-sprite-atlas",
+      "description": "Manages SpriteAtlas assets through a prebuild pipeline, covering master and variant atlases, packing settings, and platform overrides. Use when asked to create or optimize sprite atlases.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "2D",
+        "资源"
+      ],
+      "keywords": [
+        "图集",
+        "sprite atlas",
+        "精灵图集",
+        "atlas",
+        "打包图集",
+        "packing",
+        "图集变体"
+      ],
+      "allowedTools": [],
+      "file": "skills/manage-sprite-atlas/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/manage-sprite-atlas/SKILL.md",
+      "chars": 18328,
+      "sha256": "fdd7ca9b5b7d5b5d67246219a06779d3affba7c5cb2f2855e912379802d87f66"
+    },
+    {
+      "id": "official-migrate-birp-to-urp",
+      "name": "migrate-birp-to-urp",
+      "description": "Plans, executes, and troubleshoots migration from the Built-in Render Pipeline to URP. Use when asked to convert a project, scene, material, or shader to URP, or to fix visuals broken by the change.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 1,
+      "topics": [
+        "渲染管线",
+        "URP"
+      ],
+      "keywords": [
+        "渲染管线迁移",
+        "birp",
+        "built-in",
+        "urp",
+        "升级 urp",
+        "shader 迁移",
+        "材质丢失",
+        "粉色材质",
+        "管线升级"
+      ],
+      "allowedTools": [],
+      "file": "skills/migrate-birp-to-urp/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/migrate-birp-to-urp/SKILL.md",
+      "chars": 52350,
+      "sha256": "7a4b15a57402638bcf0c9c495db2c74e31ba1777206ee4656ff225e1db94f6df"
+    },
+    {
+      "id": "official-new-unity-project",
+      "name": "new-unity-project",
+      "description": "Guides creating a new Unity project, gathering concept, platforms, and monetization before setting up the project, source control, and packages. Use when the user asks to start a new game or prototype. Runs an opinionated paved path by default; full interview on request.",
+      "tier": "cli",
+      "enabledByDefault": false,
+      "priority": 0,
+      "topics": [
+        "工程"
+      ],
+      "keywords": [
+        "新建工程",
+        "创建项目",
+        "工程模板",
+        "安装编辑器",
+        "unity hub",
+        "项目初始化"
+      ],
+      "allowedTools": [
+        "Bash",
+        "Write",
+        "Edit"
+      ],
+      "file": "skills/new-unity-project/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/new-unity-project/SKILL.md",
+      "chars": 24508,
+      "sha256": "032209f0696d80a781af0de49128d164eb6e3e7d903b74c1c957547ab25ee8eb"
+    },
+    {
+      "id": "official-optimize-audio",
+      "name": "optimize-audio",
+      "description": "Optimizes audio memory, CPU cost, and playback quality through import settings and mixer configuration. Use when asked to reduce audio memory or Audio Mixer CPU cost, change clip Load Types, sample rates or codecs, or force 3D audio to mono.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "音频",
+        "性能"
+      ],
+      "keywords": [
+        "音频优化",
+        "音频导入",
+        "压缩格式",
+        "audio clip",
+        "音频内存",
+        "加载方式",
+        "声音优化"
+      ],
+      "allowedTools": [],
+      "file": "skills/optimize-audio/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/optimize-audio/SKILL.md",
+      "chars": 14563,
+      "sha256": "f53d0b9aefea8b8e4caf8d4e68f78bce4e4bfe74bf0daccc7a17c33c51490e71"
+    },
+    {
+      "id": "official-optimize-text-mesh-pro",
+      "name": "optimize-text-mesh-pro",
+      "description": "Optimizes TextMeshPro rendering, memory, and font setup, including font asset stacks, fallback atlases, SDF quality, and worldspace text. Use when the user asks about TMP fonts, CJK or multilingual text, or text performance.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "UI",
+        "文本"
+      ],
+      "keywords": [
+        "textmeshpro",
+        "tmp",
+        "文本优化",
+        "字体图集",
+        "富文本",
+        "字体资源",
+        "文字渲染"
+      ],
+      "allowedTools": [],
+      "file": "skills/optimize-text-mesh-pro/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/optimize-text-mesh-pro/SKILL.md",
+      "chars": 9575,
+      "sha256": "6f5cf0b5b2d350c33671b995822049dd769f1fb25c7d7c7d193115510eab1792"
+    },
+    {
+      "id": "official-optimize-web",
+      "name": "optimize-web",
+      "description": "Optimizes Unity WebGL and WebGPU builds for smaller downloads, faster loading, and smoother browser performance. Use when asked to shrink a web build, speed up its load, or fix stutter, memory or battery problems in the browser.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "平台",
+        "性能"
+      ],
+      "keywords": [
+        "webgl",
+        "网页",
+        "web 优化",
+        "构建体积",
+        "toktx",
+        "浏览器",
+        "web 平台"
+      ],
+      "allowedTools": [],
+      "file": "skills/optimize-web/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/optimize-web/SKILL.md",
+      "chars": 38631,
+      "sha256": "c95bb0ab41f57305663ddf101c638fc58b31815958c7bf2cea230919d1ac85e9"
+    },
+    {
+      "id": "official-physics-3d-collision",
+      "name": "physics-3d-collision",
+      "description": "Diagnoses 3D PhysX collision and trigger problems. Use when OnCollisionEnter or OnTriggerEnter doesn't fire, objects pass through each other, raycasts miss, or a MeshCollider misbehaves. Also answers 2D and DOTS physics best-effort if no dedicated skill is available.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 2,
+      "topics": [
+        "物理",
+        "诊断"
+      ],
+      "keywords": [
+        "碰撞",
+        "trigger",
+        "ontriggerenter",
+        "oncollisionenter",
+        "射线检测",
+        "raycast",
+        "穿透",
+        "meshcollider",
+        "physx",
+        "触发器",
+        "碰撞检测"
+      ],
+      "allowedTools": [],
+      "file": "skills/physics-3d-collision/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/physics-3d-collision/SKILL.md",
+      "chars": 28004,
+      "sha256": "5025949c81c71c9259c6d96596377890e6447e028aa41cbdebb5a29b6a97631a"
+    },
+    {
+      "id": "official-project-auditor-fixes",
+      "name": "project-auditor-fixes",
+      "description": "\"Instructions for how to use Project Auditor to find and fix a list of issues.\"",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "性能",
+        "诊断"
+      ],
+      "keywords": [
+        "性能分析",
+        "project auditor",
+        "性能问题",
+        "优化建议",
+        "诊断报告",
+        "性能诊断"
+      ],
+      "allowedTools": [],
+      "file": "skills/project-auditor-fixes/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/project-auditor-fixes/SKILL.md",
+      "chars": 4546,
+      "sha256": "5ec30573f30828725c1988c017342e26b33f4e4f12b2b91a6a074702ab4ef136"
+    },
+    {
+      "id": "official-setup-multiplayer-services",
+      "name": "setup-multiplayer-services",
+      "description": "Guides real-time online multiplayer with Unity Multiplayer Services. Use when the user asks about network topology, hosting, matchmaking, or session-based play such as rooms, parties, and lobbies, not backend features.",
+      "tier": "service",
+      "enabledByDefault": false,
+      "priority": 0,
+      "topics": [
+        "网络"
+      ],
+      "keywords": [
+        "多人",
+        "联机",
+        "netcode",
+        "lobby",
+        "relay",
+        "多人服务",
+        "dedicated server"
+      ],
+      "allowedTools": [],
+      "file": "skills/setup-multiplayer-services/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/setup-multiplayer-services/SKILL.md",
+      "chars": 4604,
+      "sha256": "ed1f1f29c82e8c34a04fdbf949d4fbb0ef0ea280d1236270cd84c250fdc742aa"
+    },
+    {
+      "id": "official-setup-vivox-voice-chat",
+      "name": "setup-vivox-voice-chat",
+      "description": "Adds and configures in-game voice and text chat with Unity Vivox. Use when the user asks about voice chat, microphone permissions, mute controls, proximity voice, team and lobby channels, or direct messages.",
+      "tier": "service",
+      "enabledByDefault": false,
+      "priority": 0,
+      "topics": [
+        "网络"
+      ],
+      "keywords": [
+        "语音",
+        "vivox",
+        "语音聊天",
+        "文字聊天",
+        "voice chat",
+        "语音频道"
+      ],
+      "allowedTools": [],
+      "file": "skills/setup-vivox-voice-chat/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/setup-vivox-voice-chat/SKILL.md",
+      "chars": 8784,
+      "sha256": "8d3c38504111e5a429d58ebd7c828c5c2b7beed74be0b7a8d1b75adbb7b574f2"
+    },
+    {
+      "id": "official-shader-graph-create-custom-node",
+      "name": "shader-graph-create-custom-node",
+      "description": "Generates custom Shader Graph nodes from HLSL code. Use when the user wants a new Shader Graph node or to make existing HLSL work as a reflected function node.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "Shader",
+        "渲染"
+      ],
+      "keywords": [
+        "shader graph",
+        "自定义节点",
+        "shader",
+        "hlsl",
+        "着色器",
+        "节点",
+        "shadergraph"
+      ],
+      "allowedTools": [],
+      "file": "skills/shader-graph-create-custom-node/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/shader-graph-create-custom-node/SKILL.md",
+      "chars": 1176,
+      "sha256": "927d3d95345410d56b94fa08f9f74f42389b2d03eb80774e5f9b85b7ff01ac11"
+    },
+    {
+      "id": "official-sprite-editor",
+      "name": "sprite-editor",
+      "description": "Edits Unity sprite rectangles, borders, pivots, outlines, and slicing by generating C# scripts. Use when the user works with sprite sheets or sprite slicing.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "2D",
+        "资源"
+      ],
+      "keywords": [
+        "精灵编辑器",
+        "切图",
+        "sprite editor",
+        "切片",
+        "pivot",
+        "精灵轴心",
+        "自动切片"
+      ],
+      "allowedTools": [],
+      "file": "skills/sprite-editor/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/sprite-editor/SKILL.md",
+      "chars": 3579,
+      "sha256": "93d0878dc2ef770d968cb7b0c391e65d316eede7073698a12aafe07f3c29f741"
+    },
+    {
+      "id": "official-sprite-segment-3x3grid",
+      "name": "sprite-segment-3x3grid",
+      "description": "Segments a Sprite texture into a 3x3 grid and outputs a pattern of cells matching the center cell's color. Use when the user asks to analyze or document a sprite's structure or color distribution.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "2D",
+        "资源"
+      ],
+      "keywords": [
+        "九宫格",
+        "3x3",
+        "sprite 分割",
+        "边框拉伸",
+        "切图",
+        "九宫切图"
+      ],
+      "allowedTools": [],
+      "file": "skills/sprite-segment-3x3grid/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/sprite-segment-3x3grid/SKILL.md",
+      "chars": 4863,
+      "sha256": "a9fabd48ceea667f8dcfd19ae68d0a8713d1f94a513eb8b7804cf3f99776fa6f"
+    },
+    {
+      "id": "official-ui",
+      "name": "ui",
+      "description": "Routes Unity UI requests to the right framework skill (UI Toolkit, uGUI, or IMGUI) and answers UI comparison questions. Use for menus, HUDs, panels, or editor UI when the request doesn't name a framework. Consult before writing any UI code.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": -2,
+      "topics": [
+        "UI"
+      ],
+      "keywords": [
+        "ui",
+        "界面",
+        "hud",
+        "菜单",
+        "按钮",
+        "界面布局",
+        "用户界"
+      ],
+      "allowedTools": [],
+      "file": "skills/ui/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/ui/SKILL.md",
+      "chars": 6717,
+      "sha256": "5dbdf432ca8beebf90a9bd2ce22958aac9b2622984f52292ebcccacb383e537b"
+    },
+    {
+      "id": "official-ui-imgui",
+      "name": "ui-imgui",
+      "description": "Generates and modifies Unity IMGUI editor code such as EditorWindows, custom Inspectors, PropertyDrawers, and OnGUI scripts. Use for IMGUI or OnGUI or maintaining existing IMGUI code.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "UI",
+        "编辑器"
+      ],
+      "keywords": [
+        "imgui",
+        "ongui",
+        "编辑器窗口",
+        "自定义检视面板",
+        "inspector",
+        "编辑器 ui"
+      ],
+      "allowedTools": [],
+      "file": "skills/ui-imgui/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/ui-imgui/SKILL.md",
+      "chars": 6440,
+      "sha256": "4cef7d81598408cf53f87ba22af9a80723c017670c5e978bc30c93fdda55b18a"
+    },
+    {
+      "id": "official-ui-ugui",
+      "name": "ui-ugui",
+      "description": "Understands, edits, and generates Unity uGUI Canvas hierarchies, RectTransforms, Layout Groups, and prefab UI. Use for requests involving Canvas, uGUI, RectTransform, or prefab UI files.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 1,
+      "topics": [
+        "UI",
+        "uGUI"
+      ],
+      "keywords": [
+        "ugui",
+        "canvas",
+        "scrollview",
+        "button",
+        "画布",
+        "ui 界面",
+        "界面布局",
+        "scroll rect"
+      ],
+      "allowedTools": [],
+      "file": "skills/ui-ugui/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/ui-ugui/SKILL.md",
+      "chars": 12433,
+      "sha256": "dad98d97ecc224c65c9a38eec65e7a7be7018084a505f8d68470ff1a42ab950d"
+    },
+    {
+      "id": "official-ui-uitk",
+      "name": "ui-uitk",
+      "description": "Understands, edits, and generates Unity UI Toolkit UXML and USS with flex layouts. Use for requests involving UI Toolkit, UIElements, UIDocument, PanelSettings, custom elements, or UI runtime binding.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 1,
+      "topics": [
+        "UI",
+        "UI Toolkit"
+      ],
+      "keywords": [
+        "ui toolkit",
+        "uitk",
+        "uxml",
+        "uss",
+        "uidocument",
+        "可视化元素",
+        "运行时绑定",
+        "uielements"
+      ],
+      "allowedTools": [],
+      "file": "skills/ui-uitk/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/ui-uitk/SKILL.md",
+      "chars": 10960,
+      "sha256": "23acfcdf652e9d364dd844910d3f98458af653eb64c0a401ef6a0954645c819d"
+    },
+    {
+      "id": "official-unity-cli",
+      "name": "unity-cli",
+      "description": "Controls the Unity Editor and projects from the command line, driving a running Editor to edit scenes and assets or run C#. Use when asked to install or manage Editors, licenses, or projects, set up version control, build, test, or run any unity command.",
+      "tier": "cli",
+      "enabledByDefault": false,
+      "priority": 0,
+      "topics": [
+        "命令行"
+      ],
+      "keywords": [
+        "unity cli",
+        "命令行",
+        "批处理",
+        "构建命令",
+        "script eval",
+        "自动化测试",
+        "cli"
+      ],
+      "allowedTools": [
+        "Bash"
+      ],
+      "file": "skills/unity-cli/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/unity-cli/SKILL.md",
+      "chars": 69015,
+      "sha256": "7ac16da0d234b18d2ef9911536bd00a93883c34a54ad52970eac8b2f86fc1d24"
+    },
+    {
+      "id": "official-unity-package-management",
+      "name": "unity-package-management",
+      "description": "Adds, removes, upgrades, and discovers Unity (UPM) packages from outside the Editor, with the Pipeline package commands first and a C# script as the fallback. Use for package installs, verifying package IDs and versions, or choosing which packages a game needs.",
+      "tier": "cli",
+      "enabledByDefault": false,
+      "priority": 0,
+      "topics": [
+        "包管理"
+      ],
+      "keywords": [
+        "包管理",
+        "package manager",
+        "manifest",
+        "添加包",
+        "包版本",
+        "upm"
+      ],
+      "allowedTools": [
+        "Bash",
+        "Write",
+        "Edit"
+      ],
+      "file": "skills/unity-package-management/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/unity-package-management/SKILL.md",
+      "chars": 16368,
+      "sha256": "4c8b428463c432f9d35731a06a11c4fa0b6f37ca4d518bea0f7d4f16ebdf3958"
+    },
+    {
+      "id": "official-unity-pipeline",
+      "name": "unity-pipeline",
+      "description": "Control a Unity Editor or Player via the unity-pipeline package. Compile, run tests, eval, method-reload code, enter Play Mode, capture screenshots.",
+      "tier": "cli",
+      "enabledByDefault": false,
+      "priority": 0,
+      "topics": [
+        "CI"
+      ],
+      "keywords": [
+        "ci",
+        "流水线",
+        "构建流水线",
+        "自动化",
+        "devops",
+        "持续集成"
+      ],
+      "allowedTools": [],
+      "file": "skills/unity-pipeline/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/unity-pipeline/SKILL.md",
+      "chars": 19534,
+      "sha256": "e99986c2b3b5ccc8f4c87c0ebdc340612297504202355159f18decf1281727e8"
+    },
+    {
+      "id": "official-urp-postprocessing",
+      "name": "urp-postprocessing",
+      "description": "Sets up, configures, and debugs URP post-processing with the Volume framework. Use for bloom, tonemapping, color adjustments, depth of field, vignette, or other Volume overrides.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 1,
+      "topics": [
+        "渲染管线",
+        "URP"
+      ],
+      "keywords": [
+        "后处理",
+        "post processing",
+        "volume",
+        "bloom",
+        "色调映射",
+        "抗锯齿",
+        "urp 后处理"
+      ],
+      "allowedTools": [],
+      "file": "skills/urp-postprocessing/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/urp-postprocessing/SKILL.md",
+      "chars": 11225,
+      "sha256": "71e3f65d95dac1e619b4cda8964b8c4bd97add8a0e12dfb1da19669c074798eb"
+    },
+    {
+      "id": "official-validate-urp-render-graph-renderer-feature",
+      "name": "validate-urp-render-graph-renderer-feature",
+      "description": "Reviews a Unity 6 URP ScriptableRendererFeature that uses the Render Graph API, checking resource wiring, material binding, execution structure, and best practices. Use to validate a renderer feature.",
+      "tier": "core",
+      "enabledByDefault": true,
+      "priority": 0,
+      "topics": [
+        "渲染管线",
+        "URP"
+      ],
+      "keywords": [
+        "render graph",
+        "renderer feature",
+        "scriptable renderer",
+        "urp 扩展",
+        "渲染图",
+        "rendergraph"
+      ],
+      "allowedTools": [],
+      "file": "skills/validate-urp-render-graph-renderer-feature/SKILL.md",
+      "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/validate-urp-render-graph-renderer-feature/SKILL.md",
+      "chars": 14298,
+      "sha256": "ae28f9c3aaa52342bc2448d61dd9baf0ff81eea24c4d02d39c068e253f77f6a5"
+    }
+  ]
+}
