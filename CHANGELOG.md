@@ -1,5 +1,34 @@
 # 更新日志
 
+## 0.3.0 (2026-11-06)
+
+扩充自研知识卡，让自然语言能覆盖更多 Unity 6 创作主题，降低系统学习引擎的成本。
+
+新增 14 张知识卡（共 24 -> 38 张）：
+
+- 脚本生命周期与执行顺序（`u6-scripting-lifecycle`）：Awake/Start/Update/FixedUpdate/LateUpdate 职责分工，相机跟随应放 LateUpdate。
+- 2D 物理（`u6-2d-physics`）：Rigidbody2D、Collider2D、PhysicsMaterial2D、2D 碰撞/触发事件。
+- 2D 精灵渲染（`u6-sprite-2d`）：SpriteRenderer、Sorting Layer/Order、URP 2D 光照、像素图设置。
+- TextMeshPro 文本（`u6-tmp-text`）：TMP 文本组件、Essential Resources、中文方块解决方案、富文本。
+- URP 后处理（`u6-urp-postprocessing`）：Volume、Bloom、Vignette、Color Adjustments，Renderer 启用开关。
+- 渲染管线（`u6-render-pipeline`）：URP vs BIRP、Renderer Feature、材质变粉色排查。
+- 常见运行时报错（`u6-common-runtime-errors`）：NullReference、SerializeField 可见性、控制台排错顺序。
+- 事件系统（`u6-event-system`）：UnityEvent、Button.onClick、event/delegate、订阅清理。
+- 脚本架构模式（`u6-scripting-patterns`）：单例、状态机、事件总线、职责拆分。
+- 相机与多相机（`u6-camera-rendering`）：Culling Mask、Depth 叠加、Render Texture 小地图。
+- Timeline 过场（`u6-timeline-playable`）：PlayableDirector、TimelineAsset、运行时播放。
+- 地形系统（`u6-terrain-basics`）：Terrain、TerrainCollider、Terrain Tools 笔刷、运行时改高度。
+- 移动端触摸（`u6-mobile-touch-input`）：Input System EnhancedTouch、多点触控、Pointer 拖拽。
+- 打包发布（`u6-build-export`）：Unity 6 Build Profiles、Player Settings、自定义 BuildPipeline 编辑器脚本。
+
+其他：
+
+- 评测集由 30 条扩展到 58 条，新增卡片各配 1-2 条用例；离线路由评测 58/58（知识卡命中率与工具白名单命中率均 100%）。
+- 新增卡片均严格使用现有 17 个工具名，写入前已做 JSON 合法性、工具名白名单、字段完整性、重复 id 校验。
+- 修正一处评测期望：私有字段在 Inspector 不显示本应命中序列化卡，原期望误写为报错卡。
+
+说明：本次仍是自撰结构化卡片，未引入第三方知识；`source` 字段仍为自撰声明，暂无真实文档 URL。版本化（按 6000.0/6000.1/6000.2/6000.3 分卡组）尚未真正落地。
+
 ## 0.2.0 (2026-11-06)
 
 新增「Unity 官方 Skills 参考层」，把官方权威知识接进窗口，同时不破坏原有工具授权逻辑。
@@ -16,7 +45,7 @@
 - `BatchSelfTest` 增加 8 条中文官方技能用例、许可证文件存在性、适配声明与「开启官方层不改变工具白名单」检查。
 - 新增 `docs/OFFICIAL-SKILLS.md`；修正 README 与知识卡规范里关于 `source` 字段的错误口径（此前写「只引用官方文档链接」，实际 24 张卡均为自撰声明、无真实 URL）。
 
-设计约束：官方层是只读知识，**不参与工具白名单**。工具授权仍完全由 24 张自研知识卡决定，原有 30/30 评测不退化。
+设计约束：官方层是只读知识，**不参与工具白名单**。工具授权仍完全由 38 张自研知识卡决定，原有 58/58 评测不退化。
 
 合规：官方原文按 Unity Companion License v1.4 在 Unity-dependent project 范围内使用与分发；该许可禁止用于竞争分析或开发竞争性产品/服务。自用与内部使用按此方式，商业化分发前需做法务复核。MIT 不覆盖 `Official/`。
 

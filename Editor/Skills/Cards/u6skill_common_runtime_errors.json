@@ -1,0 +1,20 @@
+{
+  "id": "u6-common-runtime-errors",
+  "title": "常见运行时报错与排错思路（减少盲目试错）",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["调试", "报错", "排错", "排查"],
+  "keywords": ["报错", "空引用", "nullreference", "missing reference", "missing component", "调试", "为什么", "不生效", "不显示", "错误", "异常", "崩溃", "排查"],
+  "tools": ["read_script", "get_console_logs", "get_compile_errors", "get_selection"],
+  "summary": "新手最常见：NullReferenceException 多为未拖拽赋值的 public 引用或 GetComponent 失败；字段在 Inspector 不显示检查 [SerializeField] 与访问权限；Update 里做物理导致不同步。排错顺序：先用 get_console_logs 看类型/行号/堆栈，再用 read_script 定位，不要盲改。本卡专门帮用户跳过系统排查学习。",
+  "preferred": ["GetComponent", "SerializeField", "Debug.Log", "TryGetComponent", "StackTrace"],
+  "deprecated": ["用 FindObjectOfType 在 Awake 找未激活对象", "靠肉眼猜报错原因"],
+  "constraints": ["优先读 Console 报错的行号与堆栈定位，而非逐行改", "public 字段可在 Inspector 赋值，private 字段需 [SerializeField] 才可见"],
+  "pitfalls": ["预制体覆盖导致在场景里的字段改动丢失", "未保存场景/预制体改动在运行后丢失", "用 Find 在 Awake 找尚未激活的对象返回 null"],
+  "parameterTemplate": "get_console_logs -> 定位报错脚本与行号 -> read_script { path: <报错的脚本> } -> 补 null 校验或赋值后 get_compile_errors",
+  "snippet": "using UnityEngine;\n\npublic class SafeRef : MonoBehaviour\n{\n    [SerializeField] private Transform target;\n    private void Update()\n    {\n        if (target == null)\n        {\n            Debug.LogWarning(name + \": target 未赋值\", this);\n            return;\n        }\n        transform.LookAt(target);\n    }\n}",
+  "examplePrompts": ["为什么运行时报 NullReferenceException", "Inspector 里看不到脚本的私有字段怎么办", "我的脚本改了但运行没效果"],
+  "source": "本项目自撰；排错思路为通用工程经验，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 42
+}

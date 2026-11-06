@@ -1,0 +1,20 @@
+{
+  "id": "u6-event-system",
+  "title": "事件与交互：UnityEvent、按钮回调与解耦",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["事件", "UI交互", "回调", "解耦"],
+  "keywords": ["事件", "event", "delegate", "unityevent", "按钮点击", "onclick", "回调", "广播", "观察者", "交互"],
+  "tools": ["create_script", "add_component", "create_gameobject", "read_script"],
+  "summary": "UI 交互用 UnityEvent（Button.onClick.AddListener）或 C# event/delegate；解耦用 ScriptableObject 事件通道（参考脚本化对象卡）。动态绑定避免 Inspector 序列化断链。事件订阅记得在 OnDisable/OnDestroy 取消，否则泄漏。优先用类型安全的 UnityAction。",
+  "preferred": ["UnityEngine.Events.UnityEvent", "Button.onClick", "event", "System.Action", "UnityAction"],
+  "deprecated": ["用字符串名的 SendMessage 广播（性能差、难追踪）"],
+  "constraints": ["UnityEvent 可在 Inspector 可视化绑定；代码 AddListener 需目标对象存活", "事件订阅必须对应取消订阅（OnDisable）"],
+  "pitfalls": ["SendMessage 难以追踪调用链且慢", "静态事件跨场景残留导致旧对象被调用", "Lambda 捕获局部变量易成野引用"],
+  "parameterTemplate": "create_gameobject { name: UI } 或 add_component { component: Button } on an existing UI object -> create_script { path: Assets/Scripts/<Name>.cs, content: 用 onClick.AddListener 绑定 }",
+  "snippet": "using UnityEngine;\nusing UnityEngine.UI;\n\npublic class ButtonHandler : MonoBehaviour\n{\n    [SerializeField] private Button button;\n    private void OnEnable() => button.onClick.AddListener(OnClick);\n    private void OnDisable() => button.onClick.RemoveListener(OnClick);\n    private void OnClick() => Debug.Log(\"按钮被点击\");\n}",
+  "examplePrompts": ["给按钮绑定点击播放音效的事件", "用事件解耦玩家和 UI", "怎么在代码里动态绑定按钮点击"],
+  "source": "本项目自撰；UnityEvent/Button 为 Unity 通用交互机制，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 39
+}

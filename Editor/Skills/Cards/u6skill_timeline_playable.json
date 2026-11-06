@@ -1,0 +1,20 @@
+{
+  "id": "u6-timeline-playable",
+  "title": "过场与剧情：Timeline 与 Playable",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.timeline"],
+  "topics": ["过场", "动画", "时间轴", "剧情"],
+  "keywords": ["timeline", "时间轴", "playable", "过场动画", "剧情", "sequencer", "cinematic", "开场", "演出"],
+  "tools": ["create_gameobject", "add_component", "create_script"],
+  "summary": "过场/剧情用 Timeline（PlayableDirector + TimelineAsset），可编排动画、激活、音频、信号轨道。运行时用 PlayableDirector.Play() 播放。轻量自定义播放用 PlayableGraph。Timeline 需要 com.unity.timeline 包。",
+  "preferred": ["PlayableDirector", "TimelineAsset", "PlayableGraph", "SignalEmitter", "PlayableDirector.Play"],
+  "deprecated": ["用多个 Animation 组件手动拼接过场"],
+  "constraints": ["Timeline 需安装 com.unity.timeline 包", "PlayableDirector 的轨道需绑定到目标对象才生效"],
+  "pitfalls": ["未绑定轨道对象导致播放无效果", "Timeline 与 Animator 控制器状态可能冲突", "运行时播放需确保 TimelineAsset 已加载（放 Resources/Addressables）"],
+  "parameterTemplate": "create_gameobject { name: Cutscene } -> add_component { component: PlayableDirector } -> create_script { path: Assets/Scripts/CutscenePlayer.cs, content: 用 director.Play() 播放 }",
+  "snippet": "using UnityEngine;\nusing UnityEngine.Playables;\n\npublic class CutscenePlayer : MonoBehaviour\n{\n    [SerializeField] private PlayableDirector director;\n    public void Play() => director.Play();\n}",
+  "examplePrompts": ["用 Timeline 做一个开场过场", "运行时播放一段 Timeline 动画", "怎么用时间轴编排多个物体的动画"],
+  "source": "本项目自撰；Timeline 为 Unity 官方过场方案，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 33
+}

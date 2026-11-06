@@ -1,0 +1,20 @@
+{
+  "id": "u6-terrain-basics",
+  "title": "地形系统：Terrain 与刷高度/贴图/植被",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.terrain-tools"],
+  "topics": ["地形", "场景", "环境", "户外"],
+  "keywords": ["terrain", "地形", "heightmap", "树木", "草地", "刷地形", "山", "环境", "户外", "植被"],
+  "tools": ["create_gameobject", "add_component"],
+  "summary": "地形用 Terrain 组件（自动附带 TerrainCollider）。刷高度/贴图/树木/草用 Terrain Tools 包的笔刷。运行时改高度用 Terrain.terrainData。大型地形注意分辨率与性能。本卡负责创建与基础配置，美术笔刷在编辑器手动操作。",
+  "preferred": ["Terrain", "TerrainData", "TerrainCollider", "TerrainTools", "TerrainLayer"],
+  "deprecated": ["用大量 Plane 拼地形"],
+  "constraints": ["Terrain Tools 需安装 com.unity.terrain-tools 才有笔刷", "地形贴图基于 Splatmap，需要 Terrain Layers"],
+  "pitfalls": ["未加 TerrainCollider 角色会穿地", "地形过大/分辨率过高导致卡顿", "树木与草依赖 Terrain Layers 与风设置"],
+  "parameterTemplate": "create_gameobject { name: Ground } -> add_component { component: Terrain }，TerrainCollider 一般随 Terrain 自动添加；如需美术笔刷，提示用户安装 com.unity.terrain-tools 并在 Terrain 窗口刷",
+  "snippet": "// 运行时修改地形高度（示意）\nusing UnityEngine;\n\npublic class TerrainRaise : MonoBehaviour\n{\n    [SerializeField] private Terrain terrain;\n    private void Start()\n    {\n        var data = terrain.terrainData;\n        float[,] heights = data.GetHeights(0, 0, 10, 10);\n        for (int y = 0; y < 10; y++) for (int x = 0; x < 10; x++) heights[y, x] = 0.1f;\n        data.SetHeights(0, 0, heights);\n    }\n}",
+  "examplePrompts": ["创建一个可行走的地形", "怎么给地形刷草和树", "运行时怎么抬高地形高度"],
+  "source": "本项目自撰；Terrain 为 Unity 通用地形系统，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 32
+}

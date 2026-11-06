@@ -1,0 +1,20 @@
+{
+  "id": "u6-camera-rendering",
+  "title": "相机与多相机叠加：Culling Mask、Render Texture",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["相机", "渲染", "画面", "小地图"],
+  "keywords": ["camera", "相机", "摄像机", "多相机", "culling mask", "渲染纹理", "render texture", "画中画", "正交", "透视", "小地图"],
+  "tools": ["create_gameobject", "add_component", "set_transform", "create_script"],
+  "summary": "Camera 组件控制渲染。Culling Mask 决定渲染哪些层；多相机用 Depth 排序叠加（如专用 UI 相机）。Render Texture 实现画中画/小地图。相机投影在 Projection 切透视/正交。注意每帧 Camera.main 有查找开销，应缓存引用。",
+  "preferred": ["Camera", "Camera.main", "CullingMask", "RenderTexture", "Camera.depth", "Camera.projectionMatrix"],
+  "deprecated": ["每帧调用 Camera.main（应缓存引用）"],
+  "constraints": ["多相机用 Depth 控制先后；Clear Flags 决定遮挡/叠加模式", "Render Texture 需创建 RT 资源并赋给 camera.targetTexture"],
+  "pitfalls": ["Camera.main 频繁调用带来开销", "Culling Mask 配错导致物体不渲染", "多相机 Depth 冲突画面闪烁"],
+  "parameterTemplate": "create_gameobject { name: MinimapCam } -> add_component { component: Camera } -> set_transform { ... } -> create_script { path: Assets/Scripts/Minimap.cs, content: 把相机画面输出到 Render Texture }",
+  "snippet": "using UnityEngine;\n\npublic class Minimap : MonoBehaviour\n{\n    [SerializeField] private RenderTexture rt;\n    private Camera _cam;\n    private void Awake()\n    {\n        _cam = GetComponent<Camera>();\n        _cam.targetTexture = rt;\n        _cam.depth = -1;\n    }\n}",
+  "examplePrompts": ["怎么做一个小地图用的第二相机", "多个相机怎么叠加显示 UI", "为什么我的物体相机里看不到"],
+  "source": "本项目自撰；Camera 为 Unity 通用组件，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 35
+}

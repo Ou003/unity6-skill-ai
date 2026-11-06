@@ -128,8 +128,10 @@ namespace Unity6SkillAI.Editor
             bool directoryOk = !string.IsNullOrEmpty(SkillLibrary.CardsDirectory);
             bool routeOk = route.CardIds.IndexOf("u6-input-system", StringComparison.Ordinal) >= 0;
             bool toolsOk = ToolRegistry.All.Count >= 15;
-            bool evalOk = report.IndexOf("知识卡命中率: 30/30", StringComparison.Ordinal) >= 0 &&
-                          report.IndexOf("工具白名单命中率: 30/30", StringComparison.Ordinal) >= 0;
+            bool evalOk = report.IndexOf("全部用例通过", StringComparison.Ordinal) >= 0 &&
+                          report.IndexOf("知识卡命中率:", StringComparison.Ordinal) >= 0 &&
+                          report.IndexOf("工具白名单命中率:", StringComparison.Ordinal) >= 0 &&
+                          report.IndexOf("未通过用例", StringComparison.Ordinal) < 0;
             bool officialOk = officialIndexOk && licenseOk && noticeOk &&
                               officialPass == OfficialCases.GetLength(0) && whitelistStable;
 

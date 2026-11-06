@@ -1,0 +1,20 @@
+{
+  "id": "u6-urp-postprocessing",
+  "title": "URP 后处理：Volume 与 Bloom 等画面效果",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.render-pipelines.universal"],
+  "topics": ["后处理", "画面", "渲染", "效果"],
+  "keywords": ["后处理", "post processing", "bloom", "泛光", "景深", "vignette", "暗角", "色调映射", "体积", "volume", "画面效果", "曝光"],
+  "tools": ["create_gameobject", "add_component", "create_script", "save_scene"],
+  "summary": "URP 后处理用 Volume（全局或叠加 Collider 的局部）。需在 UniversalRendererData 的 Renderer 上启用 Post Processing。常用效果：Bloom（泛光）、Vignette（暗角）、Color Adjustments（色调/曝光）、Depth of Field（景深）。代码里用 Volume + VolumeProfile 动态开关或调参。",
+  "preferred": ["UnityEngine.Rendering.Volume", "VolumeProfile", "UnityEngine.Rendering.Universal.Bloom", "UnityEngine.Rendering.VolumeParameter"],
+  "deprecated": ["旧 PostProcessing Stack v2（UnityEngine.Rendering.PostProcessing 命名空间）"],
+  "constraints": ["URP Renderer 必须勾选 Post Processing 才有任何效果", "Volume 局部效果需叠加 Collider 并设置 IsGlobal=false"],
+  "pitfalls": ["忘勾 Renderer 的 Post Processing 导致整条后处理失效", "Bloom 阈值过低整屏过曝", "移动端后处理较耗性能，按档位开关"],
+  "parameterTemplate": "create_gameobject { name: PostFX } -> add_component { component: Volume, isGlobal: true } -> create_script { path: Assets/Scripts/PostFxController.cs, content: 用 Volume.profile 取 Bloom 调阈值 }",
+  "snippet": "using UnityEngine;\nusing UnityEngine.Rendering;\nusing UnityEngine.Rendering.Universal;\n\npublic class PostFxController : MonoBehaviour\n{\n    [SerializeField] private Volume volume;\n    private Bloom _bloom;\n    private void Start()\n    {\n        if (volume.profile.TryGet(out _bloom))\n            _bloom.intensity.value = 0.8f;\n    }\n}",
+  "examplePrompts": ["给场景加泛光 Bloom 效果", "怎么让画面有暗角 Vignette", "用代码动态关掉后处理"],
+  "source": "本项目自撰；URP Volume 为 Unity 6 默认管线后处理方案，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 35
+}

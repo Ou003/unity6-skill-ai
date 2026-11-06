@@ -1,6 +1,6 @@
 {
   "name": "com.hongjing.unity6-skill-ai",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "displayName": "Unity6 Skill AI",
   "description": "A bring-your-own-key AI assistant window for Unity 6, driven by a built-in versioned Unity 6 skill/knowledge library plus a read-only Unity official Skills reference layer. Pure C#, no external runtime, no MCP server process.",
   "unity": "6000.0",

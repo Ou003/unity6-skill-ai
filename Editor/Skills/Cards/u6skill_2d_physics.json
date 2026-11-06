@@ -1,0 +1,20 @@
+{
+  "id": "u6-2d-physics",
+  "title": "Unity 6 2D 物理：Rigidbody2D 与碰撞检测",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.2d.physics"],
+  "topics": ["2D物理", "碰撞", "刚体", "横版"],
+  "keywords": ["2d物理", "rigidbody2d", "collider2d", "2d碰撞", "2d刚体", "物理材质2d", "重力2d", "platformer", "横版", "弹跳", "跳跃"],
+  "tools": ["create_gameobject", "add_component", "create_script", "get_compile_errors"],
+  "summary": "2D 用 Rigidbody2D + Collider2D（Box/Circle/Polygon/Capsule）。物理材质 PhysicsMaterial2D 控制摩擦与弹性；单轴重力通过 Rigidbody2D.gravityScale 调节。碰撞事件用 OnCollisionEnter2D，触发器用 OnTriggerEnter2D（需一方勾选 IsTrigger）。移动优先改 Rigidbody2D.linearVelocity 而非直接改 transform。",
+  "preferred": ["Rigidbody2D", "Collider2D", "PhysicsMaterial2D", "Rigidbody2D.linearVelocity", "OnCollisionEnter2D", "OnTriggerEnter2D"],
+  "deprecated": ["用 3D 的 Rigidbody 处理 2D 物体", "Collider 不勾 IsTrigger 却等待 OnTriggerEnter2D"],
+  "constraints": ["2D 碰撞体必须配 Collider2D，不能混用 3D Collider", "触发器需要至少一方有 Rigidbody2D 且一方勾选 IsTrigger", "物理移动放在 FixedUpdate 而非 Update"],
+  "pitfalls": ["忘记加 Collider 的刚体不会碰撞", "linearVelocity 直接赋值会覆盖物理求解，慎用", "2D 与 3D 物理系统完全独立，互不影响"],
+  "parameterTemplate": "create_gameobject { name: Player } -> add_component { component: Rigidbody2D } -> add_component { component: BoxCollider2D } -> create_script { path: Assets/Scripts/Player2D.cs, content: 用 Rigidbody2D 的控制器 }",
+  "snippet": "using UnityEngine;\n\npublic class Player2D : MonoBehaviour\n{\n    [SerializeField] private float speed = 6f;\n    [SerializeField] private float jump = 10f;\n    private Rigidbody2D _rb;\n\n    private void Awake() => _rb = GetComponent<Rigidbody2D>();\n\n    private void Update()\n    {\n        float x = Input.GetAxisRaw(\"Horizontal\");\n        _rb.linearVelocity = new Vector2(x * speed, _rb.linearVelocity.y);\n        if (Input.GetButtonDown(\"Jump\") && Mathf.Abs(_rb.linearVelocity.y) < 0.01f)\n            _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jump);\n    }\n}",
+  "examplePrompts": ["做一个 2D 横版跳跃角色", "给平台加弹性物理材质", "2D 物体之间怎么检测碰撞"],
+  "source": "本项目自撰；Rigidbody2D/Collider2D 为 Unity 2D 通用 API，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 38
+}

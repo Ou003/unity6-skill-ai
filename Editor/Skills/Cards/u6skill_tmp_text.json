@@ -1,0 +1,20 @@
+{
+  "id": "u6-tmp-text",
+  "title": "TextMeshPro 文本：UI 文字与中文支持",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.textmeshpro"],
+  "topics": ["文本", "UI", "TMP", "字体"],
+  "keywords": ["textmeshpro", "tmp", "文字", "文本", "字体", "富文本", "计分板文字", "ui文字", "中文方块"],
+  "tools": ["create_gameobject", "add_component", "create_script", "get_packages"],
+  "summary": "文本优先用 TextMeshPro（TMP_Text / TextMeshProUGUI）。首次使用需 Window > TextMeshPro > Import Essential Resources。字体 Atlas 不含的字符会显示方块——中文需导入支持中文的 TMP 字体资源或替换为系统字体。富文本用 <b><color=red> 等标签。",
+  "preferred": ["TMPro.TextMeshProUGUI", "TMPro.TMP_Text", "TextMeshProUGUI.text", "TMPro.TMP_FontAsset"],
+  "deprecated": ["用旧的 UnityEngine.UI.Text（UGUI 旧文本组件，已不推荐新项目使用）"],
+  "constraints": ["首次使用 TMP 必须导入 Essential Resources，否则预设缺失", "中文需 TMP 字体资源涵盖对应字符，否则显示方块"],
+  "pitfalls": ["未导入 TMP 资源报缺失预设/空引用", "字体 Atlas 不含中文字符显示方块", "大量 TMP 文本注意 Draw Call 与图集大小"],
+  "parameterTemplate": "create_gameobject { name: ScoreText } -> add_component { component: TextMeshProUGUI } -> create_script { path: Assets/Scripts/ScoreUI.cs, content: 用 tmp.text 更新文字 }",
+  "snippet": "using TMPro;\nusing UnityEngine;\n\npublic class ScoreUI : MonoBehaviour\n{\n    [SerializeField] private TextMeshProUGUI label;\n    private int _score;\n    public void Add(int v) => label.text = \"得分: \" + (_score += v);\n}",
+  "examplePrompts": ["给 UI 加一个显示分数的 TMP 文本", "TMP 中文显示方块怎么解决", "怎么用代码动态改 UI 文字"],
+  "source": "本项目自撰；TextMeshPro 为 Unity 官方文本方案，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 37
+}

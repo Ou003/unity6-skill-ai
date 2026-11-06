@@ -1,0 +1,20 @@
+{
+  "id": "u6-build-export",
+  "title": "打包发布与多平台（Unity 6 Build Profiles）",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["打包", "发布", "平台", "导出"],
+  "keywords": ["打包", "build", "发布", "导出", "平台", "安卓", "android", "ios", "pc", "player settings", "构建设置", "横屏", "竖屏"],
+  "tools": ["get_project_info", "read_script"],
+  "summary": "发布在 File > Build Profiles（Unity 6 新界面，取代旧 Build Settings）。Player Settings 控制图标、横竖屏、脚本定义符号。切换平台需在 Unity Hub 安装对应模块。自定义构建用 BuildPipeline（必须放 Editor 目录并用 #if UNITY_EDITOR 包裹）。本卡只做选型与说明，实际打包走编辑器菜单。",
+  "preferred": ["BuildPipeline", "BuildPlayerOptions", "PlayerSettings", "EditorUserBuildSettings", "BuildProfile"],
+  "deprecated": ["旧 Build Settings 窗口（Unity 6 改为 Build Profiles）"],
+  "constraints": ["实际打包走编辑器菜单/CI，不在运行时工具范围内", "自定义构建脚本放 Editor 文件夹并用 #if UNITY_EDITOR 包裹，避免打进运行时"],
+  "pitfalls": ["未安装目标平台模块无法切换/打包", "Player Settings 分辨率与朝向错导致显示异常", "IL2CPP 比 Mono 包体大但运行更快"],
+  "parameterTemplate": "先 get_project_info 看当前平台与目标；若需自动化，create_script { path: Assets/Editor/BuildScript.cs, content: 用 BuildPipeline.BuildPlayer 的编辑器脚本（#if UNITY_EDITOR）}",
+  "snippet": "#if UNITY_EDITOR\nusing UnityEditor;\nusing UnityEditor.Build.Profile.Components;\nusing UnityEngine;\n\npublic static class BuildScript\n{\n    public static void Build()\n    {\n        BuildPlayerOptions o = new BuildPlayerOptions();\n        o.scenes = new[] { \"Assets/Scenes/Main.unity\" };\n        o.locationPathName = \"Builds/PC/Game.exe\";\n        o.target = BuildTarget.StandaloneWindows64;\n        o.options = BuildOptions.None;\n        BuildPipeline.BuildPlayer(o);\n    }\n}\n#endif",
+  "examplePrompts": ["Unity 6 怎么打包安卓", "怎么配置横屏发布", "能不能用脚本一键打包"],
+  "source": "本项目自撰；Build Profiles 为 Unity 6 新发布界面，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 31
+}

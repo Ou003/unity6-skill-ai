@@ -1,0 +1,20 @@
+{
+  "id": "u6-sprite-2d",
+  "title": "Unity 6 2D 精灵渲染：SpriteRenderer 与层级排序",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["2D", "精灵", "渲染", "层级"],
+  "keywords": ["sprite", "精灵", "sprite renderer", "2d渲染", "排序层", "sorting layer", "2d灯光", "像素图", "图集", "前后层级"],
+  "tools": ["create_gameobject", "add_component", "create_script", "get_project_info"],
+  "summary": "2D 显示用 SpriteRenderer。前后遮挡由 Sorting Layer 与 Order in Layer 决定：同层比 Order，不同层按 Layer 顺序。URP 2D 项目用 2D Light 实现法线/阴影，需要 2D Renderer。像素美术关掉 Filter Mode 平滑、设正确的 Pixels Per Unit。",
+  "preferred": ["SpriteRenderer", "SortingLayer", "SpriteRenderer.sortingOrder", "Sprite", "SpriteRenderer.sprite"],
+  "deprecated": ["用 MeshRenderer 显示 2D 精灵贴图"],
+  "constraints": ["URP 2D 渲染需 com.unity.render-pipelines.universal 且 Renderer 设为 2D", "像素图设 Filter Mode=Point、Compression=None 避免糊化"],
+  "pitfalls": ["Sorting 顺序不对导致前后遮挡错误", "同层 Order 相同会按渲染顺序随机遮挡", "大图集 Sprite 注意 Sprite Packer 设置"],
+  "parameterTemplate": "create_gameobject { name: SpriteObj } -> add_component { component: SpriteRenderer }，随后在 Inspector 或脚本赋值 sprite 与 sortingOrder",
+  "snippet": "using UnityEngine;\n\npublic class SpriteSetter : MonoBehaviour\n{\n    [SerializeField] private Sprite icon;\n    private void Start()\n    {\n        var sr = GetComponent<SpriteRenderer>();\n        sr.sprite = icon;\n        sr.sortingOrder = 5;\n    }\n}",
+  "examplePrompts": ["创建一个显示精灵的 2D 物体", "怎么控制 2D 物体的前后层级", "URP 2D 下怎么让精灵有光照"],
+  "source": "本项目自撰；SpriteRenderer 为 Unity 2D 通用组件，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 36
+}

@@ -1,0 +1,20 @@
+{
+  "id": "u6-scripting-lifecycle",
+  "title": "MonoBehaviour 生命周期与执行顺序（新手最常踩的初始化坑）",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["生命周期", "执行顺序", "初始化", "脚本基础"],
+  "keywords": ["生命周期", "awake", "start", "update", "fixedupdate", "lateupdate", "onenable", "ondisable", "执行顺序", "初始化", "monobehaviour", "协程", "相机跟随", "跟随相机", "跟随", "哪个函数", "写在哪个函数", "函数", "写在函数"],
+  "tools": ["read_script", "create_script", "list_scripts", "get_compile_errors", "get_selection"],
+  "summary": "MonoBehaviour 事件函数执行顺序：Awake -> OnEnable -> Start -> FixedUpdate -> Update -> LateUpdate。Awake 用于初始化自身引用（此时其他脚本未必就绪），Start 用于依赖已就绪后的逻辑；物理相关移动放 FixedUpdate，相机跟随放 LateUpdate 避免抖动。用户不用系统学这些也能写对脚本，按这张卡的函数职责分工即可。",
+  "preferred": ["MonoBehaviour.Awake", "MonoBehaviour.Start", "MonoBehaviour.Update", "MonoBehaviour.FixedUpdate", "MonoBehaviour.LateUpdate", "MonoBehaviour.OnEnable", "MonoBehaviour.OnDisable"],
+  "deprecated": ["在 Awake 里访问其他未初始化脚本的字段", "把受物理控制的位移写进 Update"],
+  "constraints": ["Awake 不保证其他脚本已 Awake；跨脚本依赖用 Start 或显式脚本执行顺序", "FixedUpdate 用 Time.fixedDeltaTime，与帧率无关", "OnDisable 必须取消事件订阅/协程，否则内存泄漏"],
+  "pitfalls": ["在 Awake 中假设其他对象已就绪会空引用", "LateUpdate 才是相机/跟随的正确位置", "OnDestroy 里访问已销毁的静态引用会报错"],
+  "parameterTemplate": "create_script { path: Assets/Scripts/<Name>.cs, content: 按职责拆分 Awake/Start/Update 的 MonoBehaviour }，随后 get_compile_errors",
+  "snippet": "using UnityEngine;\n\npublic class LifecycleDemo : MonoBehaviour\n{\n    private Rigidbody2D _rb;\n\n    private void Awake()\n    {\n        _rb = GetComponent<Rigidbody2D>(); // 自身引用先取\n    }\n\n    private void Start()\n    {\n        // 依赖其他系统就绪后的逻辑\n    }\n\n    private void FixedUpdate()\n    {\n        _rb.linearVelocity = new Vector2(3f, _rb.linearVelocity.y);\n    }\n}",
+  "examplePrompts": ["Unity 6 里 Awake 和 Start 有什么区别", "相机跟随应该写在哪个函数里", "为什么我的初始化有时成功有时失败"],
+  "source": "本项目自撰；MonoBehaviour 生命周期为 Unity 通用概念，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 40
+}

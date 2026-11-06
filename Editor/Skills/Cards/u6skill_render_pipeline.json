@@ -1,0 +1,20 @@
+{
+  "id": "u6-render-pipeline",
+  "title": "渲染管线：URP 与画质/Renderer Feature",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.render-pipelines.universal"],
+  "topics": ["渲染管线", "URP", "画质", "扩展"],
+  "keywords": ["urp", "管线", "render pipeline", "画质", "quality", "渲染器特性", "renderer feature", "内置管线", "birp", "着色器不显示", "粉色", "magenta", "材质变成", "材质不显示", "着色器粉色"],
+  "tools": ["get_project_info", "read_script", "create_script"],
+  "summary": "Unity 6 新项目默认 URP。渲染管线资源在 Project Settings > Graphics；URP 用 UniversalRendererData 的 Renderer Features 扩展效果（如描边、UI 模糊）。切换 BIRP/URP 需重新导入材质，Shader 必须兼容 URP。本卡只讲概念与选型，不负责具体着色器编写。",
+  "preferred": ["UniversalRenderPipelineAsset", "ScriptableRendererFeature", "RenderPipelineAsset", "GraphicsSettings"],
+  "deprecated": ["Built-in Render Pipeline (BIRP) 已不作为新项目默认"],
+  "constraints": ["Shader 必须兼容 URP（Shader Graph 或 URP 兼容着色器），否则显示紫色", "Renderer Feature 只在 URP 生效，BIRP 不支持"],
+  "pitfalls": ["BIRP 材质在 URP 下显示粉色/紫色", "切换管线后需 Reimport All 材质", "Renderer Feature 执行顺序影响最终画面"],
+  "parameterTemplate": "先 get_project_info 看当前渲染管线；若需扩展效果，create_script { path: Assets/Editor/<Name>RendererFeature.cs, content: 继承 ScriptableRendererFeature }（此类需 #if UNITY_EDITOR 区域或放 Editor 目录）",
+  "snippet": "// 仅示意：查询当前管线\nusing UnityEngine;\nusing UnityEngine.Rendering;\n\npublic class PipelineProbe : MonoBehaviour\n{\n    private void Start()\n    {\n        Debug.Log(\"当前渲染管线: \" + (GraphicsSettings.currentRenderPipeline != null\n            ? GraphicsSettings.currentRenderPipeline.GetType().Name : \"Built-in\"));\n    }\n}",
+  "examplePrompts": ["URP 和内置管线有什么区别", "怎么给 URP 加一个自定义渲染特性", "材质变成粉色怎么办"],
+  "source": "本项目自撰；URP 为 Unity 6 默认管线，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 34
+}

@@ -1,0 +1,20 @@
+{
+  "id": "u6-scripting-patterns",
+  "title": "可落地的脚本架构模式（单例/状态机/事件总线）",
+  "unity": ["6000.0+"],
+  "packages": [],
+  "topics": ["脚本架构", "设计模式", "代码结构", "管理器"],
+  "keywords": ["单例", "singleton", "状态机", "对象池", "观察者", "事件总线", "架构", "管理器", "manager", "设计模式", "代码结构"],
+  "tools": ["create_script", "read_script", "list_scripts"],
+  "summary": "常用可落地模式：单例管理器（Don'tDestroyOnLoad 持久化跨场景）、ScriptableObject 事件通道、简单状态机（枚举+switch 或状态类）、对象池（见性能卡）。避免上帝脚本，按职责拆分 MonoBehaviour。本卡帮用户不必系统学架构也能写出可维护代码。",
+  "preferred": ["MonoBehaviour", "ScriptableObject", "static 单例", "enum 状态机", "DontDestroyOnLoad"],
+  "deprecated": ["把所有逻辑塞进一个 GameObject 的单一脚本", "用静态变量当全局状态且从不清理"],
+  "constraints": ["单例要保证唯一实例与场景切换存活，提供 Instance 属性", "状态机状态用枚举明确，避免多个 bool 互相缠绕"],
+  "pitfalls": ["多线程单例需加锁（编辑器/运行时少见但需注意）", "对象池未回收导致持续泄漏", "跨场景单例重复创建需 Instance 判空"],
+  "parameterTemplate": "create_script { path: Assets/Scripts/<ManagerName>.cs, content: 单例或状态机模板 }，随后 get_compile_errors",
+  "snippet": "using UnityEngine;\n\npublic class GameManager : MonoBehaviour\n{\n    public static GameManager Instance { get; private set; }\n    private void Awake()\n    {\n        if (Instance != null) { Destroy(gameObject); return; }\n        Instance = this;\n        DontDestroyOnLoad(gameObject);\n    }\n}",
+  "examplePrompts": ["写一个游戏管理器单例", "用状态机实现角色待机/移动/攻击", "怎么把玩家和 UI 解耦"],
+  "source": "本项目自撰；通用架构模式，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 38
+}

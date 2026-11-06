@@ -1,6 +1,6 @@
 # Unity6 Skill AI
 
-一个可以**直接装进 Unity 6 工程**的 BYOK AI 助手窗口：用户在窗口里填自己主流大模型的 API Key，项目内置 **24 张 Unity 6 版本化知识卡** 与 **35 个 Unity 官方 Skills 原文**，会按自然语言需求命中对应知识，再把「该用哪些 API、哪些工具、有哪些版本坑」注入 System Prompt，让模型真正按 Unity 6 的方式动手创作。
+一个可以**直接装进 Unity 6 工程**的 BYOK AI 助手窗口：用户在窗口里填自己主流大模型的 API Key，项目内置 **38 张 Unity 6 版本化知识卡** 与 **35 个 Unity 官方 Skills 原文**，会按自然语言需求命中对应知识，再把「该用哪些 API、哪些工具、有哪些版本坑」注入 System Prompt，让模型真正按 Unity 6 的方式动手创作。
 
 窗口可停靠，也可一键浮动成独立窗口。纯 C#、零外部进程、零第三方 DLL、不需要 Python / Node / MCP 服务。
 
@@ -13,7 +13,7 @@
 | 层 | 做法 |
 |---|---|
 | 工程实测信息 | 自动读取 Unity 版本、渲染管线、输入处理模式、已安装包、当前场景，注入 System Prompt，不靠模型猜版本 |
-| 版本化知识卡 | 24 张自撰的 Unity 6 知识卡，带适用版本范围、推荐 API、已弃用 API、约束、常见坑、参数模板、参考写法 |
+| 版本化知识卡 | 38 张自撰的 Unity 6 知识卡，带适用版本范围、推荐 API、已弃用 API、约束、常见坑、参数模板、参考写法 |
 | 官方 Skills 参考层 | 35 个 Unity 官方 SKILL.md 原文随包附带，按中文/英文关键词命中后按需注入，只作知识参考，不参与工具授权 |
 | 知识驱动的工具白名单 | 只有命中的知识卡里列出的工具才会暴露给模型。写操作默认不会凭空开放，先给知识再给权限 |
 
@@ -95,7 +95,7 @@ Unity > Window > Package Manager > + > Add package from disk
 2. 点顶部「设置」，选服务商预设，填入自备 API Key，点「测试连接」。
    - 国内中转站选「自定义 OpenAI 兼容中转」，把中转站的 base URL 填进去即可。
    - Key 存在 `<工程>/Library/Unity6SkillAI/secrets.json`，不进版本库；也可用环境变量 `UNITY6_SKILL_AI_API_KEY` 覆盖。
-3. 不想花 Token 也能先验知识库：点「预览注入」，会显示本次命中的知识卡、命中的官方技能、开放的工具和完整 System Prompt；或点「离线路由评测」跑 30 条固定用例。
+3. 不想花 Token 也能先验知识库：点「预览注入」，会显示本次命中的知识卡、命中的官方技能、开放的工具和完整 System Prompt；或点「离线路由评测」跑 58 条固定用例。
 4. 输入一句自然语言，例如：
 
 ```text
@@ -200,7 +200,7 @@ Unity 菜单：Tools > Unity6 Skill AI > Run Routing Eval (No API Key)
 窗口按钮：离线路由评测
 ```
 
-评测集在 `evals/prompts.json`，报告写到 `Library/Unity6SkillAI/eval-report.md`。当前基线：**24 张知识卡，30 条用例，知识卡命中率 100%，工具白名单命中率 100%**。
+评测集在 `evals/prompts.json`，报告写到 `Library/Unity6SkillAI/eval-report.md`。当前基线：**38 张知识卡，58 条用例，知识卡命中率 100%，工具白名单命中率 100%**。
 
 另有独立的官方 Skills 参考层，见 `docs/OFFICIAL-SKILLS.md`：
 
@@ -233,7 +233,7 @@ Editor/
     AgentController.cs           Agent 循环、审批门、会话持久化
     SkillRouterEval.cs           离线评测
   UI/SkillChatWindow.cs          可浮动聊天窗口（IMGUI）
-  Skills/Cards/                  24 张 Unity 6 知识卡
+  Skills/Cards/                  38 张 Unity 6 知识卡
 Official/                        35 个 Unity 官方 SKILL.md 原文 + 索引 + 许可证与声明
 evals/prompts.json               30 条固定评测用例
 tools/gen_meta.py                生成 .meta（Git URL 安装必需）
@@ -251,7 +251,7 @@ docs/                            架构、知识卡规范、官方技能层说�
 - API Key 只存在本机 `Library/Unity6SkillAI/secrets.json` 或环境变量，**不会写进 Assets，不会进版本库**。该文件是明文，公共机器请改用环境变量。不要用会提交 `Library/` 的配置。
 - 模型请求只发往你在窗口里填的 Base URL，本项目没有自建服务端、没有遥测、没有埋点。
 - 写操作默认需人工审批；建议先在空工程或 Git 分支上试用，别直接让 AI 改主工程。
-- 24 张知识卡由本项目逐张自撰，`source` 字段目前是来源声明文字，**没有真实 URL，也没有复制 Unity 文档全文**。Unity 文档主体是 CC BY-NC-ND 4.0，代码片段适用 Unity Companion License；贡献知识卡时请自行撰写，不要写爬虫抓取官网全文。
+- 38 张知识卡由本项目逐张自撰，`source` 字段目前是来源声明文字，**没有真实 URL，也没有复制 Unity 文档全文**。Unity 文档主体是 CC BY-NC-ND 4.0，代码片段适用 Unity Companion License；贡献知识卡时请自行撰写，不要写爬虫抓取官网全文。
 - `Official/` 另附 35 个 Unity 官方 `SKILL.md` 原文，来自 Unity-Technologies/skills，按 **Unity Companion License v1.4** 在 Unity-dependent project 范围内使用与分发，许可证全文、上游版权声明与 NOTICE 随包附带。该许可禁止将内容用于竞争分析或开发竞争性产品/服务；商业化分发或公开服务前请先做法务复核。MIT 不覆盖这部分第三方内容，详见 `docs/OFFICIAL-SKILLS.md`。
 - 本项目是社区作品，与 Unity Technologies 无隶属、无背书关系。Unity、Unity 标志及相关商标归 Unity Technologies 或其关联方所有。项目定位是帮助用户更好地使用 Unity 编辑器，不替代也不复制 Unity 官方 AI 产品。
 

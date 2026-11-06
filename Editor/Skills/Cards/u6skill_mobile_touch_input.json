@@ -1,0 +1,20 @@
+{
+  "id": "u6-mobile-touch-input",
+  "title": "移动端触摸与多点触控（基于新输入系统）",
+  "unity": ["6000.0+"],
+  "packages": ["com.unity.inputsystem"],
+  "topics": ["触摸", "移动端", "输入", "手势"],
+  "keywords": ["触摸", "touch", "多点触控", "手机", "移动端", "拖拽", "滑动", "手势", "android", "ios"],
+  "tools": ["create_script", "get_packages", "read_script"],
+  "summary": "移动端触摸用 Input System 的 Touch（EnhancedTouch.Touch）或 Pointer。多点触控遍历 Touch.activeTouches。屏幕拖拽可用 OnPointerDown/OnPointerMove（需 EventSystem + 射线）。禁止用旧 Input.touches/Input.GetMouseButton 模拟多指。",
+  "preferred": ["UnityEngine.InputSystem.EnhancedTouch.Touch", "Touchscreen", "PointerEventData", "OnPointerDown", "Touch.activeTouches"],
+  "deprecated": ["Input.touches（旧输入系统）", "Input.GetMouseButton 模拟触摸（不兼容多指）"],
+  "constraints": ["触摸需 com.unity.inputsystem 且 Active Input Handling=新输入或 Both", "UI 触摸需要 EventSystem 与 GraphicRaycaster"],
+  "pitfalls": ["旧 Input.touches 在新输入系统下为空", "多指未遍历 activeTouches 会漏点", "UI 与场景触摸同时触发需分层处理"],
+  "parameterTemplate": "确认 get_packages 含 com.unity.inputsystem -> create_script { path: Assets/Scripts/TouchRotate.cs, content: 用 EnhancedTouch 实现拖拽旋转 }",
+  "snippet": "using UnityEngine;\nusing UnityEngine.InputSystem;\nusing UnityEngine.InputSystem.EnhancedTouch;\n\npublic class TouchRotate : MonoBehaviour\n{\n    private void OnEnable() => EnhancedTouchSupport.Enable();\n    private void Update()\n    {\n        foreach (var t in Touch.activeTouches)\n        {\n            if (t.phase == TouchPhase.Moved)\n                transform.Rotate(0f, t.delta.x * 0.5f, 0f);\n        }\n    }\n}",
+  "examplePrompts": ["做一个手指拖拽旋转物体的脚本", "怎么支持手机多点触控", "Unity 6 里怎么读取触摸位置"],
+  "source": "本项目自撰；Input System 触摸为 Unity 6 推荐方案，未复制文档全文",
+  "alwaysInclude": false,
+  "priority": 36
+}
