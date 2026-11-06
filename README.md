@@ -1,12 +1,99 @@
 # Unity6 Skill AI
 
-一个可以**直接装进 Unity 6 工程**的 BYOK AI 助手窗口：用户在窗口里填自己主流大模型的 API Key，项目内置 **38 张 Unity 6 版本化知识卡**、**35 个 Unity 官方 SKILL.md** 与 **127 篇官方 references 深度文档**，会按自然语言需求命中对应知识，再把「该用哪些 API、哪些工具、有哪些版本坑」注入 System Prompt，让模型真正按 Unity 6 的方式动手创作。
+一个 UPM 包，把任意主流大模型（OpenAI / DeepSeek / Claude / Gemini / 任意 OpenAI 兼容中转）变成 Unity 6 编辑器内的 AI 助手。
+
+- 把文件夹拖进 Unity 6 工程即可，弹出一个可独立浮动的窗口。
+- 填入你自己的 API 密钥（BYOK），密钥只存在本机，不上传。
+- 内置 Unity 6 版本化技能知识库（38 张自撰知识卡 + 35 个 Unity 官方 Skills 及 127 篇参考文档），注入到系统提示词，让模型选用正确的 Unity 6 API 而不是凭记忆瞎写。
+- 提供 17 个编辑器工具，模型可读取并修改你的工程（写操作默认受知识卡约束且需手动确认）。
+- 目标：省去系统学习 Unity 6 引擎的时间，直接用自然语言开始创作。
 
 窗口可停靠，也可一键浮动成独立窗口。纯 C#、零外部进程、零第三方 DLL、不需要 Python / Node / MCP 服务。
 
 ---
 
-## 一、它解决什么问题
+## 一、部署流程（把包装进你的 Unity 6 工程）
+
+### 1. 环境要求
+- Unity **6000.0 或更高**（本仓库开发与验证环境：Unity 6000.3.26f1）。
+- 不需要额外 SDK、不需要起任何本地服务。
+
+### 2. 选择一种安装方式
+本仓库根目录本身就是一个 UPM 包（带 `package.json`），无需打包或构建。**以下三种任选其一**：
+
+**方式一：直接拖进 Assets（最快，推荐先这样测）**
+```text
+把本仓库整个文件夹拖到 <你的Unity6工程>\Assets\ 下面
+例如 <工程>\Assets\unity6-agent\
+Unity 自动导入 Editor/ 下的脚本，编译完出现菜单 Tools > Unity6 Skill AI
+```
+
+**方式二：作为 embedded package 放进 Packages（更规范）**
+```text
+把本仓库整个文件夹复制到 <工程>\Packages\unity6-agent\
+（文件夹名随意，Unity 读 package.json 后会自动注册为本地包，无需改 manifest.json）
+```
+
+**方式三：从磁盘挂载（边测边改最方便）**
+```text
+Unity > Window > Package Manager > + > Add package from disk
+选择 本仓库\package.json
+改本仓库代码会直接在你工程里生效，适合边测边改
+```
+
+### 3. 验证编译
+1. 打开工程，等 Unity 右下角编译转圈结束。
+2. 打开 **Console** 面板，确认 **0 个 error CS**（warning 可忽略）。
+3. 确认菜单出现 `Tools > Unity6 Skill AI`（下面有 `Chat (Floating)`、`Chat (Dockable)`、`Reload Knowledge Cards`、`Run Routing Eval (No API Key)`）。
+
+> 如果出现 `KeyNotFoundException: ...services-gateway...`：**不是本包问题**，是你工程里自带的官方 `com.unity.ai.assistant` 包缺少 AI 席位且国内网络受限，可忽略或移除该包。
+
+### 4. 注意事项
+- 复制时请**整个文件夹一起复制**，不要漏掉 `.meta` 文件（从 Git URL 安装的 immutable 包靠它们定位资源）。
+- 不要把另一个完整 Unity 工程（`Library/`、`ProjectSettings/`）塞进包目录内部，否则会产生程序集冲突。
+- 包目录不含任何 Unity 工程或临时产物；整包约 3 MB（含 35 个官方 SKILL.md 与 127 篇 references 深度文档）。
+
+---
+
+## 二、使用流程（从零跑通一次对话）
+
+> 前 3 步**完全不花 Token**，可在没有 API Key 的情况下先验知识库效果。
+
+### 第 1 步：打开浮动窗口
+菜单 `Tools > Unity6 Skill AI > Chat (Floating)` → 弹出一个可独立拖动的窗口（或选 `Chat (Dockable)` 停靠进编辑器）。
+
+### 第 2 步：离线验证知识库（不消耗 Token）
+- 点窗口「**离线路由评测**」，Console 会打印评测结果（基线：**58 条用例，命中率 100%**），报告写到 `Library/Unity6SkillAI/eval-report.md`。
+- 或在输入框打一句自然语言，点「**预览注入**」——会显示本次命中的知识卡、命中的官方技能、开放的工具有哪些，以及**完整 System Prompt 体量（约 X 字符 ≈ Y tokens，每轮请求都会重发）**。这一步也不调模型。
+
+### 第 3 步：配置你自己的 API Key（BYOK）
+点窗口顶部「**设置**」：
+1. 选服务商预设：OpenAI / DeepSeek / 硅基流动 / 月之暗面 / Anthropic / Gemini / 自定义 OpenAI 兼容中转。
+2. 国内中转站选「自定义 OpenAI 兼容中转」，把中转站的 Base URL 填进去即可。
+3. 填入你的 API Key，点「测试连接」确认可用。
+   - Key 明文存在 `<工程>/Library/Unity6SkillAI/secrets.json`，**不进版本库**；也可用环境变量 `UNITY6_SKILL_AI_API_KEY` 覆盖（优先于窗口里存的）。公共机器建议用环境变量。
+4. 省钱建议（设置页可调）：官方技能是最大 token 消耗项，只想验证时可在设置里**关掉「启用官方技能」**；把「最大工具轮数」从 6 降到 3；选便宜模型（DeepSeek / gpt-4o-mini）。
+
+### 第 4 步：发第一句自然语言
+在输入框输入需求，`Ctrl + Enter` 或点「发送」。推荐先试这几句（覆盖不同知识卡）：
+```text
+用新输入系统做一个 WASD 移动并挂到 Player 上
+在原点创建一个立方体并加上 Rigidbody
+两个 Trigger 不触发 OnTriggerEnter 怎么办
+TMP 文本怎么改字号和颜色
+像素风游戏画面模糊抖动
+```
+- 典型一次请求约 **7,000 token 输入**，全部拉满约 **16,000 token**；用 DeepSeek / gpt-4o-mini 跑一场 10 轮会话也就几分到一两块。
+
+### 第 5 步：处理写操作审批
+凡是创建/删除物体、加组件、写脚本等**写操作**，默认会弹审批框，可点「执行」或「跳过」。建议先在空工程或 Git 分支上试用，别直接让 AI 改主工程。所有场景写操作登记为一个 Unity Undo 分组（一次 AI 动作对应一次 `Ctrl+Z`）；脚本写入有单独「撤销脚本写入」。
+
+### 第 6 步：编译自检闭环
+脚本写入后会触发 Unity 编译与域重载。重载完成后，点「检查编译结果」把 Console 错误回灌给模型，模型会自行修正。聊天记录会自动恢复。
+
+---
+
+## 三、它解决什么问题
 
 普通的 Unity MCP 桥只提供「工具菜单」，模型靠预训练里那点 Unity 知识自己点菜，容易写出 Unity 2021 时代的 API。本项目多做了三层：
 
@@ -18,7 +105,6 @@
 | 知识驱动的工具白名单 | 只有命中的知识卡里列出的工具才会暴露给模型。写操作默认不会凭空开放，先给知识再给权限 |
 
 一次请求的完整链路：
-
 ```text
 用户自然语言
   -> SkillRouter 按关键词 + Unity 小版本打分，选 1 张常驻卡 + 最多 3 张主题卡
@@ -30,87 +116,6 @@
   -> 工具结果回灌模型，最多 N 轮
   -> 脚本写入后读 Console 编译错误并让模型自行修正
 ```
-
----
-
-## 二、安装（本地测试用）
-
-要求 Unity 6000.0 或更高（开发与验证环境：Unity 6000.3.26f1）。
-
-**这个仓库根目录本身就是 UPM 包根**（根目录带 `package.json`），所以不需要打包、不需要构建，把文件夹放进你已有的 Unity 6 工程即可。以下三种任选一种：
-
-方式一，直接拖进 Assets（最快，推荐先这样测）：
-
-```text
-把 D:\unity6-agent 整个文件夹拖到 <你的Unity6工程>\Assets\ 下面
-例如 <工程>\Assets\unity6-agent\
-Unity 自动导入 Editor/ 下的脚本，编译完出现菜单 Tools > Unity6 Skill AI
-```
-
-方式二，作为 embedded package 放进 Packages（更规范）：
-
-```text
-把 D:\unity6-agent 整个文件夹复制到 <工程>\Packages\unity6-agent\
-Unity 读取 package.json 后自动注册为本地包，无需改 manifest.json
-```
-
-方式三，从磁盘挂载（开发调试最方便，不复制文件）：
-
-```text
-Unity > Window > Package Manager > + > Add package from disk
-选择 D:\unity6-agent\package.json
-改本仓库的代码会直接在你工程里生效，适合边测边改
-```
-
-三种方式都会自动定位 `Editor/Skills/Cards/` 下的知识卡与 `Official/` 下的官方技能索引（代码里做了 UPM 包路径、AssetDatabase、磁盘扫描三重回退）。仓库已随附全部 `.meta` 文件，从 Git URL 安装的 immutable 包也不会丢资源。
-
-注意事项：
-
-- 不要保留或删除 `.meta` 文件；从本仓库复制时请整个文件夹一起复制。
-- 不要把另一个完整 Unity 工程（含 `Library/`、`ProjectSettings/`）塞进包目录内部，否则 Unity 会把它当包资源扫描并产生程序集冲突。
-- 仓库里的 `.git` 是点开头目录，Unity 会忽略，可以直接带过去。包目录里不含任何 Unity 工程、`Library/` 或临时验证产物，整个文件夹约 3 MB（含 35 个官方 SKILL.md 原文与 127 篇 references 深度文档）。
-- 放好后等 Unity 右下角编译转圈结束，再开菜单。若没出现菜单，看 Console 是否有 `error CS`。
-
----
-
-## 三、五分钟跑通
-
-### 第一轮验收顺序（前 3 步完全不花 Token）
-
-```text
-1. 打开 Unity 6 工程，等编译结束，确认菜单 Tools > Unity6 Skill AI 出现且 Console 无 error CS
-2. 点 Tools > Unity6 Skill AI > Chat (Floating)，确认窗口能独立浮动
-3. 点窗口「离线路由评测」，Console 应打印 30/30 命中；报告在 Library/Unity6SkillAI/eval-report.md
-4. 状态栏应显示「官方技能 35 个 / 参考 127 篇」；输入「两个 Trigger 不触发 OnTriggerEnter」，点「预览注入」
-   应看到命中官方技能 physics-3d-collision，System Prompt 里有官方参考层与 5 条适配声明
-5. 输入「用新输入系统做一个 WASD 移动脚本」，点「预览注入」
-   应看到命中 u6-input-system，且工具白名单只开放该卡列出的工具，不是全量 17 个
-6. 点「设置」填自备 API Key → 「测试连接」→ 正式发一句自然语言
-7. 有问题把 Console 原文或窗口内容发我，我按报错改
-```
-
-### 正常对话
-
-1. 菜单 `Tools > Unity6 Skill AI > Chat (Floating)` 打开独立浮动窗口（或 `Chat (Dockable)` 停靠）。
-2. 点顶部「设置」，选服务商预设，填入自备 API Key，点「测试连接」。
-   - 国内中转站选「自定义 OpenAI 兼容中转」，把中转站的 base URL 填进去即可。
-   - Key 存在 `<工程>/Library/Unity6SkillAI/secrets.json`，不进版本库；也可用环境变量 `UNITY6_SKILL_AI_API_KEY` 覆盖。
-3. 不想花 Token 也能先验知识库：点「预览注入」，会显示本次命中的知识卡、命中的官方技能、开放的工具和完整 System Prompt；或点「离线路由评测」跑 58 条固定用例。
-4. 输入一句自然语言，例如：
-
-```text
-用新输入系统做一个 WASD 移动并挂到 Player 上
-```
-
-```text
-在原点创建一个立方体并加上 Rigidbody
-```
-
-```text
-FindObjectOfType 在 Unity 6 报错怎么办
-```
-
-`Ctrl + Enter` 发送。写操作会弹审批，可点「执行」或「跳过」。
 
 ---
 
@@ -131,7 +136,6 @@ FindObjectOfType 在 Unity 6 报错怎么办
 ## 五、内置工具
 
 只读（默认始终开放）：
-
 ```text
 get_project_info      工程实测信息（版本/管线/输入模式/包/场景）
 get_scene_hierarchy   场景层级树与组件
@@ -145,7 +149,6 @@ get_packages          已安装 UPM 包及版本
 ```
 
 写操作（只在命中的知识卡列出时开放，且默认需审批）：
-
 ```text
 create_gameobject     创建物体/几何体/组件/坐标
 add_component         添加组件
@@ -157,11 +160,9 @@ save_scene            保存场景
 refresh_assets        刷新资源并触发编译
 ```
 
-所有场景写操作都登记为一个 Unity Undo 分组，一次 AI 动作对应一次 Ctrl+Z。脚本写入无法被 Unity Undo 覆盖，因此单独记了 `Library/Unity6SkillAI/undo.json`，窗口有「撤销脚本写入」。
-
 ---
 
-## 六、知识库
+## 六、知识库与自定义
 
 知识卡是 `Editor/Skills/Cards/u6skill_*.json`，纯数据，改完点窗口「重载知识卡」即可生效，不用改 C#。
 
@@ -193,21 +194,17 @@ refresh_assets        刷新资源并触发编译
 评分规则：keyword 命中 +3，topic +2，package +2，title 词 +1；取分数最高的 3 张主题卡，另有 1 张 `alwaysInclude` 常驻卡；一张都没命中时注入通用工作流卡兜底。
 
 离线评测（不需要 API Key、不消耗 Token）：
-
 ```text
 命令行：python tools/verify_router.py
 Unity 菜单：Tools > Unity6 Skill AI > Run Routing Eval (No API Key)
 窗口按钮：离线路由评测
 ```
+评测集在 `evals/prompts.json`，报告写到 `Library/Unity6SkillAI/eval-report.md`。当前基线：**38 张知识卡，58 条用例，命中率 100%**。
 
-评测集在 `evals/prompts.json`，报告写到 `Library/Unity6SkillAI/eval-report.md`。当前基线：**38 张知识卡，58 条用例，知识卡命中率 100%，工具白名单命中率 100%**。
-
-另有独立的官方 Skills 参考层，见 `docs/OFFICIAL-SKILLS.md`：
-
+另附官方 Skills 参考层，见 `docs/OFFICIAL-SKILLS.md`：
 ```text
 python tools/verify_official_router.py    离线复刻官方技能路由，中英文用例 + SKILL/REF 完整性 SHA 校验
 ```
-
 官方技能带自撰中文关键词、按 tier 分级、默认注入最多 2 篇（每篇截断到 3000 字符）并自动附带每篇技能最相关的 references 文档（默认每技能最多 2 篇、每篇 2000 字符），**不参与工具白名单**。
 
 新增一张卡的流程：复制一份 `u6skill_*.json` 改内容，运行 `python tools/gen_meta.py` 补 `.meta`，在 `evals/prompts.json` 加一条用例，再跑 `python tools/verify_router.py` 看命中率有没有回退。

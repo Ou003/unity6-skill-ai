@@ -228,6 +228,12 @@ namespace Unity6SkillAI.Editor
             EditorGUILayout.LabelField("开放工具 (" + _previewRoute.AllowedTools.Count + "): " +
                 string.Join(", ", _previewRoute.AllowedTools.ToArray()), EditorStyles.miniLabel);
             EditorGUILayout.LabelField("评分明细: " + string.Join(" | ", _previewRoute.ScoreDetails.ToArray()), EditorStyles.miniLabel);
+            int estChars = _previewRoute.EstimatedChars;
+            int estTokens = (int)System.Math.Ceiling(estChars / 1.8);
+            EditorGUILayout.LabelField(
+                "本次 System Prompt 体量: 约 " + estChars + " 字符 ≈ " + estTokens +
+                " tokens（输入，每轮请求都会重发；不含对话历史与工具返回）",
+                EditorStyles.boldLabel);
 
             _previewScroll = EditorGUILayout.BeginScrollView(_previewScroll, GUILayout.Height(180));
             float width = Mathf.Max(220, EditorGUIUtility.currentViewWidth - 60);
