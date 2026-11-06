@@ -31,35 +31,61 @@
 
 ---
 
-## 二、安装
+## 二、安装（本地测试用）
 
 要求 Unity 6000.0 或更高（开发与验证环境：Unity 6000.3.26f1）。
 
-方式一，Package Manager 从 Git URL 安装（推荐）：
+**这个仓库根目录本身就是 UPM 包根**（根目录带 `package.json`），所以不需要打包、不需要构建，把文件夹放进你已有的 Unity 6 工程即可。以下三种任选一种：
+
+方式一，直接拖进 Assets（最快，推荐先这样测）：
 
 ```text
-Unity > Window > Package Manager > + > Add package from git URL
-<你的仓库 Git URL>
+把 D:\unity6-agent 整个文件夹拖到 <你的Unity6工程>\Assets\ 下面
+例如 <工程>\Assets\unity6-agent\
+Unity 自动导入 Editor/ 下的脚本，编译完出现菜单 Tools > Unity6 Skill AI
 ```
 
-方式二，作为本地包放进工程：
+方式二，作为 embedded package 放进 Packages（更规范）：
 
 ```text
-把整个仓库文件夹复制到 <Unity工程>/Packages/com.hongjing.unity6-skill-ai/
-Unity 会自动识别 package.json 并编译
+把 D:\unity6-agent 整个文件夹复制到 <工程>\Packages\unity6-agent\
+Unity 读取 package.json 后自动注册为本地包，无需改 manifest.json
 ```
 
-方式三，最简单，直接拖进 Assets：
+方式三，从磁盘挂载（开发调试最方便，不复制文件）：
 
 ```text
-把整个仓库文件夹复制到 <Unity工程>/Assets/Unity6SkillAI/
+Unity > Window > Package Manager > + > Add package from disk
+选择 D:\unity6-agent\package.json
+改本仓库的代码会直接在你工程里生效，适合边测边改
 ```
 
-三种方式都会自动定位 `Editor/Skills/Cards/` 下的知识卡。仓库已随附全部 `.meta` 文件，从 Git URL 安装的 immutable 包也不会丢资源。
+三种方式都会自动定位 `Editor/Skills/Cards/` 下的知识卡（代码里做了 UPM 包路径、AssetDatabase、磁盘扫描三重回退）。仓库已随附全部 `.meta` 文件，从 Git URL 安装的 immutable 包也不会丢资源。
+
+注意事项：
+
+- 不要保留或删除 `.meta` 文件；从本仓库复制时请整个文件夹一起复制。
+- 不要把另一个完整 Unity 工程（含 `Library/`、`ProjectSettings/`）塞进包目录内部，否则 Unity 会把它当包资源扫描并产生程序集冲突。
+- 仓库里的 `.git` 是点开头目录，Unity 会忽略，可以直接带过去。包目录里不含任何 Unity 工程、`Library/` 或临时验证产物，整个文件夹约 450 KB。
+- 放好后等 Unity 右下角编译转圈结束，再开菜单。若没出现菜单，看 Console 是否有 `error CS`。
 
 ---
 
 ## 三、五分钟跑通
+
+### 第一轮验收顺序（前 3 步完全不花 Token）
+
+```text
+1. 打开 Unity 6 工程，等编译结束，确认菜单 Tools > Unity6 Skill AI 出现且 Console 无 error CS
+2. 点 Tools > Unity6 Skill AI > Chat (Floating)，确认窗口能独立浮动
+3. 点窗口「离线路由评测」，Console 应打印 30/30 命中；报告在 Library/Unity6SkillAI/eval-report.md
+4. 输入「用新输入系统做一个 WASD 移动脚本」，点「预览注入」
+   应看到命中 u6-input-system，且工具白名单只开放该卡列出的工具，不是全量 17 个
+5. 点「设置」填自备 API Key → 「测试连接」→ 正式发一句自然语言
+6. 有问题把 Console 原文或窗口内容发我，我按报错改
+```
+
+### 正常对话
 
 1. 菜单 `Tools > Unity6 Skill AI > Chat (Floating)` 打开独立浮动窗口（或 `Chat (Dockable)` 停靠）。
 2. 点顶部「设置」，选服务商预设，填入自备 API Key，点「测试连接」。

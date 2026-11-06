@@ -19,9 +19,8 @@ Builds/
 *.opendb
 *.VC.db
 
-# Local verification / ready-to-open test projects (generated locally, not shipped)
+# Maintainer-only local verification projects (never shipped)
 .verify/
-Unity6SkillAI_TestProject/
 
 # OS / editor noise
 .DS_Store
