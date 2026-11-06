@@ -70,7 +70,7 @@ namespace Unity6SkillAI.Editor
                 {
                     string prompt = OfficialCases[i, 0];
                     string expected = OfficialCases[i, 1];
-                    var hits = OfficialSkillLibrary.Pick(prompt, true, false, 1, 3000);
+                    var hits = OfficialSkillLibrary.Pick(prompt, true, false, 1, 3000, 2, 2000);
                     bool ok = hits.Count > 0 && hits[0].Skill.Name == expected &&
                               !string.IsNullOrEmpty(hits[0].Body);
                     if (ok)

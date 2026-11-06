@@ -69,16 +69,28 @@ def main():
     missing = [n for n in ("LICENSE-UCL-v1.4.md", "UPSTREAM-LICENSE.md", "NOTICE.md", "SOURCE.md")
                if not os.path.isfile(os.path.join(OFFICIAL, n))]
     bad_hash = []
+    missing_ref = []
     for s in idx["skills"]:
         p = os.path.join(OFFICIAL, s["file"].replace("/", os.sep))
         if not os.path.isfile(p):
-            bad_hash.append(s["name"] + " (缺失)")
+            bad_hash.append(s["name"] + " (SKILL 缺失)")
             continue
         raw = open(p, "rb").read()
         if hashlib.sha256(raw).hexdigest() != s["sha256"]:
-            bad_hash.append(s["name"] + " (SHA 不符)")
+            bad_hash.append(s["name"] + " (SKILL SHA 不符)")
+        for r in s.get("references", []):
+            rp = os.path.join(OFFICIAL, r["file"].replace("/", os.sep))
+            if not os.path.isfile(rp):
+                missing_ref.append(r["file"])
+                continue
+            rraw = open(rp, "rb").read()
+            if hashlib.sha256(rraw).hexdigest() != r["sha256"]:
+                bad_hash.append(r["file"] + " (REF SHA 不符)")
+    ref_total = sum(len(s.get("references", [])) for s in idx["skills"])
     print("许可证文件缺失 :", missing or "无")
-    print("原文校验失败   :", bad_hash or "无")
+    print("参考文档缺失   :", missing_ref or "无")
+    print("校验失败       :", bad_hash or "无")
+    print("参考文档总数   :", ref_total)
     print()
 
     passed = 0
@@ -92,8 +104,9 @@ def main():
               "(", top_score, ")", "" if ok else "期望 " + expected)
     print()
     print("命中率 :", str(passed) + "/" + str(len(CASES)))
-    print("结果   :", "PASS" if passed == len(CASES) and not missing and not bad_hash else "FAIL")
-    return 0 if passed == len(CASES) and not missing and not bad_hash else 1
+    ok = passed == len(CASES) and not missing and not bad_hash and not missing_ref
+    print("结果   :", "PASS" if ok else "FAIL")
+    return 0 if ok else 1
 
 
 if __name__ == "__main__":

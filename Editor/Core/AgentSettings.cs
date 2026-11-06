@@ -60,8 +60,10 @@ namespace Unity6SkillAI.Editor
         public int presetIndex = 0;
         public bool enableOfficialSkills = true;
         public bool officialSkillsIncludeAllTiers = false;
-        public int officialSkillsMaxCount = 1;
+        public int officialSkillsMaxCount = 2;
         public int officialSkillsMaxChars = 3000;
+        public int officialSkillsMaxRefsPerSkill = 2;
+        public int officialSkillsMaxRefChars = 2000;
     }
 
     [Serializable]

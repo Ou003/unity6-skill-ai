@@ -15,6 +15,7 @@ namespace Unity6SkillAI.Editor
         public string OfficialPrompt = "";
         public string OfficialSkillIds = "";
         public int OfficialSkillCount;
+        public int OfficialRefCount;
         public int EstimatedChars;
 
         public string CardIds
@@ -131,12 +132,18 @@ namespace Unity6SkillAI.Editor
             // add tools to the whitelist; only the cards above do that.
             var officialHits = OfficialSkillLibrary.Pick(userText,
                 settings.enableOfficialSkills, settings.officialSkillsIncludeAllTiers,
-                settings.officialSkillsMaxCount, settings.officialSkillsMaxChars);
+                settings.officialSkillsMaxCount, settings.officialSkillsMaxChars,
+                settings.officialSkillsMaxRefsPerSkill, settings.officialSkillsMaxRefChars);
             var officialNames = new List<string>();
+            int refCount = 0;
             foreach (var hit in officialHits)
+            {
                 officialNames.Add(hit.Skill.Name);
+                refCount += hit.References.Count;
+            }
             result.OfficialSkillIds = string.Join(", ", officialNames.ToArray());
             result.OfficialSkillCount = officialHits.Count;
+            result.OfficialRefCount = refCount;
             result.OfficialPrompt = OfficialSkillLibrary.RenderForPrompt(officialHits);
 
             result.SystemPrompt = BuildSystemPrompt(result);

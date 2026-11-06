@@ -197,7 +197,9 @@ namespace Unity6SkillAI.Editor
             settings.officialSkillsIncludeAllTiers = EditorGUILayout.Toggle("包含 CLI / 服务类技能", settings.officialSkillsIncludeAllTiers);
             settings.officialSkillsMaxCount = EditorGUILayout.IntSlider("最多注入技能数", settings.officialSkillsMaxCount, 1, 3);
             settings.officialSkillsMaxChars = EditorGUILayout.IntSlider("单技能最大字符", settings.officialSkillsMaxChars, 1000, 8000);
-            EditorGUILayout.LabelField("官方技能按 Unity Companion License v1.4 随包附带，仅作知识参考，不改变工具白名单。", EditorStyles.miniLabel);
+            settings.officialSkillsMaxRefsPerSkill = EditorGUILayout.IntSlider("单技能最多参考文档(0=关)", settings.officialSkillsMaxRefsPerSkill, 0, 4);
+            settings.officialSkillsMaxRefChars = EditorGUILayout.IntSlider("单参考文档最大字符", settings.officialSkillsMaxRefChars, 500, 5000);
+            EditorGUILayout.LabelField("官方技能按 Unity Companion License v1.4 随包附带，其 references/ 深度文档也作知识参考，均不改变工具白名单。", EditorStyles.miniLabel);
             EditorGUILayout.LabelField("补充 System Prompt（可选）");
             settings.extraSystemPrompt = EditorGUILayout.TextArea(settings.extraSystemPrompt, GUILayout.Height(48));
             if (EditorGUI.EndChangeCheck())
@@ -222,6 +224,7 @@ namespace Unity6SkillAI.Editor
             EditorGUILayout.LabelField("命中知识卡: " + _previewRoute.CardIds, EditorStyles.miniLabel);
             EditorGUILayout.LabelField("命中官方技能: " +
                 (_previewRoute.OfficialSkillCount > 0 ? _previewRoute.OfficialSkillIds : "(无)"), EditorStyles.miniLabel);
+            EditorGUILayout.LabelField("命中官方参考文档: " + _previewRoute.OfficialRefCount + " 篇", EditorStyles.miniLabel);
             EditorGUILayout.LabelField("开放工具 (" + _previewRoute.AllowedTools.Count + "): " +
                 string.Join(", ", _previewRoute.AllowedTools.ToArray()), EditorStyles.miniLabel);
             EditorGUILayout.LabelField("评分明细: " + string.Join(" | ", _previewRoute.ScoreDetails.ToArray()), EditorStyles.miniLabel);
@@ -367,7 +370,7 @@ namespace Unity6SkillAI.Editor
             EditorGUILayout.LabelField(
                 "Unity " + UnityVersionInfo.Raw +
                 " | 知识卡 " + SkillLibrary.All.Count + " 张" +
-                " | 官方技能 " + OfficialSkillLibrary.All.Count + " 个" +
+                " | 官方技能 " + OfficialSkillLibrary.All.Count + " 个 / 参考 " + OfficialSkillLibrary.TotalReferences + " 篇" +
                 " | 工具 " + ToolRegistry.All.Count + " 个" +
                 " | Key: " + keyState +
                 " | " + (_agent.Busy ? "请求中" : _agent.Pending != null ? "等待审批" : "空闲"),

@@ -1,5 +1,24 @@
 # 更新日志
 
+## 0.3.1 (2026-11-06)
+
+把官方 references 深度文档也接进窗口，让自然语言创作时无需自己翻官方文档。
+
+新增 / 变更：
+
+- `Official/` 新增 127 篇 `references/*.md` 深度文档（约 1.69 MB），逐字节复制、未改写；剔除 `.cs` 示例代码与图片（`.cs` 进 UPM 包会被 Unity 当脚本编译，相关片段已在 `.md` 内联）。
+- `OfficialSkillLibrary.cs` 增加二级检索：命中官方技能后，按文件名英文 token 评分自动拉取该技能最相关的 references 文档一并注入 System Prompt；纯中文 query 无 token 命中时回退注入该技能最大的一篇参考文档。
+- `official_index.json` 每个技能新增 `references` 字段（相对路径 / 字符数 / SHA-256），由 `tools/update_references_index.py` 生成；更新方法同步只复制 `.md`、排除 `.cs`/图片。
+- 设置页新增「单技能最多参考文档」「单参考文档最大字符」两项；「最多注入技能数」默认值 1 -> 2；状态栏与注入预览显示参考文档篇数。
+- `tools/verify_official_router.py` 增加 references 完整性 SHA 校验。
+- `docs/OFFICIAL-SKILLS.md` 新增「references 二级检索」章节，更正此前「不打包 references」的描述。
+
+验证：
+
+- 离线：`python tools/verify_official_router.py` 用例命中 + 35 个 SKILL / 127 篇 REF SHA 校验全部一致。
+- 本机 Unity 6000.3.26f1 批处理编译零错误零警告。
+- 仓库仍为纯本地 Git，无 remote、无 push。
+
 ## 0.3.0 (2026-11-06)
 
 扩充自研知识卡，让自然语言能覆盖更多 Unity 6 创作主题，降低系统学习引擎的成本。

@@ -50,7 +50,14 @@
       "file": "skills/2d-pixel-perfect/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/2d-pixel-perfect/SKILL.md",
       "chars": 9874,
-      "sha256": "7bfae98a2cfa3081c91be42c69fd163f5b43bccea352fb96fb7a1eef53e11946"
+      "sha256": "7bfae98a2cfa3081c91be42c69fd163f5b43bccea352fb96fb7a1eef53e11946",
+      "references": [
+        {
+          "file": "skills/2d-pixel-perfect/references/api-reference.md",
+          "chars": 4132,
+          "sha256": "e14bc117f648741fa308770932685beacaf177123e2be971c3b4647d106978c6"
+        }
+      ]
     },
     {
       "id": "official-asset-transformer-toolkit",
@@ -77,7 +84,39 @@
       "file": "skills/asset-transformer-toolkit/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/asset-transformer-toolkit/SKILL.md",
       "chars": 2951,
-      "sha256": "fc6221603b705067ada593aa85f42dde37088d5a0bc89d6627c8cf3c62fa1c5b"
+      "sha256": "fc6221603b705067ada593aa85f42dde37088d5a0bc89d6627c8cf3c62fa1c5b",
+      "references": [
+        {
+          "file": "skills/asset-transformer-toolkit/references/create-importer.md",
+          "chars": 6226,
+          "sha256": "2ecd7ff9cf40e27b775dbfc14c9594a72f17cc3fe40b378114a76d4d121d86ea"
+        },
+        {
+          "file": "skills/asset-transformer-toolkit/references/lods.md",
+          "chars": 3313,
+          "sha256": "cdc32a4aa61d6c5b90138a33f2b8e88fc074a9c2a20520fa50b85cac92ade5af"
+        },
+        {
+          "file": "skills/asset-transformer-toolkit/references/rule-api.md",
+          "chars": 3898,
+          "sha256": "0e474b14603a0f024b5ec02a81701659d51946d8e3fc285858ae1888ce7bf9f2"
+        },
+        {
+          "file": "skills/asset-transformer-toolkit/references/ruleblock-api.md",
+          "chars": 1012,
+          "sha256": "6717b16af647cddfbccbe5b3a114945c93a9b63a66476dc4ae561992e08dd329"
+        },
+        {
+          "file": "skills/asset-transformer-toolkit/references/ruleset-api.md",
+          "chars": 4084,
+          "sha256": "8eb13de1787d0df72fe79c251988629033c0c126eb82ea9abb2bd37256d4fcd8"
+        },
+        {
+          "file": "skills/asset-transformer-toolkit/references/rulesets-and-actions.md",
+          "chars": 10259,
+          "sha256": "9f1e9190b9981ca4a3cc4f5b43dfae8193a4a904b13f90d9223d3df2ded31c12"
+        }
+      ]
     },
     {
       "id": "official-audio-setup-mixers",
@@ -104,7 +143,14 @@
       "file": "skills/audio-setup-mixers/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/audio-setup-mixers/SKILL.md",
       "chars": 7478,
-      "sha256": "87c4679e9f779ab9e78dc3c6c0a57c8b698026a80a9cffe438e4055f7e24c61f"
+      "sha256": "87c4679e9f779ab9e78dc3c6c0a57c8b698026a80a9cffe438e4055f7e24c61f",
+      "references": [
+        {
+          "file": "skills/audio-setup-mixers/references/api.md",
+          "chars": 8203,
+          "sha256": "9b38bb94de292119d31902e92c3efee6037f3c1a3f6fb861a09c4c5d8eea5aeb"
+        }
+      ]
     },
     {
       "id": "official-build-gtk",
@@ -130,7 +176,29 @@
       "file": "skills/build-gtk/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/build-gtk/SKILL.md",
       "chars": 18083,
-      "sha256": "264e6a3ea3c330c7398ce6b31296eb9d5eca54310a2126238378f111e0c983b7"
+      "sha256": "264e6a3ea3c330c7398ce6b31296eb9d5eca54310a2126238378f111e0c983b7",
+      "references": [
+        {
+          "file": "skills/build-gtk/references/graph-api.md",
+          "chars": 15224,
+          "sha256": "844b1d5b4adc3d11c2f46f060936d2d616530f91f1f2c23644a1857356c4c27d"
+        },
+        {
+          "file": "skills/build-gtk/references/pitfalls.md",
+          "chars": 7554,
+          "sha256": "919338ef298dad341eaf930adfe948bd5c3e6e350232867f87a2ee8cf5549062"
+        },
+        {
+          "file": "skills/build-gtk/references/runtime-and-visualization.md",
+          "chars": 8152,
+          "sha256": "32e77e52ab3976b259088836b5d322d2a1fa3d3cd3d6a8282e473da961fd4db5"
+        },
+        {
+          "file": "skills/build-gtk/references/state-machine-api.md",
+          "chars": 13319,
+          "sha256": "a445c24a1858afa078c5b89f221c224389aa9bd0a8e1a83d592ff7d9f4ce719c"
+        }
+      ]
     },
     {
       "id": "official-build-live-game",
@@ -157,7 +225,79 @@
       "file": "skills/build-live-game/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/build-live-game/SKILL.md",
       "chars": 18544,
-      "sha256": "ba20e75dd660da393719a795957c96e78f464276488c7ecf0f20cf3efee493fa"
+      "sha256": "ba20e75dd660da393719a795957c96e78f464276488c7ecf0f20cf3efee493fa",
+      "references": [
+        {
+          "file": "skills/build-live-game/references/achievements.md",
+          "chars": 30636,
+          "sha256": "f443e2f0d664fb5b2ba98c92777655e7c0a03c1727d8afd53bf155be1e8b17ac"
+        },
+        {
+          "file": "skills/build-live-game/references/apis.md",
+          "chars": 10605,
+          "sha256": "f768e77d54ac3acf159f80fd4b884bc6ec48c69fb75c15bdd87c47fef9546019"
+        },
+        {
+          "file": "skills/build-live-game/references/authentication.md",
+          "chars": 18558,
+          "sha256": "73e2e87fad6d9643b0dfa0a3c526621171d2e1dd02ba4876e520191850da36b9"
+        },
+        {
+          "file": "skills/build-live-game/references/battlepass.md",
+          "chars": 39460,
+          "sha256": "d980c7d05838947c339aa7766dd339a6951077bef48538c7ac6f18a772cd1362"
+        },
+        {
+          "file": "skills/build-live-game/references/blueprints-and-samples.md",
+          "chars": 5947,
+          "sha256": "f2a34bb36aa093c613d82b80bd98fd77155d0eea9ee4c3511ed0af51bdd05a9f"
+        },
+        {
+          "file": "skills/build-live-game/references/cloud-code-cloudbehaviours.md",
+          "chars": 62339,
+          "sha256": "9e4dbf7dcbc0d5b1ddcedcf79e089ff0dbcc4ec75e0224878dec5000ee0637e5"
+        },
+        {
+          "file": "skills/build-live-game/references/cloud-code-modules.md",
+          "chars": 59667,
+          "sha256": "3891f94eba782fa1ded6c2301c1afd8b542759c49eb4172a12cab0f84028dc44"
+        },
+        {
+          "file": "skills/build-live-game/references/cloud-code.md",
+          "chars": 3804,
+          "sha256": "1f2604fff6edbd636f335f0328743dda9f70a2408bbf97ab7042e27993b8b423"
+        },
+        {
+          "file": "skills/build-live-game/references/cloud-save.md",
+          "chars": 16824,
+          "sha256": "1ae58618df46176c4e7a50ee8dee482f5d141c5d5f74e71142428d90b32d290c"
+        },
+        {
+          "file": "skills/build-live-game/references/deployment.md",
+          "chars": 9792,
+          "sha256": "62d14d8109539480b5250cea3ef7d58095ec3cab71e42582a49ae0c01888fd17"
+        },
+        {
+          "file": "skills/build-live-game/references/player-account.md",
+          "chars": 30793,
+          "sha256": "5377cb853307ffef4a2e1e768889d105f07f9ce8244fff1afc17aabd3df62707"
+        },
+        {
+          "file": "skills/build-live-game/references/remote-config.md",
+          "chars": 3384,
+          "sha256": "99d4173113f0495a9045216b38e1998cec8ccff9fbce77a54530e22fbcda2dfb"
+        },
+        {
+          "file": "skills/build-live-game/references/tooling.md",
+          "chars": 12304,
+          "sha256": "d8c631f8e0b83d4559f33b12034f481e292f5d3672317ed7baeaa934f4757dd6"
+        },
+        {
+          "file": "skills/build-live-game/references/ugs-cli.md",
+          "chars": 6616,
+          "sha256": "f8c459a80602a9cabc2988789686f3f2cd5b2ded07d21be785363b623b7973b6"
+        }
+      ]
     },
     {
       "id": "official-craft-game-floors",
@@ -192,7 +332,69 @@
       "file": "skills/craft-game-floors/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/craft-game-floors/SKILL.md",
       "chars": 8437,
-      "sha256": "1f96f552e99e8a6e1e9b6e4139105368272fe4d3a755684974e280e3f95c34ac"
+      "sha256": "1f96f552e99e8a6e1e9b6e4139105368272fe4d3a755684974e280e3f95c34ac",
+      "references": [
+        {
+          "file": "skills/craft-game-floors/references/art-direction.md",
+          "chars": 6536,
+          "sha256": "3977efbf695c2ee41a61506ad93ccece60841da89a4c4868b96b701868319e8a"
+        },
+        {
+          "file": "skills/craft-game-floors/references/camera-rigs.md",
+          "chars": 5908,
+          "sha256": "c2c3f4d58ca7cd0c1e131f0ec8fb72ff9c499b8efd9fb9e0e92d84c4377e551a"
+        },
+        {
+          "file": "skills/craft-game-floors/references/character-motion.md",
+          "chars": 4302,
+          "sha256": "04e4961c2675f18835765e5880e3e225923a8fd5d2cd774515255b62f7554f19"
+        },
+        {
+          "file": "skills/craft-game-floors/references/game-audio.md",
+          "chars": 4982,
+          "sha256": "30fd50d9d219ac2d0ad73a841e3efc85b22cd7ac5e13b86add40a19c2072d162"
+        },
+        {
+          "file": "skills/craft-game-floors/references/game-feel.md",
+          "chars": 4992,
+          "sha256": "7f5ae27f6dc1ad4bf28940fd14672ca7aa1488d00e72f872051887b973f72591"
+        },
+        {
+          "file": "skills/craft-game-floors/references/game-shell.md",
+          "chars": 5270,
+          "sha256": "1bc5f4efa60a173bf33988edd497a47916fb097f6076c6095db05b4d836679f9"
+        },
+        {
+          "file": "skills/craft-game-floors/references/live-floor.md",
+          "chars": 6668,
+          "sha256": "f9e32894c21f72318bc680d357e28743301917fdd86950ae0516cf29f314966b"
+        },
+        {
+          "file": "skills/craft-game-floors/references/placeholder-assets.md",
+          "chars": 4177,
+          "sha256": "0997f1d014b596d6d3cfd2717f7c60d6285bed782fee6b169c23c973bd65174e"
+        },
+        {
+          "file": "skills/craft-game-floors/references/scene-lighting.md",
+          "chars": 4958,
+          "sha256": "1174de2b87fba9ac076b1614282912c2ca230e84c41af79f55114088c1363d5e"
+        },
+        {
+          "file": "skills/craft-game-floors/references/toon-shading.md",
+          "chars": 3466,
+          "sha256": "aef2793c9bf82713923d4b03f317172fda1af5f4b4b5e38e531dbd133aae3383"
+        },
+        {
+          "file": "skills/craft-game-floors/references/vfx.md",
+          "chars": 4445,
+          "sha256": "4ef41f5ee54eb9aba4873e076c004f2c8f3108ecdc0e1e07dc9eb9fff5a552bb"
+        },
+        {
+          "file": "skills/craft-game-floors/references/visual-scorecard.md",
+          "chars": 6286,
+          "sha256": "fe2eaa8bd26dee81cd25897a03578e83a43533881bd16d383985c65f812dc720"
+        }
+      ]
     },
     {
       "id": "official-create-2d-physics",
@@ -219,7 +421,19 @@
       "file": "skills/create-2d-physics/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/create-2d-physics/SKILL.md",
       "chars": 10553,
-      "sha256": "5e7e624181022b277df5211f0f809c3be2b05ea831d39973b42a5fe94f1bd5cf"
+      "sha256": "5e7e624181022b277df5211f0f809c3be2b05ea831d39973b42a5fe94f1bd5cf",
+      "references": [
+        {
+          "file": "skills/create-2d-physics/references/2d-physics-core.md",
+          "chars": 13108,
+          "sha256": "d875b1cbafd1934b8bbbbecf79031c71c9f4c95fd74deeded489d81d5877946b"
+        },
+        {
+          "file": "skills/create-2d-physics/references/legacy-2d-physics.md",
+          "chars": 2634,
+          "sha256": "2ada9234b28b4d46929272afc524395bb545a4bda9b38a2c68b52cdcc206627b"
+        }
+      ]
     },
     {
       "id": "official-create-tile-palette-or-rule-tiles",
@@ -246,7 +460,34 @@
       "file": "skills/create-tile-palette-or-rule-tiles/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/create-tile-palette-or-rule-tiles/SKILL.md",
       "chars": 1195,
-      "sha256": "b3e5f3035ceb3f4633097bbbeb351694d2b6d4241c69103b70628d99a63b9214"
+      "sha256": "b3e5f3035ceb3f4633097bbbeb351694d2b6d4241c69103b70628d99a63b9214",
+      "references": [
+        {
+          "file": "skills/create-tile-palette-or-rule-tiles/references/hexagonalruletile.md",
+          "chars": 4628,
+          "sha256": "8a1c4d67bb78aeefaca25fbfeacaaf5f2c85425840c63a1e452f1d154f100ce1"
+        },
+        {
+          "file": "skills/create-tile-palette-or-rule-tiles/references/palette-create.md",
+          "chars": 1117,
+          "sha256": "f75eef6dfd3c89b7468e464fc40f3922389ac524f9f5b3d555fc111712e21f8f"
+        },
+        {
+          "file": "skills/create-tile-palette-or-rule-tiles/references/ruletile-createempty.md",
+          "chars": 1674,
+          "sha256": "8e4d4b5ebde42e24b10634b4fe4c3b174567406ec335aa6d3ce01835918f9158"
+        },
+        {
+          "file": "skills/create-tile-palette-or-rule-tiles/references/ruletile-createfromsegment.md",
+          "chars": 12649,
+          "sha256": "877693f0b244b911b4bd3232558110b7d6c79e64297f69baf099fd6ac96212a8"
+        },
+        {
+          "file": "skills/create-tile-palette-or-rule-tiles/references/ruletile.md",
+          "chars": 9547,
+          "sha256": "2c882418ee2c491aca129afd84ef52c882fb04f5a71ff145f7163d3d5e08a6c0"
+        }
+      ]
     },
     {
       "id": "official-generate-editor-search-query",
@@ -271,7 +512,19 @@
       "file": "skills/generate-editor-search-query/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/generate-editor-search-query/SKILL.md",
       "chars": 6977,
-      "sha256": "ab8476c69091e565693af9ebd2bae9e39c17a8b147b040410bdfbe92e17c6b23"
+      "sha256": "ab8476c69091e565693af9ebd2bae9e39c17a8b147b040410bdfbe92e17c6b23",
+      "references": [
+        {
+          "file": "skills/generate-editor-search-query/references/open-search-window.md",
+          "chars": 2845,
+          "sha256": "90ca6ec2c21b0ca8199d7b0cc5e535c5547d98936e3a152fd1a55c4fb313ced0"
+        },
+        {
+          "file": "skills/generate-editor-search-query/references/query-patterns.md",
+          "chars": 6270,
+          "sha256": "c3445d7c86e0d395d5e586731332e471563def20d7efcfaf7205523dd9168c2f"
+        }
+      ]
     },
     {
       "id": "official-implement-in-app-purchases",
@@ -296,7 +549,74 @@
       "file": "skills/implement-in-app-purchases/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/implement-in-app-purchases/SKILL.md",
       "chars": 10642,
-      "sha256": "301f91c6b9233c803aeaab0152b74fbfa7d2fb72fa5449df5a431fac01eefd02"
+      "sha256": "301f91c6b9233c803aeaab0152b74fbfa7d2fb72fa5449df5a431fac01eefd02",
+      "references": [
+        {
+          "file": "skills/implement-in-app-purchases/references/api-notes.md",
+          "chars": 23318,
+          "sha256": "0022fd2f6e37b8801d2a14202e3950468313e253efe2daa340d9ba67124b40fd"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/codeless-catalog.md",
+          "chars": 18095,
+          "sha256": "30c1923840613ec30be1f2c7c5680b6d3099ba8f143d10082bb421e3b23ba964"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/convert-adapty.md",
+          "chars": 14268,
+          "sha256": "1339af2d70f8eafec4493907edb0aecefcaf6d04fdf9acd0d013abcab5f8f226"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/convert-essentialkit.md",
+          "chars": 11763,
+          "sha256": "807e5ce4352f0db8a66b6922b4d0e52822bdb9a758d29d7d0fde0e4de33f2839"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/convert-revenuecat.md",
+          "chars": 14105,
+          "sha256": "d83634c9947cf868eb4c5c1598e0de09b1039bb54db663da081d75fb91582e4c"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/convert-unipay.md",
+          "chars": 6767,
+          "sha256": "860385baee4d870e7fe005100a4b615efa16357e8b2325af8d2731cc10bfe703"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/migration-v4-to-v5.md",
+          "chars": 19842,
+          "sha256": "0400fc6456a82e6ea26ed2dbed960ec254aba5bcf9e06d1db00d5a485b3079fa"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/path-add-iap-to-new-project.md",
+          "chars": 9450,
+          "sha256": "0982e3c50dda263a1edfe03ced3c0e681be44b949478c5b53ba46f211934c0ee"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/path-convert-native-google-billing.md",
+          "chars": 19053,
+          "sha256": "b55fdbe0fe2b799a20cc12810a0807d9c61bed654b637010d8f7560305c5d0d4"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/path-convert-native-storekit.md",
+          "chars": 25479,
+          "sha256": "e97488c7ab61a0fda042a31995baa7de60825b8dc2e12a8d5d8d42ef58c57d55"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/path-implement-iap-d2c.md",
+          "chars": 44519,
+          "sha256": "99dffd4d7867b7068d81497cf89160f18a89887e3b509a195895eb6707992a64"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/platform-notes.md",
+          "chars": 7363,
+          "sha256": "61b159681c78ae6717ba962e504f72a4be9748e911ddc6fb8cdcc0c22a85f3c7"
+        },
+        {
+          "file": "skills/implement-in-app-purchases/references/pre-check.md",
+          "chars": 8699,
+          "sha256": "764b0f2928a3008bda13be9dc6deb0b46c76f045d2474d853a4a7dbab4e78ac7"
+        }
+      ]
     },
     {
       "id": "official-initialize-ai-navigation",
@@ -326,7 +646,14 @@
       "file": "skills/initialize-ai-navigation/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/initialize-ai-navigation/SKILL.md",
       "chars": 5285,
-      "sha256": "043cfbb69424c3450e347b5d6079e97c27fe465d64266fe445bcaa589d451d2b"
+      "sha256": "043cfbb69424c3450e347b5d6079e97c27fe465d64266fe445bcaa589d451d2b",
+      "references": [
+        {
+          "file": "skills/initialize-ai-navigation/references/navigation-system.md",
+          "chars": 35086,
+          "sha256": "fe11b13a080f351be99051831913215fe42ae283d3c6baf167a1ce849d1b2866"
+        }
+      ]
     },
     {
       "id": "official-levelplay-unity-integration",
@@ -351,7 +678,69 @@
       "file": "skills/levelplay-unity-integration/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/levelplay-unity-integration/SKILL.md",
       "chars": 38043,
-      "sha256": "7f919588c31594ff2469e8cc21d3c7f0744b0d8ac6a3c82f8f6588dddd4e7032"
+      "sha256": "7f919588c31594ff2469e8cc21d3c7f0744b0d8ac6a3c82f8f6588dddd4e7032",
+      "references": [
+        {
+          "file": "skills/levelplay-unity-integration/references/banner-api.md",
+          "chars": 24990,
+          "sha256": "28f0d004556bc73434082223a9883ecabc34f14ebc66cb56937e8cfb531c2678"
+        },
+        {
+          "file": "skills/levelplay-unity-integration/references/best-practices.md",
+          "chars": 19366,
+          "sha256": "b7cc589e9675419639c0f77ea8d97aea4a40a1129bd42f5b8fcd5d7da856832b"
+        },
+        {
+          "file": "skills/levelplay-unity-integration/references/dependency-resolution.md",
+          "chars": 4842,
+          "sha256": "acd563b2534733a9cf25a42d05f2b546a586f3631eb77d992a86f90eef631c84"
+        },
+        {
+          "file": "skills/levelplay-unity-integration/references/ilrd-api.md",
+          "chars": 13243,
+          "sha256": "89936cedc10edbec8a7af3f4b54655ff48da435500bdc1e5f0c03a0f0377a553"
+        },
+        {
+          "file": "skills/levelplay-unity-integration/references/initialization-api.md",
+          "chars": 29777,
+          "sha256": "7593946776f75fbe0fdb08bcbd17e9cfcb4ca486be3965f38613798d35e0a387"
+        },
+        {
+          "file": "skills/levelplay-unity-integration/references/interstitial-api.md",
+          "chars": 24917,
+          "sha256": "649c0fb0f620fd6a68c8535d50aa22d2de2c0aa955854f97608e1920655e51a7"
+        },
+        {
+          "file": "skills/levelplay-unity-integration/references/ios-setup.md",
+          "chars": 16912,
+          "sha256": "9d834e0d3ef427c75be74ad8fcc1076de806d5d7d6e38522dbe3586ea455b1d7"
+        },
+        {
+          "file": "skills/levelplay-unity-integration/references/migration-sdk-9.md",
+          "chars": 30285,
+          "sha256": "d2b83d360c43459573279e458d472c76d0eff3e75ed9405d1359f3c6deec363e"
+        },
+        {
+          "file": "skills/levelplay-unity-integration/references/privacy-settings.md",
+          "chars": 18362,
+          "sha256": "3e9164c97f576419f83dbc609087569165dc458053f83eb08e1df20f2f849e5b"
+        },
+        {
+          "file": "skills/levelplay-unity-integration/references/rewarded-api.md",
+          "chars": 26501,
+          "sha256": "2701581fd12fa9cc3226eb2299c842d56dd96439af75c3661aa58ba7297298f6"
+        },
+        {
+          "file": "skills/levelplay-unity-integration/references/testing-and-validation.md",
+          "chars": 10149,
+          "sha256": "959d727597c4459c22ca49335e21a716b9b605de542f31ef721cc4d858c467f7"
+        },
+        {
+          "file": "skills/levelplay-unity-integration/references/troubleshooting.md",
+          "chars": 4895,
+          "sha256": "63dc7312e06f4abd57f436507b9a0bc8a067de380001262e8377d0a9b5bfeb89"
+        }
+      ]
     },
     {
       "id": "official-localization",
@@ -377,7 +766,14 @@
       "file": "skills/localization/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/localization/SKILL.md",
       "chars": 26177,
-      "sha256": "ed9c68a34b58e9ea790e6c41502195f6aef1bc2cbc9fb047d5ec8e484f9c5986"
+      "sha256": "ed9c68a34b58e9ea790e6c41502195f6aef1bc2cbc9fb047d5ec8e484f9c5986",
+      "references": [
+        {
+          "file": "skills/localization/references/api-notes.md",
+          "chars": 3234,
+          "sha256": "af9fdd2eaf5100bb57f747ecca961a41ea14c854e80f87f7939669dab62e1560"
+        }
+      ]
     },
     {
       "id": "official-manage-sprite-atlas",
@@ -403,7 +799,39 @@
       "file": "skills/manage-sprite-atlas/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/manage-sprite-atlas/SKILL.md",
       "chars": 18328,
-      "sha256": "fdd7ca9b5b7d5b5d67246219a06779d3affba7c5cb2f2855e912379802d87f66"
+      "sha256": "fdd7ca9b5b7d5b5d67246219a06779d3affba7c5cb2f2855e912379802d87f66",
+      "references": [
+        {
+          "file": "skills/manage-sprite-atlas/references/addressables-delivery.md",
+          "chars": 2718,
+          "sha256": "aa110e8d39676d70c654a2e942430466d7c5b045feb1f0f469eabd54e1dba4eb"
+        },
+        {
+          "file": "skills/manage-sprite-atlas/references/api.md",
+          "chars": 9832,
+          "sha256": "b06f6f5db194ddbbae00b4b1dda673ca73c7289d990176861e2901a75f6b0056"
+        },
+        {
+          "file": "skills/manage-sprite-atlas/references/best-practices.md",
+          "chars": 6366,
+          "sha256": "b8b1905e57c1e657f30781dd0aec9b6c3175c0fd3f68bd3c47d4cb4229d5a2db"
+        },
+        {
+          "file": "skills/manage-sprite-atlas/references/common-errors.md",
+          "chars": 5074,
+          "sha256": "9db4f03e8da5ccec3f04aabc427e2d6694cbded18a37fce0a3129615e0fd7ae7"
+        },
+        {
+          "file": "skills/manage-sprite-atlas/references/custom-packing.md",
+          "chars": 4942,
+          "sha256": "a1e7535eb89f1f2a693a9d59cfe94782abcdc1568fc7fee09e6a7bf8d3614b6b"
+        },
+        {
+          "file": "skills/manage-sprite-atlas/references/manual-authoring.md",
+          "chars": 1546,
+          "sha256": "cf82144b77a64ff6567d4c66f2a774f9afb3af43a623eb75f8e2c434685f772d"
+        }
+      ]
     },
     {
       "id": "official-migrate-birp-to-urp",
@@ -431,7 +859,39 @@
       "file": "skills/migrate-birp-to-urp/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/migrate-birp-to-urp/SKILL.md",
       "chars": 52350,
-      "sha256": "7a4b15a57402638bcf0c9c495db2c74e31ba1777206ee4656ff225e1db94f6df"
+      "sha256": "7a4b15a57402638bcf0c9c495db2c74e31ba1777206ee4656ff225e1db94f6df",
+      "references": [
+        {
+          "file": "skills/migrate-birp-to-urp/references/capturing-the-editor.md",
+          "chars": 3026,
+          "sha256": "5c5ad7c734ec69f09dfc12cd867cc2c6763d1931650c45cc0140e7d292823674"
+        },
+        {
+          "file": "skills/migrate-birp-to-urp/references/complex-shader-situations.md",
+          "chars": 11334,
+          "sha256": "54e1a8b63c645f4a2e02a21c20ae4918045eaaefbec6b07e8942f420976c9188"
+        },
+        {
+          "file": "skills/migrate-birp-to-urp/references/custom-shader-triage.md",
+          "chars": 5830,
+          "sha256": "1a660bb89065843e2a53b439309fc9440782486a288b845b15cbd4ba3d1e2d23"
+        },
+        {
+          "file": "skills/migrate-birp-to-urp/references/implementation-patterns.md",
+          "chars": 30702,
+          "sha256": "9b231cfd450ac1f82cb6e936a10b5c465ad70b868cb8662680ed7e26c561cb40"
+        },
+        {
+          "file": "skills/migrate-birp-to-urp/references/migration-workflow.md",
+          "chars": 26445,
+          "sha256": "c522e7efc1328e1490d20cc2b12546d6848c1e184e30944c4f30d598fdd861dd"
+        },
+        {
+          "file": "skills/migrate-birp-to-urp/references/quality-settings-map.md",
+          "chars": 7297,
+          "sha256": "1516cc05f19fac2c621bd2143125403f8694dc0c60713deb22b1043e0a401d86"
+        }
+      ]
     },
     {
       "id": "official-new-unity-project",
@@ -459,7 +919,14 @@
       "file": "skills/new-unity-project/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/new-unity-project/SKILL.md",
       "chars": 24508,
-      "sha256": "032209f0696d80a781af0de49128d164eb6e3e7d903b74c1c957547ab25ee8eb"
+      "sha256": "032209f0696d80a781af0de49128d164eb6e3e7d903b74c1c957547ab25ee8eb",
+      "references": [
+        {
+          "file": "skills/new-unity-project/references/skill-setup.md",
+          "chars": 5385,
+          "sha256": "4405a3080f2d0c1b208b091b5594f4758d5a78c8ee4acfb7d5b7dc2b32150a9b"
+        }
+      ]
     },
     {
       "id": "official-optimize-audio",
@@ -485,7 +952,8 @@
       "file": "skills/optimize-audio/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/optimize-audio/SKILL.md",
       "chars": 14563,
-      "sha256": "f53d0b9aefea8b8e4caf8d4e68f78bce4e4bfe74bf0daccc7a17c33c51490e71"
+      "sha256": "f53d0b9aefea8b8e4caf8d4e68f78bce4e4bfe74bf0daccc7a17c33c51490e71",
+      "references": []
     },
     {
       "id": "official-optimize-text-mesh-pro",
@@ -511,7 +979,8 @@
       "file": "skills/optimize-text-mesh-pro/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/optimize-text-mesh-pro/SKILL.md",
       "chars": 9575,
-      "sha256": "6f5cf0b5b2d350c33671b995822049dd769f1fb25c7d7c7d193115510eab1792"
+      "sha256": "6f5cf0b5b2d350c33671b995822049dd769f1fb25c7d7c7d193115510eab1792",
+      "references": []
     },
     {
       "id": "official-optimize-web",
@@ -537,7 +1006,8 @@
       "file": "skills/optimize-web/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/optimize-web/SKILL.md",
       "chars": 38631,
-      "sha256": "c95bb0ab41f57305663ddf101c638fc58b31815958c7bf2cea230919d1ac85e9"
+      "sha256": "c95bb0ab41f57305663ddf101c638fc58b31815958c7bf2cea230919d1ac85e9",
+      "references": []
     },
     {
       "id": "official-physics-3d-collision",
@@ -567,7 +1037,14 @@
       "file": "skills/physics-3d-collision/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/physics-3d-collision/SKILL.md",
       "chars": 28004,
-      "sha256": "5025949c81c71c9259c6d96596377890e6447e028aa41cbdebb5a29b6a97631a"
+      "sha256": "5025949c81c71c9259c6d96596377890e6447e028aa41cbdebb5a29b6a97631a",
+      "references": [
+        {
+          "file": "skills/physics-3d-collision/references/troubleshooting.md",
+          "chars": 760,
+          "sha256": "71fb4d42e8342e0e4f3ac7038163de65640dc927a7e70d8125400acda9ed747d"
+        }
+      ]
     },
     {
       "id": "official-project-auditor-fixes",
@@ -592,7 +1069,8 @@
       "file": "skills/project-auditor-fixes/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/project-auditor-fixes/SKILL.md",
       "chars": 4546,
-      "sha256": "5ec30573f30828725c1988c017342e26b33f4e4f12b2b91a6a074702ab4ef136"
+      "sha256": "5ec30573f30828725c1988c017342e26b33f4e4f12b2b91a6a074702ab4ef136",
+      "references": []
     },
     {
       "id": "official-setup-multiplayer-services",
@@ -617,7 +1095,39 @@
       "file": "skills/setup-multiplayer-services/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/setup-multiplayer-services/SKILL.md",
       "chars": 4604,
-      "sha256": "ed1f1f29c82e8c34a04fdbf949d4fbb0ef0ea280d1236270cd84c250fdc742aa"
+      "sha256": "ed1f1f29c82e8c34a04fdbf949d4fbb0ef0ea280d1236270cd84c250fdc742aa",
+      "references": [
+        {
+          "file": "skills/setup-multiplayer-services/references/dgs-entrypoint.md",
+          "chars": 4870,
+          "sha256": "bf6d8e67b16205e6117ddb8b614583bd5454374f848cd17af65f85505c824d39"
+        },
+        {
+          "file": "skills/setup-multiplayer-services/references/entrypoints.md",
+          "chars": 10904,
+          "sha256": "2ff2b589ee5c13a9190d9cf9bb3caee0de8400d07625d509412bd2dadf5e7c82"
+        },
+        {
+          "file": "skills/setup-multiplayer-services/references/examples.md",
+          "chars": 1649,
+          "sha256": "e4060fa19ad1b3537af84827109ac5ae59dffee32d977b052c8e1009d26d8ee8"
+        },
+        {
+          "file": "skills/setup-multiplayer-services/references/implementation-fit.md",
+          "chars": 4633,
+          "sha256": "27c7572806c84ab49ffe7cd1079f55626a560438c16e5b2024ce7a68ae600ad3"
+        },
+        {
+          "file": "skills/setup-multiplayer-services/references/underlying-services.md",
+          "chars": 900,
+          "sha256": "b57c30bf618340ae16fd2b4aca78d45f9e00262962bd3faf3c2bc87131aab444"
+        },
+        {
+          "file": "skills/setup-multiplayer-services/references/workflows-prerequisites.md",
+          "chars": 3286,
+          "sha256": "d5517167f9db150e28a1e12fdbe0cc631443623bb3f6f512155ea8982c908e46"
+        }
+      ]
     },
     {
       "id": "official-setup-vivox-voice-chat",
@@ -641,7 +1151,34 @@
       "file": "skills/setup-vivox-voice-chat/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/setup-vivox-voice-chat/SKILL.md",
       "chars": 8784,
-      "sha256": "8d3c38504111e5a429d58ebd7c828c5c2b7beed74be0b7a8d1b75adbb7b574f2"
+      "sha256": "8d3c38504111e5a429d58ebd7c828c5c2b7beed74be0b7a8d1b75adbb7b574f2",
+      "references": [
+        {
+          "file": "skills/setup-vivox-voice-chat/references/events-and-participants.md",
+          "chars": 3778,
+          "sha256": "74e49ce7a623bb871e2127ad4ed98ae3f69122c9df67bdd363743367688afb51"
+        },
+        {
+          "file": "skills/setup-vivox-voice-chat/references/init-and-login.md",
+          "chars": 3650,
+          "sha256": "4a7b386ff724876fef7776e7c8741666c6c8aff0a673569e4d66953926f5406c"
+        },
+        {
+          "file": "skills/setup-vivox-voice-chat/references/text-chat.md",
+          "chars": 2994,
+          "sha256": "9c5c72d36b9e6508893b03b321c9bdd42a8dde65cbce5b92d6698f5ed6ad63aa"
+        },
+        {
+          "file": "skills/setup-vivox-voice-chat/references/troubleshooting.md",
+          "chars": 3475,
+          "sha256": "49863e3d47e0abcac043e2eb97032be7ce3364830ecbb032c0cabb5796918ace"
+        },
+        {
+          "file": "skills/setup-vivox-voice-chat/references/voice-channels.md",
+          "chars": 4009,
+          "sha256": "f888bfe2e64ae5f68068c23e0a08203fc23b86d1b266ae7012e3a3e7ab77dfc7"
+        }
+      ]
     },
     {
       "id": "official-shader-graph-create-custom-node",
@@ -667,7 +1204,8 @@
       "file": "skills/shader-graph-create-custom-node/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/shader-graph-create-custom-node/SKILL.md",
       "chars": 1176,
-      "sha256": "927d3d95345410d56b94fa08f9f74f42389b2d03eb80774e5f9b85b7ff01ac11"
+      "sha256": "927d3d95345410d56b94fa08f9f74f42389b2d03eb80774e5f9b85b7ff01ac11",
+      "references": []
     },
     {
       "id": "official-sprite-editor",
@@ -693,7 +1231,24 @@
       "file": "skills/sprite-editor/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/sprite-editor/SKILL.md",
       "chars": 3579,
-      "sha256": "93d0878dc2ef770d968cb7b0c391e65d316eede7073698a12aafe07f3c29f741"
+      "sha256": "93d0878dc2ef770d968cb7b0c391e65d316eede7073698a12aafe07f3c29f741",
+      "references": [
+        {
+          "file": "skills/sprite-editor/references/api_reference.md",
+          "chars": 6019,
+          "sha256": "3e8491dd8d5dbf3df9c77eca5a16b8b278cb25c3a88460fbc5d6bfc1b31edc20"
+        },
+        {
+          "file": "skills/sprite-editor/references/background.md",
+          "chars": 4144,
+          "sha256": "c3433c455de83705092e81a8e878f1762923957ad423a446a57018818a8e79c8"
+        },
+        {
+          "file": "skills/sprite-editor/references/templates.md",
+          "chars": 2884,
+          "sha256": "adbacb07763c36af232a069fc6a475c855824f55f7814482b5d667cee2f282c6"
+        }
+      ]
     },
     {
       "id": "official-sprite-segment-3x3grid",
@@ -718,7 +1273,8 @@
       "file": "skills/sprite-segment-3x3grid/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/sprite-segment-3x3grid/SKILL.md",
       "chars": 4863,
-      "sha256": "a9fabd48ceea667f8dcfd19ae68d0a8713d1f94a513eb8b7804cf3f99776fa6f"
+      "sha256": "a9fabd48ceea667f8dcfd19ae68d0a8713d1f94a513eb8b7804cf3f99776fa6f",
+      "references": []
     },
     {
       "id": "official-ui",
@@ -743,7 +1299,8 @@
       "file": "skills/ui/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/ui/SKILL.md",
       "chars": 6717,
-      "sha256": "5dbdf432ca8beebf90a9bd2ce22958aac9b2622984f52292ebcccacb383e537b"
+      "sha256": "5dbdf432ca8beebf90a9bd2ce22958aac9b2622984f52292ebcccacb383e537b",
+      "references": []
     },
     {
       "id": "official-ui-imgui",
@@ -768,7 +1325,19 @@
       "file": "skills/ui-imgui/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/ui-imgui/SKILL.md",
       "chars": 6440,
-      "sha256": "4cef7d81598408cf53f87ba22af9a80723c017670c5e978bc30c93fdda55b18a"
+      "sha256": "4cef7d81598408cf53f87ba22af9a80723c017670c5e978bc30c93fdda55b18a",
+      "references": [
+        {
+          "file": "skills/ui-imgui/references/gui-elements.md",
+          "chars": 3616,
+          "sha256": "a6f2bfc30823fced91e165f184207979995d978a405235a11929bf32f4ea0f49"
+        },
+        {
+          "file": "skills/ui-imgui/references/templates.md",
+          "chars": 2710,
+          "sha256": "5651e13ff1531a19e9142a7c92c1423cbab2c4f8d5eb2ce02e242d51073e52b3"
+        }
+      ]
     },
     {
       "id": "official-ui-ugui",
@@ -795,7 +1364,14 @@
       "file": "skills/ui-ugui/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/ui-ugui/SKILL.md",
       "chars": 12433,
-      "sha256": "dad98d97ecc224c65c9a38eec65e7a7be7018084a505f8d68470ff1a42ab950d"
+      "sha256": "dad98d97ecc224c65c9a38eec65e7a7be7018084a505f8d68470ff1a42ab950d",
+      "references": [
+        {
+          "file": "skills/ui-ugui/references/scrollview-setup.md",
+          "chars": 1540,
+          "sha256": "41d6a37cb5e78b632baea633583129e27b3bed353904ab6425cc954944873eaf"
+        }
+      ]
     },
     {
       "id": "official-ui-uitk",
@@ -822,7 +1398,44 @@
       "file": "skills/ui-uitk/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/ui-uitk/SKILL.md",
       "chars": 10960,
-      "sha256": "23acfcdf652e9d364dd844910d3f98458af653eb64c0a401ef6a0954645c819d"
+      "sha256": "23acfcdf652e9d364dd844910d3f98458af653eb64c0a401ef6a0954645c819d",
+      "references": [
+        {
+          "file": "skills/ui-uitk/references/common-issues.md",
+          "chars": 1234,
+          "sha256": "76a9a47dc56f675382d94ef9cfcd9b89546a8bfe6a53d594770368b75656b8d0"
+        },
+        {
+          "file": "skills/ui-uitk/references/custom-elements.md",
+          "chars": 6232,
+          "sha256": "0fe481c17bda4293bd5adb6e98583d00b50fbda6c4dbab5481cb8efb1077fbd0"
+        },
+        {
+          "file": "skills/ui-uitk/references/painter2d.md",
+          "chars": 10744,
+          "sha256": "8090626a558ddccf64092c82c85dfd3eec6791cedcedd45c21d42aa29f8fef08"
+        },
+        {
+          "file": "skills/ui-uitk/references/pointermanipulator-guide.md",
+          "chars": 4144,
+          "sha256": "4efd2867cfe559b3c548b4e7f79d638ec2a94ebd27cdc249a29e05293c791dcd"
+        },
+        {
+          "file": "skills/ui-uitk/references/svg-icons.md",
+          "chars": 3969,
+          "sha256": "bad01637e9ad0f20324af345ed49320f05b5f7ae6f6110a86f154287d3210fe3"
+        },
+        {
+          "file": "skills/ui-uitk/references/ui-runtime-binding.md",
+          "chars": 6143,
+          "sha256": "81c0f5a1dd2261330fb738ec9b0859df6d72bd8382fd70b877087122bcada727"
+        },
+        {
+          "file": "skills/ui-uitk/references/uss-guide.md",
+          "chars": 2768,
+          "sha256": "d50efbc200c78b5317e14e0ad9ed0286cd0096869d57c6310e3aefebcac0bd8f"
+        }
+      ]
     },
     {
       "id": "official-unity-cli",
@@ -849,7 +1462,69 @@
       "file": "skills/unity-cli/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/unity-cli/SKILL.md",
       "chars": 69015,
-      "sha256": "7ac16da0d234b18d2ef9911536bd00a93883c34a54ad52970eac8b2f86fc1d24"
+      "sha256": "7ac16da0d234b18d2ef9911536bd00a93883c34a54ad52970eac8b2f86fc1d24",
+      "references": [
+        {
+          "file": "skills/unity-cli/references/auth-license-cloud.md",
+          "chars": 29308,
+          "sha256": "462606f1b7e4fff5b9acfe7f4053fcaa74173d6ee7646781eebe4207dc377cd3"
+        },
+        {
+          "file": "skills/unity-cli/references/build-run-test.md",
+          "chars": 58757,
+          "sha256": "d556980d60bc54495224f99d79cb74b7c5ced22777d170c21d9772498371bafa"
+        },
+        {
+          "file": "skills/unity-cli/references/cloud-automation.md",
+          "chars": 42971,
+          "sha256": "baf2c0bc5fbb7323a33c2f3520e3a2fbad1ab44ec8262623da22940bc82fca19"
+        },
+        {
+          "file": "skills/unity-cli/references/collaboration.md",
+          "chars": 32702,
+          "sha256": "dcf5142d5ecec3ac80ca50a4e68ff204592c6de3d42c3ceedbd2e2aed2010003"
+        },
+        {
+          "file": "skills/unity-cli/references/config-hub.md",
+          "chars": 15067,
+          "sha256": "a249f7158af79d588164bf44a708d2491d4f1422b631990e2bf168a6721e0889"
+        },
+        {
+          "file": "skills/unity-cli/references/diagnostics-maintenance.md",
+          "chars": 47274,
+          "sha256": "6f59cee8b2e5a8fe680c1acfea1c59477d0d6a93679b33ce9af8b14e0b4a3abf"
+        },
+        {
+          "file": "skills/unity-cli/references/docs-workflow.md",
+          "chars": 9329,
+          "sha256": "1b3d2606dc64aa5cb2ca5ba2d1e4ff6339834f0d5a27222eb63cccfa728d8049"
+        },
+        {
+          "file": "skills/unity-cli/references/editors-install.md",
+          "chars": 32195,
+          "sha256": "7d8edfa876a4eba06ce6129c2bea7878c01a466a7fc9b217add808bb6990982d"
+        },
+        {
+          "file": "skills/unity-cli/references/integration-advanced.md",
+          "chars": 106852,
+          "sha256": "4d0ee263e867128b25065e099b5bc548aa40767533d2eb6c5ba4c4b75edc56f3"
+        },
+        {
+          "file": "skills/unity-cli/references/playmode-verification-loop.md",
+          "chars": 18603,
+          "sha256": "25a6517048f4d8a94974b5f5c7b0b27a4beb5f377b089c966d0f89912769e0fe"
+        },
+        {
+          "file": "skills/unity-cli/references/projects-templates.md",
+          "chars": 104768,
+          "sha256": "6f8f5bc1c0ac8c396fa6fb8da4777cbba88116aff46581565219c12c6295ddc0"
+        },
+        {
+          "file": "skills/unity-cli/references/version-control.md",
+          "chars": 29737,
+          "sha256": "78763e39251d0b424cac1253dcb0f09ef3636257d827c96bc80c855a792ca7e3"
+        }
+      ]
     },
     {
       "id": "official-unity-package-management",
@@ -877,7 +1552,14 @@
       "file": "skills/unity-package-management/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/unity-package-management/SKILL.md",
       "chars": 16368,
-      "sha256": "4c8b428463c432f9d35731a06a11c4fa0b6f37ca4d518bea0f7d4f16ebdf3958"
+      "sha256": "4c8b428463c432f9d35731a06a11c4fa0b6f37ca4d518bea0f7d4f16ebdf3958",
+      "references": [
+        {
+          "file": "skills/unity-package-management/references/select-packages.md",
+          "chars": 7134,
+          "sha256": "152dda502a38c421b1ec38337179b9c1c59795f31c65d27cf80708183858e233"
+        }
+      ]
     },
     {
       "id": "official-unity-pipeline",
@@ -901,7 +1583,8 @@
       "file": "skills/unity-pipeline/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/unity-pipeline/SKILL.md",
       "chars": 19534,
-      "sha256": "e99986c2b3b5ccc8f4c87c0ebdc340612297504202355159f18decf1281727e8"
+      "sha256": "e99986c2b3b5ccc8f4c87c0ebdc340612297504202355159f18decf1281727e8",
+      "references": []
     },
     {
       "id": "official-urp-postprocessing",
@@ -927,7 +1610,19 @@
       "file": "skills/urp-postprocessing/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/urp-postprocessing/SKILL.md",
       "chars": 11225,
-      "sha256": "71e3f65d95dac1e619b4cda8964b8c4bd97add8a0e12dfb1da19669c074798eb"
+      "sha256": "71e3f65d95dac1e619b4cda8964b8c4bd97add8a0e12dfb1da19669c074798eb",
+      "references": [
+        {
+          "file": "skills/urp-postprocessing/references/code-templates.md",
+          "chars": 7419,
+          "sha256": "27e0ca4d360cfa5d7c1d752ca28477f92bc7b621afb04cd54f9a75ad9be9060f"
+        },
+        {
+          "file": "skills/urp-postprocessing/references/effect-reference.md",
+          "chars": 5383,
+          "sha256": "63ffdb38717dec67f0a474d65dfc979fab703eecc305080b00197a41c7a88282"
+        }
+      ]
     },
     {
       "id": "official-validate-urp-render-graph-renderer-feature",
@@ -952,7 +1647,8 @@
       "file": "skills/validate-urp-render-graph-renderer-feature/SKILL.md",
       "sourceUrl": "https://github.com/Unity-Technologies/skills/blob/ba28c24fc7e569fa0fd5b6bf16ab2bb0acef0594/skills/validate-urp-render-graph-renderer-feature/SKILL.md",
       "chars": 14298,
-      "sha256": "ae28f9c3aaa52342bc2448d61dd9baf0ff81eea24c4d02d39c068e253f77f6a5"
+      "sha256": "ae28f9c3aaa52342bc2448d61dd9baf0ff81eea24c4d02d39c068e253f77f6a5",
+      "references": []
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Unity6 Skill AI
 
-一个可以**直接装进 Unity 6 工程**的 BYOK AI 助手窗口：用户在窗口里填自己主流大模型的 API Key，项目内置 **38 张 Unity 6 版本化知识卡** 与 **35 个 Unity 官方 Skills 原文**，会按自然语言需求命中对应知识，再把「该用哪些 API、哪些工具、有哪些版本坑」注入 System Prompt，让模型真正按 Unity 6 的方式动手创作。
+一个可以**直接装进 Unity 6 工程**的 BYOK AI 助手窗口：用户在窗口里填自己主流大模型的 API Key，项目内置 **38 张 Unity 6 版本化知识卡**、**35 个 Unity 官方 SKILL.md** 与 **127 篇官方 references 深度文档**，会按自然语言需求命中对应知识，再把「该用哪些 API、哪些工具、有哪些版本坑」注入 System Prompt，让模型真正按 Unity 6 的方式动手创作。
 
 窗口可停靠，也可一键浮动成独立窗口。纯 C#、零外部进程、零第三方 DLL、不需要 Python / Node / MCP 服务。
 
@@ -14,7 +14,7 @@
 |---|---|
 | 工程实测信息 | 自动读取 Unity 版本、渲染管线、输入处理模式、已安装包、当前场景，注入 System Prompt，不靠模型猜版本 |
 | 版本化知识卡 | 38 张自撰的 Unity 6 知识卡，带适用版本范围、推荐 API、已弃用 API、约束、常见坑、参数模板、参考写法 |
-| 官方 Skills 参考层 | 35 个 Unity 官方 SKILL.md 原文随包附带，按中文/英文关键词命中后按需注入，只作知识参考，不参与工具授权 |
+| 官方 Skills 参考层 | 35 个 Unity 官方 SKILL.md + 127 篇 references 深度文档随包附带；命中技能后自动拉取相关 references 注入，只作知识参考，不参与工具授权 |
 | 知识驱动的工具白名单 | 只有命中的知识卡里列出的工具才会暴露给模型。写操作默认不会凭空开放，先给知识再给权限 |
 
 一次请求的完整链路：
@@ -22,7 +22,7 @@
 ```text
 用户自然语言
   -> SkillRouter 按关键词 + Unity 小版本打分，选 1 张常驻卡 + 最多 3 张主题卡
-  -> OfficialSkillLibrary 按中文/英文关键词选最多 3 个官方技能，按需读原文并截断
+  -> OfficialSkillLibrary 按中文/英文关键词选最多 2 个官方技能，并自动拉取其 references 深度文档一起注入
   -> PromptBuilder 组装 System Prompt（工程实测 + 通用规则 + 知识卡 + 工具白名单 + 官方参考层）
   -> LlmClient 携带白名单工具调用自备大模型（OpenAI 兼容 / Anthropic / Gemini）
   -> 模型返回 tool_calls
@@ -68,7 +68,7 @@ Unity > Window > Package Manager > + > Add package from disk
 
 - 不要保留或删除 `.meta` 文件；从本仓库复制时请整个文件夹一起复制。
 - 不要把另一个完整 Unity 工程（含 `Library/`、`ProjectSettings/`）塞进包目录内部，否则 Unity 会把它当包资源扫描并产生程序集冲突。
-- 仓库里的 `.git` 是点开头目录，Unity 会忽略，可以直接带过去。包目录里不含任何 Unity 工程、`Library/` 或临时验证产物，整个文件夹约 1 MB（含 35 个官方 SKILL.md 原文）。
+- 仓库里的 `.git` 是点开头目录，Unity 会忽略，可以直接带过去。包目录里不含任何 Unity 工程、`Library/` 或临时验证产物，整个文件夹约 3 MB（含 35 个官方 SKILL.md 原文与 127 篇 references 深度文档）。
 - 放好后等 Unity 右下角编译转圈结束，再开菜单。若没出现菜单，看 Console 是否有 `error CS`。
 
 ---
@@ -81,7 +81,7 @@ Unity > Window > Package Manager > + > Add package from disk
 1. 打开 Unity 6 工程，等编译结束，确认菜单 Tools > Unity6 Skill AI 出现且 Console 无 error CS
 2. 点 Tools > Unity6 Skill AI > Chat (Floating)，确认窗口能独立浮动
 3. 点窗口「离线路由评测」，Console 应打印 30/30 命中；报告在 Library/Unity6SkillAI/eval-report.md
-4. 状态栏应显示「官方技能 35 个」；输入「两个 Trigger 不触发 OnTriggerEnter」，点「预览注入」
+4. 状态栏应显示「官方技能 35 个 / 参考 127 篇」；输入「两个 Trigger 不触发 OnTriggerEnter」，点「预览注入」
    应看到命中官方技能 physics-3d-collision，System Prompt 里有官方参考层与 5 条适配声明
 5. 输入「用新输入系统做一个 WASD 移动脚本」，点「预览注入」
    应看到命中 u6-input-system，且工具白名单只开放该卡列出的工具，不是全量 17 个
@@ -205,10 +205,10 @@ Unity 菜单：Tools > Unity6 Skill AI > Run Routing Eval (No API Key)
 另有独立的官方 Skills 参考层，见 `docs/OFFICIAL-SKILLS.md`：
 
 ```text
-python tools/verify_official_router.py    离线复刻官方技能路由，10 条中英文用例
+python tools/verify_official_router.py    离线复刻官方技能路由，中英文用例 + SKILL/REF 完整性 SHA 校验
 ```
 
-官方技能带自撰中文关键词、按 tier 分级、默认只注入 1 篇且截断到 3000 字符，**不参与工具白名单**。
+官方技能带自撰中文关键词、按 tier 分级、默认注入最多 2 篇（每篇截断到 3000 字符）并自动附带每篇技能最相关的 references 文档（默认每技能最多 2 篇、每篇 2000 字符），**不参与工具白名单**。
 
 新增一张卡的流程：复制一份 `u6skill_*.json` 改内容，运行 `python tools/gen_meta.py` 补 `.meta`，在 `evals/prompts.json` 加一条用例，再跑 `python tools/verify_router.py` 看命中率有没有回退。
 
@@ -234,8 +234,8 @@ Editor/
     SkillRouterEval.cs           离线评测
   UI/SkillChatWindow.cs          可浮动聊天窗口（IMGUI）
   Skills/Cards/                  38 张 Unity 6 知识卡
-Official/                        35 个 Unity 官方 SKILL.md 原文 + 索引 + 许可证与声明
-evals/prompts.json               30 条固定评测用例
+Official/                        35 个 Unity 官方 SKILL.md + 127 篇 references 深度文档 + 索引 + 许可证与声明
+evals/prompts.json               58 条固定评测用例
 tools/gen_meta.py                生成 .meta（Git URL 安装必需）
 tools/verify_router.py           自研知识卡离线路由评测
 tools/verify_official_router.py  官方技能离线路由评测
@@ -262,7 +262,7 @@ docs/                            架构、知识卡规范、官方技能层说�
 1. 写 C# 会触发 Unity 编译与域重载，进行中的模型请求无法跨重载续接。窗口会自动恢复聊天记录；脚本写入后点「检查编译结果」即可把 Console 错误回灌给模型继续修正。
 2. 目前是非流式请求，长回答要等模型完整返回；部分中转站的 function calling 稳定性需自行验证。
 3. 工具是纯 C# 编辑器 API 子集，不覆盖资源导入设置、动画状态机连线、Shader Graph 图编辑等深度操作，可按 `docs/ARCHITECTURE.md` 扩展。
-4. 知识库是人工维护的知识卡 + 按需注入的官方 Skills 单篇，不是 Unity 官方文档全文 RAG；官方技能默认只取 1 篇并截断到 3000 字符，覆盖不到的场景模型仍可能给出过时写法，此时应补一张卡而不是反复改 Prompt。
+4. 知识库是人工维护的知识卡 + 按需注入的官方 Skills 与 references，不是 Unity 官方文档全文 RAG；官方技能默认取最多 2 篇（每篇截断 3000 字符）并自动附带相关 references（每篇最多 2000 字符），覆盖不到的场景模型仍可能给出过时写法，此时应补一张卡而不是反复改 Prompt。
 5. Gemini 与 Anthropic 分支已实现，但主要验证环境是 OpenAI 兼容中转，若遇到协议细节差异请看窗口里带原始响应的报错。
 
 ---
